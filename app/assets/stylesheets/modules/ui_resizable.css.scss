@@ -1,0 +1,10 @@
+.ui-resizable-handle {
+  height: 12px;
+  width: 12px;
+  background: #c2c2c2;
+  position: absolute;
+  &.ui-resizable-ne {
+    top: -6px;
+    right: -6px;
+  }
+}

@@ -1,0 +1,44 @@
+- @plans.each do |plan|
+  - unless plan.plan_type == 'free'
+    .reveal-modal.billing-modal.centralize(id="#{plan.id}" modal=true)
+      .modal-header
+        %h4 UPGRADE YOUR ACCOUNT
+        %h5
+          - if plan == @current_plan
+            This is you current plan
+          - else
+            You have selected to #{(plan.position <= @current_plan.try(:position).to_i ? "downgrade" : "upgrade")} to #{plan.name} plan
+      .modal-body
+        .form
+          .clearfix
+            = form_tag account_apply_coupon_path, class: "pull-left details" do
+              = image_tag "arrow-plan-details-modal.png", class: "arrow"
+              %p
+                After you #{(plan.position <= @current_plan.try(:position).to_i ? "downgrade" : "upgrade")} you will have:
+              %ul.items
+                - plan.features.each do |item|
+                  - if item.present?
+                    %li
+                      %i.icon-ok
+                      = item.html_safe
+              %ul.price
+                %li $
+                %li
+                  %span.value
+                    = plan.formatted_amount
+                %li
+                  %span.cents 00
+                  - if plan.plan_type == 'recurring'
+                    %span.per
+                      = raw("/#{plan.interval}")
+              %p You have a coupon?
+              .input-append.clearfix
+                = text_field_tag :cupon, nil, placeholder: "Coupon Code..."
+                %span.add-on
+                  %button.button.blue.radius Apply
+            .pull-right.form-billing
+              - if plan == @current_plan
+                %br/
+                %h5 Current plan
+              - else
+                = render "account/billing/payment_form", url: account_update_plan_path, price: plan.formatted_amount, attrs: {plan_id: plan.id}

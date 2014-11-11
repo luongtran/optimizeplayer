@@ -1,0 +1,26 @@
+- content_for :title, "Settings"
+%section(role="account")
+  .page-body
+    .row
+      .twelve.columns
+        #account
+          .box-menu
+            = render "account/shared/sidenav", {active: "team"}
+            .right-content
+              .header.clearfix
+                .pull-left
+                  %h3
+                    = image_tag "icon-team.png"
+                    Team - #{@user.username}
+                .pull-right
+                  %a.help(href="#") ?
+              .body.team
+                = form_for [current_account, @user], url: account_team_member_url, html: {class: "clearfix folders-list"} do |f|
+                  %ul
+                    - current_account.folders.each do |folder|
+                      %li
+                        = check_box_tag "user[folder_ids][]", folder.id, @user.folders.include?(folder)
+                        = folder.name
+                  %button.button.flat.blue Save
+
+

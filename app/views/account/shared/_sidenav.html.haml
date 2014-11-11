@@ -1,0 +1,18 @@
+%ul.left-menu
+  %li(class="#{'actived' if active == 'account'}")
+    %a(href="/account")
+      %i.picon-user
+      Account
+  - if current_user.owner
+    %li(class="#{'actived' if active == 'billing'}")
+      %a(href="/account/billing")
+        %i.picon-money
+        Billing
+    %li(class="#{'actived' if active == 'integrations'}")
+      %a(href="/account/integrations")
+        %i.picon-money
+        Integrations
+    %li(class="#{'actived' if active == 'team'}")
+      %a.selected(href="/account/team")
+        %i.picon-team
+        Team

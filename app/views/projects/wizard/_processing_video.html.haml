@@ -1,0 +1,11 @@
+#processing-video.reveal-modal
+  %h3 Processing Video
+  %p This video is currently being converted to a web viewable format
+  .progress-container
+    .percentage {{encodingAssetPercents}}% Completed
+    .progress-bar(ng-show="error == false" style="width: {{encodingAssetPercents}}%;")
+    .progress-bar.error(ng-show="error != false" style="width: {{encodingAssetPercents}}%;")
+  %br
+  .alert-box.success(ng-show="encodingAssetPercents == 100") Waiting for uploading back to CSN...
+  .alert-box.error(ng-show="error != false") {{error}}
+  .button.blue.flat.radius.pull-right(ng-disabled="error == false" ng-click="retryEncoding()") Retry

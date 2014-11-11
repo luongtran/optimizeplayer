@@ -1,0 +1,68 @@
+.modal-backdrop {
+	background-color: #f4f9fa;
+}
+
+.modal-dialog {
+	width: 780px;
+}
+
+.modal-content {
+	font-family: "AvenirNext-Med";
+	overflow: hidden;
+	border: 1px solid #d4e6e8;
+	-webkit-box-shadow: 0 3px 9px rgba(212,230,232,.5);
+			box-shadow: 0 3px 9px rgba(212,230,232,.5);
+
+	.modal-header {
+		border-bottom: 2px solid #ebf3f4;
+
+		h5 {
+			margin: 7px 0;
+		}
+	}
+
+	.modal-dismiss {
+		position: absolute;
+		top: 12px;
+		right: 15px;
+	}
+
+	label {
+		font-weight: normal;
+	}
+
+	.nav-tabs {
+		background: #f4f9fa;
+		border-bottom: 1px solid #d4e6e8;
+	}
+	.nav-tabs > li > a {
+		margin: 0;
+		padding: 19px 26px;
+		color: #6996a9;
+		border: none;
+		border-right: 1px solid #d4e6e8;
+		background: none;
+		border-radius: 0;
+	}
+
+	.nav-tabs > li.active > a, 
+	.nav-tabs > li.active > a:hover, 
+	.nav-tabs > li.active > a:focus {
+		color: #6996a9;
+		background: #fff;
+		border: none;
+		border-right: 1px solid #d4e6e8;
+	}
+
+	.tab-content {
+		margin: 25px;
+	}
+}
+
+@media (max-width: 800px) {
+	.modal-dialog {
+		position: relative;
+		width: auto;
+		margin: 10px;
+	}
+}

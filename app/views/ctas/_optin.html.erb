@@ -1,0 +1,94 @@
+<div cta ng-fullscreen="{{optin.fullscreen}}" ng-model="optin"
+  <div class="optin"
+       ng-show="!optin.fullscreen"
+       ng-resizable="{{!isTrue(optin.fullscreen)}}"
+       ng-class="{fullscreen: optin.fullscreen == true || optin.fullscreen == 'true' || optin.position != 'inside'}"
+       ng-style="{
+                    width: optin.width + 'px',
+                    height: optin.height + 'px',
+                    left: optin.left + 'px',
+                    top: optin.top + 'px',
+                    background: 'rgba('+optin.background_color+', '+optin.background_opacity+')'
+                  }">
+    <div class="close-cta" ng-show="survey.skip">&times;</div>
+
+    <div class="optin-form centralize">
+      <form optin name="optinForm" autocomplete="off"
+            data-mailchimp-action="<%= api_v2_mailchimp_subscribe_path %>"
+            data-aweber-action="<%= api_v2_aweber_subscribe_path %>"
+            data-getresponse-action="<%= api_v2_getresponse_subscribe_path %>">
+        <p ng-style="{
+                       color: 'rgba('+optin.text_color+','+optin.text_opacity +')',
+                       fontSize: optin.font_size,
+                       fontFamily: optin.font_family,
+                       fontWeight: optin.font_style }">
+          {{optin.header_text}}
+        </p>
+
+        <div class="clearfix">
+          <input type="email" name="email" placeholder="Enter Your Email" ng-style="{fontFamily: optin.font_family}" ng-model="email" class="email" ng-required="true"/>
+          <button class="button radius green play-video"
+             ng-click="subscribe()"
+             ng-style="{
+                              background: 'rgba('+optin.button_background_color+','+optin.button_background_opacity+')'
+                            }"
+             ng-disabled="optinForm.email.$invalid || loading">
+            <span ng-style="{
+                              color: 'rgba('+optin.text_color+','+optin.text_opacity +')',
+                              fontWeight: optin.font_style
+                            }">
+              {{optin.text}}
+            </span>
+          </button>
+        </div>
+        <div class="email-validation-error" ng-show="optinForm.email.$invalid && !optinForm.email.$pristine">Email is not valid.</div>
+        <div class="api-error" ng-show="optinForm.email.$pristine">{{api_error}}</div>
+      </form>
+    </div>
+  </div>
+
+  <div class="optin"
+       ng-show="optin.fullscreen"
+       ng-style="{background: 'rgba('+optin.background_color+', '+optin.background_opacity+')'}"
+       ng-class="{fullscreen: optin.fullscreen == true || optin.fullscreen == 'true' || optin.position != 'inside'}">
+    <div class="close-cta" ng-show="survey.skip">&times;</div>
+
+    <div class="optin-form centralize">
+      <form optin class='draggable-form' name="optinForm" autocomplete="off"
+            data-mailchimp-action="<%= api_v2_mailchimp_subscribe_path %>"
+            data-aweber-action="<%= api_v2_aweber_subscribe_path %>"
+            data-getresponse-action="<%= api_v2_getresponse_subscribe_path %>"
+            ng-style="{
+                left: optin.fullscreen_left + 'px',
+                top: optin.fullscreen_top + 'px'
+              }">
+        <p ng-style="{
+                       color: 'rgba('+optin.text_color+','+optin.text_opacity +')',
+                       fontSize: optin.font_size,
+                       fontFamily: optin.font_family,
+                       fontWeight: optin.font_style}" >
+          {{optin.header_text}}
+         </p>
+
+        <div class="clearfix">
+          <input type="email" name="email" placeholder="Enter Your Email" ng-style="{fontFamily: optin.font_family}" ng-model="email" class="email" ng-required="true"/>
+          <button class="button radius green play-video"
+             ng-click="subscribe()"
+             ng-style="{
+                              background: 'rgba('+optin.button_background_color+','+optin.button_background_opacity+')'
+                            }"
+             ng-disabled="optinForm.email.$invalid || loading">
+            <span ng-style="{
+                              color: 'rgba('+optin.text_color+','+optin.text_opacity +')',
+                              fontWeight: optin.font_style
+                            }">
+              {{optin.text}}
+            </span>
+          </button>
+        </div>
+        <div class="email-validation-error" ng-show="optinForm.email.$invalid && !optinForm.email.$pristine">Email is not valid.</div>
+        <div class="api-error" ng-show="optinForm.email.$pristine">{{api_error}}</div>
+      </form>
+    </div>
+  </div>
+</div>

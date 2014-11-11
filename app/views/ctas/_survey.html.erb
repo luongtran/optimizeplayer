@@ -1,0 +1,28 @@
+<div class="close-cta" ng-show="survey.skip">&times;</div>
+<form survey class="survey" action="<%= api_v2_survey_options_path %>" ng-style="{background: 'rgba('+survey.answers_bg_color+', '+survey.answers_bg_color_opacity+')', color: 'rgba('+survey.text_color+')'}">
+  <div class="content">
+    <div class="question" ng-style="{color: 'rgba('+survey.header_color+', '+survey.header_color_opacity+')'}">
+      {{current_question.text}}
+    </div>
+    <div class="answers">
+      <ul>
+        <li ng-repeat="option in current_question.survey_options_attributes" ng-style="{color: 'rgba('+survey.text_color+', '+survey.text_opacity+')'}">
+          <input name="survey_q{{current_question.id}}_answer"
+                 value="{{option.id}}"
+                 type="radio"
+                 id="option{{option.id}}">
+          <label for="option{{option.id}}">{{option.text}}</label>
+        </li>
+      </ul>
+      <div class="next" ng-show="button_text">
+        <a class="btn"
+                ng-click="proceedToNextOrSubmit()"
+                ng-style="{
+                            background: 'rgba('+survey.button_bg_color+', '+survey.button_bg_color_opacity+')',
+                            color: 'rgba('+survey.text_color+', '+survey.text_opacity+')'}">
+          {{button_text}}
+        </a>
+      </div>
+    </div>
+  </div>
+</form>

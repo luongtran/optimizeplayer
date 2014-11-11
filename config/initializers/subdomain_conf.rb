@@ -1,0 +1,1 @@
+ActionDispatch::Http::URL.tld_length = 2

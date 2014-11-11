@@ -1,0 +1,67 @@
+%a.collapse-button.collapsed(data-toggle="collapse" data-target="#target-12c") DISPLAY OPTIONS
+#target-12c.collapse
+  .display-options.collapse-box.add-padding
+    = render 'projects/shared/display_options', type: 'survey'
+
+%a.collapse-button.collapsed(data-toggle="collapse" data-target="#target-13c") ANSWER OPTIONS
+#target-13c.collapse
+  .answer-options.collapse-box
+    .form.questions.add-padding.collapse-box(ng-repeat="question in cta_store.currentCta.survey_questions_attributes | filter: {'_destroy': '!1'}")
+      %ul.list-unstyled
+        %li
+          %input{style:"width:90%"}(type="text" ng-model="question.text" placeholder="Question")
+            %i.icon-remove(ng-click="removeSurveyQuestion(question)")
+      %ul{style:"padding-left:17px"}
+        %li(ng-repeat="option in question.survey_options_attributes | filter: {'_destroy': '!1'}")
+          %input{style:"width:89%"}(type="text" ng-model="option.text" placeholder="answer option")
+          %i.icon-remove(ng-click="removeSurveyOption(option)")
+        %li
+          %button.btn.btn-primary.minimize(ng-click="addSurveyOption(question)")  Add Answer
+    .add-padding
+      %button.btn.btn-info(ng-click="addSurveyQuestion()")  Add Question
+%a.collapse-button.collapsed(data-toggle="collapse" data-target="#target-14c") SHOW OPTIONS
+#target-14c.collapse
+  .skip-button.add-padding.collapse-box
+    %input#skip-button(type="checkbox" ng-model="cta_store.currentCta.skip")
+    %label(for="skip-button") Skip Button
+  %div.show-options.collapse-box.add-padding
+    %time-options(type="Survey")
+%a.collapse-button.collapsed(data-toggle="collapse" data-target="#target-15c") VISUAL CONTROLS
+#target-15c.collapse
+  .visual-controls
+    .text-color.add-padding.color-input.collapse-box
+      %span Text Color
+      .input-group
+        %input.minicolors(color-converter minicolors ng-model="cta_store.currentCta.text_color" type="text")
+      .range-opacity.clearfix
+        .pull-left
+          %input.slider-range(type="text" slider data-slider-min="0" data-slider-max="100" data-slider-step="1"  data-slider-tooltip="hide" style="width: 90px;" ng-model="cta_store.currentCta.text_opacity")
+        .pull-right
+          %input.percent(type="text" percentage ng-model="cta_store.currentCta.text_opacity")
+    .header-color.add-padding.color-input.collapse-box
+      %span Question Text Color
+      .input-group
+        %input.minicolors(color-converter minicolors ng-model="cta_store.currentCta.header_color" type="text")
+      .range-opacity.clearfix
+        .pull-left
+          %input.slider-range(type="text" slider data-slider-min="0" data-slider-max="100" data-slider-step="1"  data-slider-tooltip="hide" style="width: 90px;"  ng-model="cta_store.currentCta.header_color_opacity")
+        .pull-right
+          %input.percent(type="text" percentage ng-model="cta_store.currentCta.header_color_opacity")
+    .button-background-color.add-padding.color-input.collapse-box
+      %span Button Color
+      .input-group
+        %input.minicolors(color-converter minicolors ng-model="cta_store.currentCta.button_bg_color" type="text")
+      .range-opacity.clearfix
+        .pull-left
+          %input.slider-range(type="text" slider data-slider-min="0" data-slider-max="100" data-slider-step="1"  data-slider-tooltip="hide" style="width: 90px;" ng-model="cta_store.currentCta.button_bg_color_opacity")
+        .pull-right
+          %input.percent(type="text" percentage ng-model="cta_store.currentCta.button_bg_color_opacity")
+    .header-color.add-padding.color-input.collapse-box
+      %span Answers Background Color
+      .input-group
+        %input.minicolors(color-converter minicolors ng-model="cta_store.currentCta.answers_bg_color" type="text")
+      .range-opacity.clearfix
+        .pull-left
+          %input.slider-range(type="text" slider data-slider-min="0" data-slider-max="100" data-slider-step="1"  data-slider-tooltip="hide" style="width: 90px;"  ng-model="cta_store.currentCta.answers_bg_color_opacity")
+        .pull-right
+          %input.percent(type="text" percentage ng-model="cta_store.currentCta.answers_bg_color_opacity")

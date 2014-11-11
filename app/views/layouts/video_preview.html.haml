@@ -1,0 +1,56 @@
+!!!
+%html(ng-app="optimizePlayer")
+  %head
+    - unless @preview_page.blank?
+      - if !@preview_page.seo.blank? && !@preview_page.seo["title"].blank?
+        %title #{@preview_page.seo["title"]}
+      - else
+        %title Video preview
+      - if !@preview_page.seo.blank? && !@preview_page.seo["keywords"].blank?
+        %meta{:name => "keywords", :content => @preview_page.seo["keywords"].join(", ") }
+      - if !@preview_page.seo.blank? && !@preview_page.seo["description"].blank?
+        %meta{:name => "description", :content => @preview_page.seo["description"]}
+        %meta{property: "og:description", content: "#{@preview_page.seo["description"]}"}
+        %meta{content: "#{@preview_page.seo["description"]}", name: "twitter:description"}
+
+    - unless @preview_page.project.blank?
+      %meta{property: "og:title", content: "#{@preview_page.project.title}"}
+      %meta{content: "#{@preview_page.project.title}", name: "twitter:title"}
+      - unless @preview_page.project.flowplayer['start_image'].blank?
+        %meta{property: "og:image", content: "#{@preview_page.project.flowplayer['start_image']}"}
+        %meta{content: "#{@preview_page.project.flowplayer['start_image']}", name: "twitter:image:src"}
+      - else
+        %meta{property: "og:image", content: "#{root_url}assets/video-sample.png"}
+        %meta{content: "#{root_url}assets/video-sample.png", name: "twitter:image:src"}
+      - unless @preview_page.project.flowplayer['url'].blank?
+        %meta{property: "og:video", content: "#{@preview_page.project.flowplayer['url']}"}
+        %meta{content: "#{@preview_page.project.flowplayer['url']}", name: "twitter:player:stream"}
+      - else
+        %meta{property: "og:video", content: "/projects/#{@preview_page.project.cid}.js"}
+
+      - unless @preview_page.project.flowplayer['dimensions'].blank?
+        - dimensions = @preview_page.project.flowplayer['dimensions'].split("x")
+        %meta{content: "#{dimensions[0]}", name: "twitter:player:width"}
+        %meta{content: "#{dimensions[1]}", name: "twitter:player:height"}
+      - else
+        %meta{content: "640", name: "twitter:player:width"}
+        %meta{content: "360", name: "twitter:player:height"}
+      - twitter_player = "#{root_url}projects/#{@preview_page.project.cid}"
+      %meta{content: "#{twitter_player.sub(/http:/, 'https:')}.js", name: "twitter:player"}
+
+
+    %meta{property: "og:site_name", content: "Optimize Player"}
+    %meta{property: "og:url", content: "#{request.original_url.sub(/http:/, "https:")}"}
+    %meta{property: "og:type", content: "video.movie"}
+
+    %meta{content: "player", name: "twitter:card"}
+
+    %meta{content: "width=device-width; initial-scale=1.0;", name: "viewport"}
+
+    = stylesheet_link_tag "application", :media => "all"
+    = csrf_meta_tags
+
+  %body#video_preview
+    = yield
+    %footer
+    = javascript_include_tag "application"

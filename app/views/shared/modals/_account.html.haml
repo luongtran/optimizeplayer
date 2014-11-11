@@ -1,0 +1,278 @@
+- current_plan = current_account.subscription.plan
+#modal-account.modal.fade(tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true")
+  .modal-dialog
+    .modal-content
+      %button.btn.btn-success.modal-update#update-user(type="button") Update
+      %button.btn.btn-default.modal-dismiss(type="button" data-dismiss="modal") Close
+      %ul.nav.nav-tabs
+        %li.active
+          %a(href="#account" data-toggle="tab") Account
+        %li
+          %a(href="#billing" data-toggle="tab" ng-click="invoices = false") Billing
+        %li
+          %a(href="#integrations" data-toggle="tab") Integrations
+        %li
+          %a(href="#team" data-toggle="tab") Team
+      .tab-content
+        #account.tab-pane.active
+          = account_usage_bar
+          #user-info
+            = render 'account/users/user_info'
+        #billing.tab-pane
+          .billing-content(ng-hide="invoices")
+            .notifications
+              -#%ul.dsp-table.expire
+                %li.dsp-cell Your account will expire in 3 days!
+              %ul.dsp-table.current-plan
+                %li.dsp-cell
+                  You are currently using
+                  %span= current_plan.name
+                %li.dsp-cell Upgrade now and get 20% discount for your first year.
+              %ul.dsp-table.success(ng-init="upgrade_success='hide'" ng-class="{'hide' : upgrade_success, 'toggle' : !upgrade}")
+                %li.dsp-cell You have successfully upgraded to Startup plan
+            %ul.dsp-table.plans(ng-hide="custom_plan" ng-controller="UpdatePlanCtrl")
+              - plans = Plan.order('position asc')
+              - plans.each_with_index do |plan, index|
+                %li.dsp-cell
+                  .plan{class: "plan-#{index}"}
+                    %h4= plan.name
+                    %h1
+                      - if plan.free?
+                        Free
+                      - else
+                        = "$#{plan.formatted_amount}"
+                    %h5
+                      - unless plan.free?
+                        per month
+                      - else
+                        &nbsp
+                    %p All features included, unlimited embeds, unlimited bandwidth, 2 users
+                    - if current_plan == plan
+                      - button_text = 'Current Plan'
+                      - button_class = 'btn-info'
+                    - else
+                      - if plan.amount > current_plan.amount
+                        - ng_click = "update_update_plan_form(#{plan.id},'#{plan.name}','upgrade');"
+                        - button_class = 'btn-primary'
+                        - button_text = 'Upgrade'
+                      - else
+                        - ng_click = "update_update_plan_form(#{plan.id},'#{plan.name}','downgrade');"
+                        - button_class = 'btn-warning'
+                        - button_text = 'Downgrade'
+                    %button.btn{class: button_class, "ng-click" => ng_click }
+                      = button_text
+              -#%li.dsp-cell.spacer
+                %span
+              -#%li.dsp-cell
+                .plan.plan-2
+                  %h4 STARTUP
+                  %h1 $29
+                  %h5 per month
+                  %p All features included, unlimited embeds, 250 GB bandwidth, 3 users
+                  %button.btn.btn-success(ng-click="upgrade = 'toggle'") Upgrade
+              -#%li.dsp-cell
+                .plan.plan-3
+                  %h4 TEAM
+                  %h1 $49
+                  %h5 per month
+                  %p All features included, unlimited embeds, 1 TB bandwidth, 10 users
+                  %button.btn.btn-primary(ng-click="custom_plan = true") Upgrade
+            -#%ul.dsp-table.plans.custom-plan(ng-show="custom_plan")
+              %li.dsp-cell
+                .plan.plan-1
+                  %h4 CUSTOM PLAN
+                  %h1 $290
+                  %h5 per month
+                  %button.btn.btn-info(ng-click="custom_plan = false") Cancel this plan
+              %li.dsp-cell
+                %ul.features
+                  %li All features included
+                  %li unlimited embeds
+                  %li Unlimited bandwidth
+                  %li 1000 users
+                  %li 5TB storage
+                  %li
+                    %button.btn.btn-info I want more
+            .state-1(ng-class="upgrade")
+              = form_tag account_update_card_path, method: :post, "credit-card-form" => true do
+                %ul.dsp-table.billing-info(ng-hide="!billing_edit")
+                  %span.payment-errors
+                  %li.dsp-cell Billing info
+                  %li.dsp-cell.card-number
+                    .input-group
+                      %input(data-stripe="number" name="card[number]" placeholder="Credit Card Number..." type="text")/
+                      %i.flag
+                  %li.dsp-cell.month
+                    %input(data-stripe="exp-month" name="month" type="text" placeholder="MM")
+                  %li.dsp-cell.year
+                    %input(data-stripe="exp-year" name="year" type="text" placeholder="YY")
+                  %li.dsp-cell.cvv
+                    %input(data-stripe="cvc" name="ccv" type="text" placeholder="CVV")
+                  %li.dsp-cell
+                    %button.btn.btn-info( type="submit") Update
+              %ul.dsp-table.billing-info(ng-hide="billing_edit")
+                %li.dsp-cell Billing info
+                %li.dsp-cell 
+                  Credit card: ****-****-****-#{current_account.last4}"
+                %li.dsp-cell
+                  %button.btn.btn-info(ng-click="billing_edit = true") Edit
+              %ul.dsp-table.latest-invoice
+                %li.dsp-cell Latest invoice
+                %li.dsp-cell Apri 14, 2014 - One month of "Self Hosted" Plan
+                %li.dsp-cell
+                  %button.btn.btn-info(ng-click="invoices = true") View all
+              %ul.dsp-table.addons
+                %li.dsp-cell
+                  .addon
+                    %h5 CUSTOM SKINS - $1.99
+                    = image_tag("addon-skin.png")
+                    %button.btn.btn-info Learn More and Buy
+                %li.dsp-cell
+                  .addon
+                    %h5 VIDEO IMPORTING - $4.99
+                    = image_tag("addon-importing.png")
+                    %button.btn.btn-info Learn More and Buy
+                %li.dsp-cell
+                  .addon
+                    %h5 SCREENSHARE - $4.99
+                    = image_tag("addon-screensharing.png")
+                    %button.btn.btn-info Learn More and Buy
+            .state-2.subscribe-plan(ng-class="update_plan")
+              = form_tag account_update_plan_path, method: :post, "update-plan-form" => true, id: 'form-update-plan' do
+                %p.payment-errors
+                %input(type="hidden" name="plan_id")
+                %ul.dsp-table
+                  %li.dsp-cell
+                    You've selected:
+                    %span.label.label-default#selected-plan-name
+                  - unless current_account.last4
+                    %li.dsp-cell.card-number
+                      .input-group
+                        %input(data-stripe="number" name="card[number]" placeholder="Card Number" type="text")/
+                        %i.flag
+                    %li.dsp-cell.month
+                      %input(data-stripe="exp-month" name="month" type="text" placeholder="MM")
+                    %li.dsp-cell.year
+                      %input(data-stripe="exp-year" name="year" type="text" placeholder="YY")
+                    %li.dsp-cell.cvv
+                      %input(data-stripe="cvc" name="ccv" type="text" placeholder="CVV")
+                %ul.dsp-table.terms
+                  %li.dsp-cell
+                    %a(href="#") Read terms of agreement
+                  - unless current_account.last4
+                    %li.dsp-cell.promo-code
+                      %input(type="text" placeholder="Enter promo code")
+                  %li.dsp-cell
+                    %button.btn.btn-primary(type="submit") Subscribe
+          .invoice-list(ng-show="invoices")
+            - (transactions = current_account.transactions.order("created_at DESC")).each_with_index do |t, i|
+              %ul.dsp-table
+                %li.dsp-cell t.created_at.strftime("%m/%d/%Y")
+                %li.dsp-cell t.description
+                %li.dsp-cell
+                  %a.btn.btn-info(href="#") Print
+
+        #integrations.tab-pane(ng-controller="IntegrationCtrl" ng-cloak
+                               ng-init="init(#{Integration::PROVIDERS.select{|i| i[:integration_type] !='company_csn'}.to_json})")
+          %ul.dsp-table.logos
+            %li.dsp-cell(ng-repeat="provider in providers")
+              %a(href="#" ng-click="integration.provider = provider.provider")
+                %img(ng-src="/assets/{{getProviderImage(provider)}}"){:height => "39"}
+          .state-1.systems(ng-hide="integration.provider || integration.editing")
+            %h5
+              You can integrate various payment and {{integration.provider}}
+              %br
+              analytics systems by clicking on the logo above.
+              %br
+              Don’t see an integration you need? Send an email to:
+              %br
+              contact@optimizeplayer.com and we will implement the
+              %br
+              most requested platforms.
+          .state-2.connect(ng-show="integration.provider || integration.editing")
+            %p{"ng-bind-html" => "invalidCredentialsMessage"}
+            .content(ng-switch="integration.provider")
+              %input(type="text" placeholder="Title" ng-model="integration.title")
+              .mailchimp(ng-switch-when="mailchimp")
+                = render 'account/integrations/providers/mailchimp_form'
+              .aweber(ng-switch-when="aweber")
+                = render 'account/integrations/providers/aweber_form'
+              .getresponse(ng-switch-when="getresponse")
+                = render 'account/integrations/providers/getresponse_form'
+              .stripe(ng-switch-when="stripe")
+                = render 'account/integrations/providers/stripe_form'
+              .paypal(ng-switch-when="paypal")
+                = render 'account/integrations/providers/paypal_form'
+              .amazons3(ng-switch-when="amazons3")
+                = render 'account/integrations/providers/amazons3_form'
+              .amazons3(ng-switch-when="rackspace")
+                = render 'account/integrations/providers/rackspace_form'
+              %button.btn.btn-primary.add(ng-click="saveIntegration()") {{integration.id ? 'Update' : 'Save'}}
+          .my-integrations
+            %ul.dsp-table(ng-repeat="integration in integrations")
+              %li.dsp-cell {{integration.provider}}
+              %li.dsp-cell
+                %a(ng-click="editIntegration(integration.id)") {{integration.title}}
+              %li.dsp-cell
+                %a(ng-click="deleteIntegration(integration.id)")
+                  = image_tag("icons/icon-delete.png", width: "11")
+
+
+        #team.tab-pane
+          .members.state-1(ng-hide="members")
+            %ul.clearfix.list-inline
+              - current_account.users.each do |u|
+                %li
+                  .image
+                    = gravatar_image_tag("#{u.email}".gsub('spam', 'mdeering'), alt: "#{u.name}")
+                  %h4
+                    = u.username
+                  %p Administrator
+                  %a.btn.btn-info(ng-click="members = true") Permissions
+              - if can? :invite, User
+                %li.add-member
+                  .image
+                    .add
+                      = image_tag("icons/icon-add.png", width: "32")
+                  %button.btn.btn-info(ng-click="new_user = 'toggle'") Add a User
+            .new-user(ng-class="new_user")
+              .content
+                = form_tag invite_account_team_members_path, method: :post do
+                  = text_field_tag :members, nil, placeholder: "Enter email address of your friend"
+                  %button.btn.btn-primary(type="submit" ng-click="new_user = ''") Invite
+
+          .clearfix.state-2(ng-show="members")
+            %ul.clearfix.list-inline.member-detail
+              %li
+                .image
+                  = image_tag("user.png", width: "20")
+              %li Michael James Lee
+            .permissions
+              %ul.clearfix.list-inline
+                %li
+                  %input#permission-1(type="checkbox")
+                  %label(for="permission-1") uncategorized
+                %li
+                  %input#permission-2(type="checkbox")
+                  %label(for="permission-2") test
+                %li
+                  %input#permission-3(type="checkbox")
+                  %label(for="permission-3") other
+                %li
+                  %input#permission-4(type="checkbox")
+                  %label(for="permission-4") uncategorized
+              %ul.clearfix.list-inline
+                %li
+                  %input#permission-5(type="checkbox")
+                  %label(for="permission-5") work
+                %li
+                  %input#permission-6(type="checkbox")
+                  %label(for="permission-6") photos
+                %li
+                  %input#permission-7(type="checkbox")
+                  %label(for="permission-7") friends
+                %li
+                  %input#permission-8(type="checkbox")
+                  %label(for="permission-8") uncategorized
+              .centralize.save
+                %button.btn.btn-success(ng-click="members = false") Save

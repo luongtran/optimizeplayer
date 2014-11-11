@@ -1,0 +1,11 @@
+%div(radio name="button_position{{cta_store.currentCta.id}}" ng-model="cta_store.currentCta.position")
+  %input{id:"#{type}-inside"}(ng-checked="cta_store.currentCta.position == 'inside'" name="button_position{{cta_store.currentCta.id}}" type="radio" value="inside")
+  %label(for="#{type}-inside") On the video
+  %input{id:"#{type}-outside"}(ng-checked="cta_store.currentCta.position == 'outside'" name="button_position{{cta_store.currentCta.id}}" type="radio" value="outside")
+  %label(for="#{type}-outside") Outside the video
+  / %div(ng-hide="cta_store.currentCta.position == 'inside'")
+  /   %h5 Select button location
+  /   %input{id:"#{type}-on-top"}(ng-checked="cta_store.currentCta.position == 'top'" name="button_position{{cta_store.currentCta.id}}" type="radio" value="top")
+  /   %label(for="#{type}-on-top") Top
+  /   %input{id:"#{type}-on-bottom"}(ng-checked="cta_store.currentCta.position == 'bottom'" name="button_position{{cta_store.currentCta.id}}" type="radio" value="bottom")
+  /   %label(for="#{type}-on-bottom") Bottom

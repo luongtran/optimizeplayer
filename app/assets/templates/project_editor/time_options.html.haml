@@ -1,0 +1,30 @@
+%input#on-start(type="checkbox" ng-model="cta_store.currentCta.on_start" ng-checked="cta_store.currentCta.on_start == 'true'")
+%label(for="on-start") On Start
+
+%input#on-pause(type="checkbox" ng-model="cta_store.currentCta.on_pause" ng-checked="cta_store.currentCta.on_pause == 'true'")
+%label(for="on-pause") On Pause
+
+%input#on-end(type="checkbox" ng-model="cta_store.currentCta.on_finish" ng-checked="cta_store.currentCta.on_finish == 'true'")
+%label(for="on-end") On End
+
+%input#specific-time(type="checkbox" ng-model="cta_store.currentCta.on_cuepoints" ng-checked="cta_store.currentCta.on_cuepoints == 'true'")
+%label(for="specific-time") At a Specific Time
+
+%div(ng-show="(cta_store.currentCta.on_cuepoints == 'true' || cta_store.currentCta.on_cuepoints == true) && cta_store.currentCta.cuepoints")
+  %span(checkbox ng-model="cta_store.currentCta.smart_optin" label="Smart Optin (continue to display until an email is entered)")
+
+%ul.list-unstyled.optin-specific-time.clearfix(cuepoints ng-show="cta_store.currentCta.on_cuepoints == 'true' || cta_store.currentCta.on_cuepoints == true")
+  %li
+    %ul.list-unstyled
+      %li.cuepoints(ng-repeat="cuepoint in cta_store.currentCta.cuepoints")
+        .input-prepend
+          %span.add-on
+            %i.icon-time
+          %input.start-time(time-field placeholder="0:00" type="text" ng-model="cuepoint[0]")
+          %input.end-time(time-field placeholder="1:48" type="text" ng-model="cuepoint[1]" ng-disabled="!isTrue(cuepoint[1])")
+          %span.remove-cuepoint(ng-click="removeCuepoint($index)")
+            %i.icon-remove
+        %input(type="checkbox" id="pause-video-{{$index}}" ng-click="togglePause(cuepoint)" label="Pause video" init-value="{{!isTrue(cuepoint[1])}}")
+        %label(for="pause-video-{{$index}}")Pause video
+  %li
+    %button.btn.btn-primary.minimize(ng-click="addCuepoint()") + Add more

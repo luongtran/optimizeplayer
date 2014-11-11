@@ -1,0 +1,41 @@
+#upload-new-video.reveal-modal(upload-form ng-controller="AssetUploadCtrl")
+  %a.close-reveal-modal &#215;
+  %h3 Upload a New Video
+  %label Select account to upload to
+/ <<<<<<< HEAD
+/   %select(ng-dropkick ng-model="opts.csnForUpload" ng-dropkick-watch="[csns]" ng-options="c.name for c in csns")
+
+/ =======
+  %select(ng-dropkick ng-model="opts.csnForUpload" ng-dropkick-watch="[opts.csnForUpload]" ng-options="c.title for c in csns")
+  
+/ >>>>>>> master
+  %div(ng-hide="asset.file_origin == 'connect'")
+    %label Browse and select file
+    %csn-direct-upload(on-add="onFileAdd" on-progress-change="onProgressChange" on-done="onDone" on-fail="onFail" csn="opts.csnForUpload")
+
+    .clearfix.input-file
+      %input(type="text" class="pull-left" value="{{asset.original_filename || ''}}")
+      %a.button.radius.gray.pull-right(href="#" ng-click="browseFiles()") Browse
+
+  %label(ng-show="asset.needs_encoding && !processingStarted") File is not web ready. Would you like to:
+  - if can? :encode, Asset
+    .clearfix(ng-show="asset.needs_encoding && !processingStarted")
+      .pull-left
+        %input.pretty(data-label="Make it web ready" data-customclass="checkbox" name="asset[needs_encoding]" type="checkbox" value="true")
+      .pull-left
+        %input.pretty(data-label="Keep video size" data-customclass="checkbox" name="asset[keep_video_size]" type="checkbox" value="true")
+
+  .percentage {{statusNotice}} {{percentage}}
+  .clearfix
+    .pull-left
+      .progress-container
+        .progress-bar(ng-style="{ width: percentage }")
+/ <<<<<<< HEAD
+/     /.pull-right(ng-click="resetAsset()" ng-hide="processingStarted")
+/     /  %i.picon-cancel
+
+/ =======
+/ >>>>>>> master
+  %a.button.green.radius.upload(ng-show="!processingStarted && asset.original_filename" ng-click="processAsset()") Upload Video
+  %a.button.green.radius.upload(ng-show="project.url" ng-click="createProject()") Proceed to the Next Step
+  %a.button.blue.radius.retry(ng-show="processingFailed" ng-click="processAsset()") Retry

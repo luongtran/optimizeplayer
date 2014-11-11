@@ -1,0 +1,102 @@
+/Include social javascript
+#fb-root
+:javascript
+  (function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=416744705050137";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));
+
+- unless @preview_page.blank?
+  %section.content{:class => !@preview_page.template.blank? ? @preview_page.template[:class] : "" }
+    %div.veil(ng-show="isLoading" )
+    %div.feedLoading(ng-show="isLoading")
+
+    - if !@preview_page.settings.blank? and !@preview_page.settings['backgroundColor'].blank?
+      - background_color = @preview_page.settings['backgroundColor']
+    - else
+      - background_color = '#fff'
+
+    .widgets-layout-bg{:style => "height:#{@preview_page.template[:bgheight]}px; background: #{background_color};"}
+    .gridster-content
+      %ul.widgets-container.gridster
+        - widgets = @preview_page.widgets
+        - if !widgets.blank? and widgets.length > 0
+          - widgets.each do |widget|
+            - if widget['component'].present?
+              - case widget['component']
+              - when 'title'
+                - unless widget["font"].blank?
+                  - if default_google_fonts.include?(widget["font"])
+                    = google_font_link_tag widget["font"]
+                - title_styles = add_to_style(widget, ["font", "fontStyle", "fontSize", "textColor"], ["font-family", "font-style", "font-size", "color"])
+                - li_title_styles = add_to_style(widget, ["backgroundColor"], ["background-color"])
+                %li.widget-wrapper{"data-col" => widget['dataCol'], "data-row" => widget['dataRow'], 'data-sizex' => widget['dataSizex'], 'data-sizey' => widget['dataSizey'], :class => widget['class'], :style => li_title_styles }
+                  %h1{ :style => title_styles }
+                    =widget['title']
+
+              - when 'videoBox'
+                %li.widget-wrapper{ :class => widget['class'], "data-col" => widget['dataCol'], "data-row" => widget['dataRow'], 'data-sizex' => widget['dataSizex'], 'data-sizey' => "#{get_ysize @preview_page.project.flowplayer['dimensions']}"}
+                  %script{:type => "text/javascript", :src  => "#{root_path}projects/#{@preview_page.project.cid}.js"}
+
+              - when 'paragraph'
+                - paragraph_styles = add_to_style(widget, ["font", "fontStyle", "textColor", "backgroundColor"], ["font-family", "font-style", "color", "background-color"])
+                %li.widget-wrapper{"data-col" => widget['dataCol'], "data-row" => widget['dataRow'], 'data-sizex' => widget['dataSizex'], 'data-sizey' => widget['dataSizey'], :class => widget['class']}
+                  %div.widget_html{ :style => paragraph_styles }
+                    !=widget['text']
+                - fontSize = widget['fontSize']
+                :css
+                  .widget_html > p {
+                    font-size:#{fontSize}px;
+                  }
+
+              - when 'image'
+                %li.widget-wrapper{"data-col" => widget['dataCol'], "data-row" => widget['dataRow'], 'data-sizex' => widget['dataSizex'], 'data-sizey' => widget['dataSizey']}
+                  %img{ :src => widget['image_url']}
+
+              - when 'html'
+                %li.widget-wrapper{"data-col" => widget['dataCol'], "data-row" => widget['dataRow'], 'data-sizex' => widget['dataSizex'], 'data-sizey' => widget['dataSizey']}
+                  %div
+                    !=widget['customHtml']
+
+              - when 'button'
+                %li.widget-wrapper{"data-col" => widget['dataCol'], "data-row" => widget['dataRow'], 'data-sizex' => widget['dataSizex'], 'data-sizey' => widget['dataSizey']}
+                  %button(onclick="alert('This is Button')")
+                    %img{:src => widget['button_url']}
+
+              - when 'fbcomments'
+                %li.widget-wrapper{"data-col" => widget['dataCol'], "data-row" => widget['dataRow'], 'data-sizex' => widget['dataSizex'], 'data-sizey' => widget['dataSizey']}
+                  .fb-comments{ "data-href" => widget['url'], "data-numposts" => 5, "data-colorscheme" => "light", "width" => "690px"}
+
+              - when 'fblike'
+                %li.widget-wrapper{"data-col" => widget['dataCol'], "data-row" => widget['dataRow'], 'data-sizex' => widget['dataSizex'], 'data-sizey' => widget['dataSizey']}
+                  .fb-like{"data-action" => "like", "data-href" => widget['url'], "data-share" => "true", "data-show-faces" => "true"}
+
+              - when 'twitter'
+                %li.widget-wrapper{"data-col" => widget['dataCol'], "data-row" => widget['dataRow'], 'data-sizex' => widget['dataSizex'], 'data-sizey' => widget['dataSizey']}
+                  %div
+                    %a{ :href=>"{{widget['url']}}", :class=>"twitter-share-button", "data-lang"=>"en" } Tweet
+
+              - when 'disqus'
+                %li.widget-wrapper{"data-col" => widget['dataCol'], "data-row" => widget['dataRow'], 'data-sizex' => widget['dataSizex'], 'data-sizey' => widget['dataSizey']}
+                  .disqus-comments
+                    #disqus_thread
+                      - unless widget['disqus_shortname'].blank?
+                        :javascript
+                          /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+                          var disqus_shortname = '#{widget['disqus_shortname']}'; // required: replace example with your forum shortname
+
+                          /* * * DON'T EDIT BELOW THIS LINE * * */
+                          (function() {
+                              var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                              dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                              (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                          })();
+                        %noscript
+                          Please enable JavaScript to view the
+                          %a{href: "http://disqus.com/?ref_noscript"} comments powered by Disqus.
+                        %a.dsq-brlink{href: "http://disqus.com"}
+                          comments powered by
+                          %span.logo-disqus Disqus

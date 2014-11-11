@@ -1,0 +1,16 @@
+!!!
+%html
+  %head
+    %meta{content: "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}
+  %body
+    %h1
+      Welcome to Optimize player
+    %p
+      You have successfully signed up to #{@mail_data[:root_url]},
+      your login is: #{@mail_data[:user].email}
+      your password is: #{@mail_data[:pass]}
+      %br
+    %p
+      For login to the site, just follow this link:
+      %a{href: "#{@mail_data[:sub_root_url]}"} Optimize player
+    %p Thanks for joining and have a nice day!

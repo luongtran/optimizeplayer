@@ -1,0 +1,28 @@
+!!!
+%html
+  %head
+    %meta{content: "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}
+  %body
+    %h1
+      Test
+    %p
+      post_params
+      %pre
+        :preserve
+          #{@mail_data[:post_params]}
+      ipn_fields
+      %pre
+        :preserve
+          #{@mail_data[:ipn_fields]}
+      pop
+      %pre
+        :preserve
+          #{@mail_data[:pop]}
+      secret_key_value
+      %pre
+        :preserve
+          #{@mail_data[:secret_key_value]}
+      calced_verification
+      %pre
+        :preserve
+          #{@mail_data[:calced_verification]}

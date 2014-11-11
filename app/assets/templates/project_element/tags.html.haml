@@ -1,0 +1,12 @@
+%li.dsp-cell.tags.state-1
+  %a(href="#" eat-click ng-click="switch()")
+    = image_tag("icons/icon-tags.png", width: "15")
+  .tags-list
+    %form(name="newTagsForm" ng-submit="addTag()")
+      %input(type="text" placeholder="Type tag here" ng-model="newTags")
+    %ul.list-unstyled
+      %li(ng-repeat="tag in project.tags.split(',').compact(true)" )
+        {{tag}}
+        %a.remove(href="#" eat-click ng-click="removeTag(tag)")
+          [x]
+

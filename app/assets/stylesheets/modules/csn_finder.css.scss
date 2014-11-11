@@ -1,0 +1,275 @@
+@import "compass/css3";
+
+// Modal CSN
+#file-browser {
+
+  .header {
+    margin: 0 30px;
+    padding: 45px 0 20px 0;
+    border-bottom: 1px dotted #d1d1d1;
+
+    .dk_container {
+      .dk_toggle {
+        width: 380px !important;
+        font-size: 15px;
+        font-weight: normal;
+        color: #A3A3A3;
+        border: 1px solid #d8d8d8;
+        background-color: #f8f8f8;
+        background-image: url(/assets/dropdown-arrow-gray.png);
+        background-position: 350px 14px;
+      }
+
+      .dk_options_inner {
+        border: 1px solid #8c8c8c;
+
+        a {
+          font-weight: 400;
+
+          &:hover {
+            color: #666666;
+            text-shadow: none;
+            background: #f8f8f8;
+          }
+        }
+        
+        .dk_option_current a {
+          color: #fff;
+          text-shadow: none;
+          border-color: #8c8c8c;
+          background: #c8c8c8;
+        }
+      }
+    }
+
+    .add-folder, .remove-folder {
+      display: block;
+      height: 36px;
+      width: 36px;
+      margin-left: 8px;
+      line-height: 34px;
+      color: #fff;
+      text-align: center;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .add-folder {
+      font-size: 34px;
+      background: #80bb41;
+    }
+
+    .remove-folder {
+      font-size: 28px;
+      background: #596c81;
+    }
+
+    .form-search {
+      width: 380px;
+      margin: 0 0 0 23px;
+      border: 1px solid #d8d8d8;
+      background: #f8f8f8;
+      @include border-radius(4px);
+
+      input {
+        width: 350px;
+        height: 34px;
+        background: none;
+        border: none;
+        @include border-left-radius(4px);
+      }
+
+      button {
+        padding: 10px 3px 8px 8px;
+        border: none;
+        background: none;
+        @include border-right-radius(4px);
+      }
+    }
+  }
+
+  .main {
+    margin: 0 25px 45px 25px;
+
+    .sub-header {
+      padding: 25px 0 20px 0;
+
+      h2 {
+        margin: 0;
+        font-size: 28px;
+        font-weight: 300;
+        color: #5b5b5b;
+      }
+
+      h5 {
+        margin: 10px 0 0 0;
+        font-size: 14px;
+        font-weight: 300;
+        color: #b6b6b6;
+      }
+    }
+
+    .dk_container {
+      a {
+        overflow: hidden;
+      }
+      margin-bottom: 0;
+    }
+
+    .folders-content {
+      max-height: 420px;
+      overflow-y: auto;
+      overflow-x: hidden;
+    }
+
+    .menu {
+      width: 49%;
+
+      ul {
+        list-style: none;
+        margin: 0;
+      }
+
+      ul.main-csn {
+        display: block;
+        margin: 0;
+
+        li {
+          border-top: 1px solid #efefef;
+
+          ul {
+            display: none;
+            margin-left: 0px;
+            padding-left: 0;
+
+            li { 
+              padding-left: 15px;
+            }
+          }
+
+          a.selected {
+            color: #7f8181;
+
+            > .picon-folder {
+              background-position: 0 -19px;
+            }
+          }            
+
+          a {
+            font-weight: 300;
+            color: #25abc8;
+
+            .picon-folder {
+              margin-right: 5px;
+              background: url(/assets/icons-folder.png) no-repeat 0 3px transparent;
+            }
+
+            &:hover {
+              color: #7f8181;
+
+              .picon-folder {
+                background-position: 0 -19px;
+              }
+            }
+
+            &.folder {
+              position: relative;
+              display: block;
+              padding-top: 6px;
+              padding-bottom: 6px;
+              font-size: 14px;
+            }
+
+            &.main-folder {
+              display: block;
+            }
+          }
+        }
+
+        > li {
+          white-space: nowrap;
+        }
+
+        &:last-child li:last-child {
+          border-bottom: 1px solid #efefef;  
+        }
+
+        &.highlight {
+          > li {
+            > ul {
+              display: block;
+            }
+          }
+        }
+      }
+    }
+
+    .files {
+      width: 48%;
+      margin-left: 20px;
+
+      .sub-body {
+        ul {
+          margin: 0;
+          list-style: none;
+
+          li {
+            border-top: 1px solid #efefef;
+
+            &:last-child {
+              border-bottom: 1px solid #efefef;  
+            }
+
+            a {
+              display: block;
+              padding: 6px 10px;
+              color: #787878;
+              font-size: 14px;
+              font-weight: 300;
+
+              &:hover, &.selected {
+                font-weight: 600;
+                background: #fafafa;
+              }
+
+              &.selected {
+                padding-left: 25px;
+                background-image: url(/assets/arrow-file-selected.png);
+                background-repeat: no-repeat;
+                background-position: 10px center;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .footer {
+    padding: 0 20px 20px 20px;
+
+    h3 {
+      font-size: 15px;
+      color: white;
+      line-height: 30px;
+      margin: 0;
+
+      img {
+
+        &.icon {
+          margin-right : 6px;
+          margin-bottom: -4px;
+        }
+      }
+    }
+
+    .select-error {
+      display: none;
+      color: #fff;
+    }
+
+    .button {
+      margin-right: 25px;
+    }
+  }
+}

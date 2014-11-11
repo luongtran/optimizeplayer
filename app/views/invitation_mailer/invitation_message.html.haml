@@ -1,0 +1,17 @@
+%h3
+  = @account_name
+  Invited Your to collaborate using OptimizePlayer
+%p
+  Your login details:
+  %br/
+  %b Email:
+  = @user.email
+  %br/
+  %b Password:
+  = @pass
+%p
+  You can login here:
+  = succeed "." do
+    %a(href=new_user_session_url) http://app.optimizeplayer.com/users/sign_in
+%p
+  OptimizePlayer is a simple online video platform that allows you to easily create beautiful mobile ready videos using your cloud storage accounts such as Amazon s3, Youtube or Rackspace Cloud Files.

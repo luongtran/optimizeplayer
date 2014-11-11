@@ -1,0 +1,14 @@
+!!!
+%html
+  %head
+    %meta{content: "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}
+  %body
+    %h1
+      Optimize player
+    %p
+      Your account will suspend after #{@mail_data[:days]} day(s),
+      %br
+    %p
+      For login to the site, just follow this link:
+      %a{href: "#{@mail_data[:root_url]}"} Optimize player
+    %p Thanks for joining and have a nice day!

@@ -1,0 +1,12 @@
+<div id="<%= "{{#{type}.type}}{{#{type}.cid}}{{#{type}.position}}" %>"
+     class="cta {{<%= type %>.position}} bottom"
+     ng-if="<%= type %>.position == '<%= position %>'"
+     ng-hide="cta_store.currentCta && cta_store.currentCta != <%= type %>"
+     <%= raw %Q{ng-repeat="#{type} in cta_store.#{type.pluralize}"} if multiple %>
+     ng-class="{'cta-preview': <%= type %>.cid == cta_store.currentCta.cid, 'no-skip': <%= type %>.skip == 'false' || !<%= type %>.skip }"
+     <% if embed %>
+       style="zoom: <%= @project.width / 720 %>;  -moz-transform: scale(<%= @project.width / 720 %>);"
+     <% end %>
+    >
+    <%= render partial: "ctas/#{type}" %>
+</div>

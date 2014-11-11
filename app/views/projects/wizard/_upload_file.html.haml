@@ -1,0 +1,32 @@
+%section(csn-finder ng-cloak id="file-browser" ng-show="companyCsn && sourceType == 'file'")
+  .header.clearfix
+    .pull-left.animate-x(ng-class="{'animate-x-show': current_folder != undefined, 'animate-x-hide': current_folder == undefined}" style="float:right;")
+      .input-append.form-search
+        %form.clearfix(action="/" method="get")
+          %button(type="submit")
+            %i.picon-search
+          %input(name="search" placeholder="Search for a file in folder" ng-model="search" type="text")/
+  .main.clearfix
+    .pull-left{style: "width: 49%;"}
+      = form_tag Video.new, :method => :post, :multipart => true, id:"upload-file" do
+        #formTop
+          %fieldset
+            %input#file{:name => "file", :onchange => "angular.element(this).scope().startUploading()", :type => "file"}/
+            %h3.loader#file-upload{style: "display:none;"}
+              = image_tag "file-loading.gif"
+
+    .files.pull-left.animate-x
+      .sub-header
+        %h5 Showing {{current_folder.files.length}} files
+      .sub-body
+        .folders-content
+          %h3.loader(ng-show="current_csn && current_csn.buckets == undefined")
+            = image_tag "file-loading.gif"
+          %ul(ng-repeat="file in current_folder.files | filter: search")
+            %li
+              %a(ng-class="{selected: file.url == asset.remote_url}" ng-click="setConnectedFile(file)")
+                {{file.name}}
+  .footer.clearfix(ng-show="asset.remote_url")
+    .right
+      %a.radius.button.green.submit-file(ng-click="selectFileForEncoding()" ng-show="!inProgress") Select Video
+              

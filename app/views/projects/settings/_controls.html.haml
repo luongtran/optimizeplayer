@@ -1,0 +1,24 @@
+%a.collapse-button.collapsed(data-toggle="collapse" data-target="#target-9c") PLAYER STRETCHING
+#target-9c.collapse
+  .collapse-box.add-padding
+    %div(radio name="project_scaling" ng-model="project.scaling")
+      %input(type="radio" id="option-1" name="project_scaling" ng-checked="project.scaling == 'fit'" value="fit")
+      %label(for="option-1") Fit
+
+      %input(type="radio" id="option-2" name="project_scaling" ng-checked="project.scaling == 'half'" value="half")
+      %label(for="option-2") Half
+
+      %input(type="radio" id="option-3" name="project_scaling" ng-checked="project.scaling == 'orig'" value="orig")
+      %label(for="option-3") Orig
+
+      %input(type="radio" id="option-4" name="project_scaling" ng-checked="project.scaling == 'scale'" value="scale")
+      %label(for="option-4") Scale
+%a.collapse-button.collapsed(data-toggle="collapse" data-target="#target-11c") TAGS
+#target-11c.collapse
+  .form.collapse-box.add-padding
+    %div.side-block.clearfix(tag-library prefilled="{{project.tags}}")
+      .tags
+        .input-append.clearfix
+          %input#inputTag.tagsManager(name="tags" ng-model="project.tags" placeholder="example: video, audio" type="text")/
+      .tags-library
+        %ul.list-tags.list-unstyled

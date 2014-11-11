@@ -1,0 +1,710 @@
+@import "compass/css3";
+
+#modal-account {
+	.modal-update {
+		position: absolute;
+		top: 12px;
+		right: 106px;
+		z-index: 9;
+	}
+
+	#account {
+		font-family: "AvenirNext-Reg";
+
+		.usage .progress {
+			height: 4px;
+			margin: 5px 0 35px 0;
+		}
+
+		.dsp-cell {
+			vertical-align: top;
+		}
+
+		.input-group {
+			width: 290px;
+		}
+
+		.passwords {
+			margin-top: 45px;
+
+			.input-group:last-child {
+				margin-bottom: 0;
+			}
+		}
+
+		.upload-photo {
+			margin-right: 40px;
+
+			.image {
+				margin-right: 15px;
+				padding: 4px;
+				border: 1px solid #6996a9;
+				border-radius: 4px;
+			}
+
+			h4 {
+				margin: 8px 0 5px 0;
+				font-size: 14px;
+				font-family: 'AvenirNext-Med';
+			}
+
+			h5 {
+				margin: 0 0 15px 0;
+				font-size: 12px;
+			}
+
+			.avatar {
+				margin-bottom: 35px;
+
+				.image .placeholder {
+					width: 90px;
+					height: 90px;
+					background: #f4f9fa;
+				}
+
+				.btn {
+					float: right;
+				}
+			}
+
+			.logo {
+				.image {
+					margin: 0 0 10px 0;
+
+					.placeholder {
+						height: 70px;
+						background: #f4f9fa;
+					}
+				}
+
+				h4 {
+					margin-top: 0;
+				}
+
+				h5 {
+					margin-bottom: 0;
+				}
+
+				.dsp-cell:last-child {
+					text-align: right;
+				}
+			}
+		}
+	}
+
+	#billing {
+		margin: 0 -25px 0 -25px;
+
+		.state-1 {
+			max-height: 300px;
+			overflow: hidden;
+			transition: all 0.5s linear;
+
+			&.toggle {
+				max-height: 0;
+			}
+		}
+
+		.state-2 {
+			max-height: 0;
+			overflow: hidden;
+			transition: all 0.5s linear;
+
+			&.toggle {
+				max-height: 100px;
+			}
+		}
+
+		.invoice-list {
+			margin-top: -25px;
+			margin-bottom: -26px;
+
+			ul {
+				padding: 9px 15px 9px 25px;
+				border-bottom: 1px solid #ddebed;
+
+				li {
+					font-family: 'AvenirNext-Reg';
+
+					&:first-child {
+						width: 100px;
+						font-family: 'AvenirNext-Demi';
+					}
+
+					&:last-child {
+						width: 100px;
+						text-align: right;
+					}
+				}
+			}
+		}
+
+		.notifications {
+			padding: 0 25px 0 25px;
+
+			ul {
+				margin-bottom: 20px;
+			}
+
+			ul li {
+				padding: 15px;
+				text-align: center;
+			}
+
+			.expire {
+				border: 1px solid #dd1c40;
+				color: #dd1c40;
+			}
+
+			.success {
+				display: none;
+				border: 1px solid #18d67f;
+				color: #18d67f;
+
+				&.hide {
+					display: none !important;
+				}
+
+				&.toggle {
+					display: block;
+				}
+			}
+
+			.current-plan {
+				border: 1px solid #d4e6e8;
+
+				li:first-child {
+					border-right: 1px solid #d4e6e8;
+					font-family: 'AvenirNext-Reg';
+				}
+
+				li span {
+					margin-left: 10px;
+					font-family: 'AvenirNext-Demi';
+				}
+			}
+		}
+
+		.plans {
+			padding: 0 25px 30px 25px;
+
+			.dsp-cell {
+				padding-right: 15px;
+
+				&:last-child {
+					padding-right: 0px;
+				}
+
+				&.spacer {
+					width: 40px;
+				}
+
+				&.spacer span {
+					display: block;
+					border-bottom: 1px solid #ddebed;
+				}
+			}
+
+			.plan {
+				padding: 13px;
+				text-align: center;
+				border: 1px solid #d4e6e8;
+				border-radius: 2px;
+
+				&:hover {
+					border: 1px solid #6996a9;
+				}
+
+				h4 {
+					margin: -13px -13px 0 -13px;
+					padding: 3px 0;
+					font-size: 12px;
+					font-family: 'AvenirNext-Demi';
+					border-bottom: 2px solid #e5f0f1;
+					background: #f4f9fa;
+				}
+
+				h1 {
+					margin: 15px 0 0 0;
+					font-size: 65px;
+					font-family: "AvenirNext-UltLt";
+				}
+
+				h5 {
+					margin: 0px 0 10px 0;
+					font-size: 15px;
+				}
+
+				p {
+					min-height: 51px;
+					margin: 0 0 20px 0;
+					font-size: 12px;
+					font-family: "AvenirNext-Reg";
+				}
+
+				.btn {
+					width: 100%;
+				}
+
+				&.plan-2 h1{
+					color: #18d67f;
+				}
+
+				&.plan-3 h1{
+					color: #1ca8dd;
+				}
+			}
+
+			&.custom-plan {
+				> li:first-child {
+					width: 238px;
+				}
+
+				.plan h1 {
+					margin-top: 46px;
+					color: #18d67f;
+				}
+
+				.plan h5 {
+					margin-bottom: 50px;
+				}
+
+				.features {
+					width: 450px;
+					padding: 0;
+					float: right;
+					list-style: none;
+					border: 1px solid #d4e6e8;
+
+					li {
+						padding: 10px;
+						font-size: 12px;
+						font-family: 'AvenirNext-Reg';
+						text-align: center;
+						border-bottom: 1px solid #d4e6e8;
+
+						&:last-child {
+							border-bottom: none;
+						}
+
+						&:last-child .btn {
+							min-width: 190px;
+						}
+					}
+				}
+			}
+		}
+
+		.billing-info {
+			border-top: 1px solid #dfedee;
+
+			.month {
+				width: 65px;
+				padding: 0 3px 0 12px;
+			}
+
+			.year {
+				width: 50px;
+			}
+
+			.cvv {
+				width: 77px;
+				padding-left: 12px;
+				padding-right: 12px;
+			}
+
+			input[type=text] {
+				width: 100%;
+				padding-top: 6px;
+				padding-bottom: 6px;
+				border-radius: 4px;
+				text-align: center;
+			}
+
+			.input-group {
+				position: relative;
+				margin: 0;
+
+				input[type=text] {
+					padding-right: 50px;
+					text-align: left;
+				}
+
+				.flag {
+					position: absolute;
+					top: 8px;
+					right: 10px;
+					width: 27px;
+					height: 20px;
+					background: url('/assets/icons/icon-card-flags.png') no-repeat 0 30px transparent;
+					background-size: 27px;
+
+					&.visa {
+						background-position: 0 0;
+					}
+
+					&.amex {
+						background-position: 0 -24px;
+					}
+
+					&.discover {
+						background-position: 0 -48px;
+					}
+
+					&.master {
+						background-position: 0 -72px;
+					}
+				}
+			}
+		}
+
+		.billing-info,
+		.latest-invoice {
+			padding: 9px 25px;
+			border-bottom: 1px solid #dfedee;
+
+			.dsp-cell:first-child {
+				width: 115px;
+				font-family: "AvenirNext-Demi";
+			}
+
+			.dsp-cell:last-child {
+				width: 96px;
+				font-family: "AvenirNext-Demi";
+
+				.btn {
+					width: 100%;
+				}
+			}
+		}
+
+		.addons {
+			padding: 25px 25px 0 25px;
+
+			.dsp-cell {
+				width: 20%;
+				padding-right: 60px;
+			}
+
+			.dsp-cell:last-child {
+				padding-right: 0;
+			}
+
+			.addon {
+				text-align: center;
+
+				h5 {
+					margin: 0 0  15px 0;
+					font-size: 12px;
+					font-family: 'AvenirNext-Demi';
+				}
+
+				img {
+					width: 100%;
+				}
+
+				.btn {
+					margin: 15px 0 0 0;
+					width: 100%;
+				}
+			}
+		}
+
+		.subscribe-plan {
+			padding: 0 25px;
+
+			input[type=text] {
+				width: 100%;
+				padding-top: 6px;
+				padding-bottom: 6px;
+				border-radius: 4px;
+			}
+
+			.input-group {
+				position: relative;
+				margin: 0;
+
+				input[type=text] {
+					padding-right: 50px;
+				}
+
+				.flag {
+					position: absolute;
+					top: 8px;
+					right: 10px;
+					width: 27px;
+					height: 20px;
+					background: url('/assets/icons/icon-card-flags.png') no-repeat 0 30px transparent;
+					background-size: 27px;
+
+					&.visa {
+						background-position: 0 0;
+					}
+
+					&.amex {
+						background-position: 0 -24px;
+					}
+
+					&.discover {
+						background-position: 0 -48px;
+					}
+
+					&.master {
+						background-position: 0 -72px;
+					}
+				}
+			}
+
+			.dsp-table:first-child {
+				padding-bottom: 12px;
+			}
+
+			.dsp-table .dsp-cell:first-child {
+				width: 210px;
+			}
+
+			.month {
+				width: 65px;
+				padding: 0 3px 0 12px;
+			}
+
+			.year {
+				width: 50px;
+			}
+
+			.cvv {
+				width: 77px;
+				padding-left: 12px;
+			}
+
+			.month input[type=text],
+			.year input[type=text],
+			.cvv input[type=text] {
+				text-align: center;
+			}
+
+			.terms .btn {
+				width: 100%;
+			}
+
+			.terms .promo-code {
+				padding-right: 10px;
+			}
+
+			.terms a {
+				font-size: 12px;
+				font-family: 'AvenirNext-Reg';
+				text-decoration: underline;
+			}
+		}
+	}
+
+	#integrations {
+		.state-1 {
+			max-height: 300px;
+			overflow: hidden;
+			transition: all 0.5s linear;
+
+			&.toggle {
+				max-height: 0;
+			}
+		}
+
+		.state-2 {
+			transition: all 0.5s linear;
+
+			&.toggle {
+				max-height: 300px;
+			}
+		}
+
+		.logos ul li {
+			text-align: center;
+		}
+
+		.systems {
+			h5 {
+				margin: 80px 0;
+				text-align: center;
+				font-size: 12px;
+			}
+		}
+
+		.connect {
+			.content {
+				width: 360px;
+				margin: 25px auto 50px auto;
+				text-align: center;
+			}
+
+			.btn-connect {
+				margin-bottom: 10px;
+			}
+
+			input[type=text] {
+				width: 100%;
+				margin-bottom: 10px;
+				padding-top: 6px;
+				padding-bottom: 6px;
+				text-align: center;
+			}
+
+			.dsp-cell {
+				text-align: left;
+
+				&:first-child {
+					width: 110px;
+				}
+
+				.btn {
+					margin-bottom: 10px;
+				}
+			}
+
+
+			.bootstrap-select .filter-option {
+				text-align: center;
+			}
+
+			.add {
+				width: 100%;
+			}
+		}
+
+		.my-integrations {
+			margin: 0 -25px -25px -25px;
+
+			ul {
+				padding: 18px 25px;
+				border-top: 1px solid #dae9eb;
+
+				li {
+					font-family: 'AvenirNext-Reg';
+
+					&:first-child {
+						width: 90px;
+						font-family: 'AvenirNext-Demi';
+					}
+
+					&:last-child {
+						width: 20px;
+						text-align: right;
+					}
+				}
+			}
+		}
+	}
+
+	#team {
+		margin-right: -25px;
+		margin-bottom: -25px;
+
+		ul {
+			margin: 0;
+		}
+
+		.members {
+			li {
+				float: left;
+				width: 163px;
+				margin: 0 25px 35px 0;
+				padding: 0;
+
+				.image {
+					display: inline-block;
+					padding: 3px;
+					border: 2px solid #87abba;
+					border-radius: 4px;
+					background: #fff;
+				}
+
+				h4 {
+					margin: 10px 0 0 0;
+					font-size: 16px;
+				}
+
+				p {
+					font-size: 12px;
+					font-family: 'AvenirNext-Reg';
+				}
+
+				&.add-member {
+					.image {
+						margin-bottom: 54px;
+
+						.add {
+							width: 80px;
+							height: 80px;
+							background-color: #6996a9;
+
+							img {
+								margin: 24px;
+							}
+						}
+					}
+				}
+			}
+
+			.new-user {
+				max-height: 0;
+				margin: 0 -25px;
+				overflow: hidden;
+				border-top: 1px solid #ddebed;
+				transition: all 0.5s linear;
+
+				&.toggle {
+					max-height: 200px;
+				}
+
+				.content {
+					width: 360px;
+					margin: 0 auto;
+					padding: 50px 0;
+				}
+
+				input[type=text] {
+					margin-bottom: 10px;
+					padding-top: 6px;
+					padding-bottom: 6px;
+				}
+
+				input[type=text],
+				.btn {
+					display: block;
+					width: 100%;
+					text-align: center;
+				}
+			}
+		}
+
+		.member-detail {
+			margin: -25px 0 35px -25px;
+			padding: 11px 25px;
+			font-size: 16px;
+			border-bottom: 2px solid #e2eef0;
+
+			.image {
+				display: inline-block;
+				padding: 0 1px 1px 1px;
+				border: 1px solid #87abba;
+				border-radius: 2px;
+				background: #fff;
+			}
+		}
+
+		.permissions {
+			padding-bottom: 25px;
+
+			li {
+				float: left;
+				width: 163px;
+				margin: 0 25px 40px 0;
+				padding: 0;
+			}
+
+			.save {
+				margin: 0 0 0 -25px;
+			}
+		}
+	}
+}

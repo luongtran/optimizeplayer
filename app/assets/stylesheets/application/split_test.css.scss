@@ -1,0 +1,599 @@
+@import "compass/css3";
+@import "compass/utilities/general/clearfix";
+section[role=split-test] {
+	#split-test {
+		.box {
+			border: none;
+			background: none;
+			box-shadow: none;
+
+			.header {
+				height: auto;
+				color: #666666;
+				padding: 20px;
+				border-bottom: 1px solid #e5e5e5;
+				@include border-top-radius(5px);
+				@include background(#fff linear-gradient(top, #fff 70%, #f3f3f3));
+				box-shadow: none;
+
+				.button {
+					height: auto;
+					margin: 0;
+					padding: 10px;
+					border: 1px solid #3F7838;
+					box-shadow: none;
+
+					i {
+						margin-right: 5px;
+					}
+				}
+
+				.type {
+					padding-top: 17px;
+					border-right: 1px solid #28476f;
+					width: 53px;
+					height: 100%;
+				}
+
+				ul {
+					margin: 0;
+
+					li {
+						margin-left: 15px;
+
+						i {
+							display: inline-block;
+						}
+
+						h2 {
+							font-size: 19px;
+							color: #3d68a8;
+							margin: 8px 0;
+						}
+					}
+				}
+
+				.folder-default {
+					@include background(url(tree-folder-default.png));
+					width: 38px;
+					height: 28px;
+					margin-top: 5px;
+				}
+			}
+
+			.body {
+				padding: 10px;
+				background: #fff;
+				@include border-bottom-radius(5px);
+			}
+		}
+
+		&.all {
+			.box {
+				.body {
+					ul.list {
+						list-style: none;
+
+						.ui-highlight {
+							margin: 10px;
+							height: 60px;
+							background: #f3f3f3;
+						}
+
+						li.split {
+							height: 60px;
+							margin: 20px 10px;
+							border: 1px solid #e9e9e9;
+							@include border-radius(5px);
+							@include background(#fff linear-gradient(top, #fff 70%, #f3f3f3));
+
+							&:hover {
+								border-color: #9c9c9c;
+								background: white;
+							}
+
+							ul.content {
+								list-style: none;
+								margin: 0;
+								height: 100%;
+
+								> li {
+									position: relative;
+									display: inline-block;
+									vertical-align: top;
+									height: 100%;
+									padding-top: 7px;
+									
+									> p {
+										margin-bottom: -3px;
+									}
+
+									> a i {
+										line-height: 12px;
+									}
+								}
+
+								.handle {
+									width: 45px;
+									text-align: center;
+									cursor: move;
+									padding-top: 17px;
+	                &.draggable {
+	                  visibility: visible;
+	                }
+	 							}
+
+								.info {
+									width: 245px;
+
+									.name {
+										margin-right: 8px;
+										color: #000;
+										font-weight: bold;
+	                  cursor: pointer;
+									}
+
+									.date {
+										display: block;
+										font-size: 12px;
+										color: #9f9f9f;
+									}
+								}
+
+								.variations {
+									padding: 7px 45px 0 0;
+									border-right: 1px solid #e9e9e9;
+
+									.tooltip-files {
+										display: none;
+										width: 200px;
+										top: 45px;
+										left: -25px;
+										padding: 0;
+										background: none;
+
+										.arrow {
+											display: block;
+											margin: 0 0 -1px 47px;
+										}
+
+										ul {
+											list-style: none;
+											margin: 0;
+											background: #fff;
+											padding: 3px 15px;
+											border: 1px solid #dddddd;
+											@include border-radius(4px);
+
+											li {
+												padding: 3px;
+												border-bottom: 1px solid #f4f4f4;
+
+												&:last-child {
+													border: none;
+												}
+
+												a {
+													display: block;
+													color: #666666;
+													padding: 6px 25px 6px 0px;
+													text-align: left;
+													font-size: 11px;
+													@include border-radius(4px);
+
+													&.trophy {
+														@include background(url(picon-trophy.png));
+														background-repeat: no-repeat;
+														background-position: right center;
+													}
+												}
+											}
+										}
+									}
+								}
+
+								.embed {
+									padding: 7px 55px 0 15px;
+
+									.tooltip-code {
+		                display: none;
+										width: 550px;
+										top: 3px;
+										left: -125px;
+										background: none;
+		            
+		                .input-prepend {
+		                  border: 1px solid #4d89d6;
+		                  background: white;
+											@include border-radius(4px);
+		                  
+		                  span {
+		                    padding: 10px;
+		                    background: #4d89d6;
+		                    border-color: #4d89d6;
+											  @include border-radius(4px);
+		                    @include border-right-radius(0px);
+		                    margin-left: -1px;
+		                  }
+
+		                  input {
+		                    width: 500px;
+		                    margin: 0;
+		                    padding: 10px 6px;
+		                    height: auto;
+		                    border: none;
+		                    box-shadow: none;
+		                  }
+		                }
+									}
+								}
+
+								.visitors, .conversions, .rate {
+									padding-right: 25px;
+								}
+
+								.controls {
+									padding-top: 15px;
+
+									ul {
+										padding: 0 3px;
+										list-style: none;
+										background: #fff;
+										border: 1px solid #e5e5e5;
+
+										li {
+											display: none;
+
+											&.selected {
+												display: block;
+											}
+										}
+
+										&:hover {
+											li {
+												display: block;
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+
+		&.add {
+			.box {
+				.header {
+					ul {
+						li {
+							img {
+								margin-top: 8px;
+							}
+						}
+					}
+				}
+
+				.body {
+					form {
+						margin: 20px 50px;
+
+						label {
+							font-weight: bold;
+							margin-bottom: 15px;
+						}
+
+						input {
+							font-weight: bold;
+							font-size: 13px;
+							color: #5d5c5d;
+							box-shadow: none;
+
+							&[type=text] {
+								padding: 11px 6px;
+								height: auto;
+							}
+						}
+
+						.control-group {
+							> label {
+								color: #262626;
+							}
+						}
+
+						ul.metrics {
+							li {
+								position: relative;
+
+								&.views label {
+									padding-left: 25px;
+									@include background(url(picon-view.png));
+									background-position: left center;
+									background-repeat: no-repeat;
+								}
+
+								&.plays label {
+									padding-left: 25px;
+									@include background(url(picon-play-rounded.png));
+									background-position: left center;
+									background-repeat: no-repeat;
+								}
+
+								&.conversions label {
+									padding-left: 25px;
+									@include background(url(picon-conversion.png));
+									background-position: left center;
+									background-repeat: no-repeat;
+								}
+							}
+
+							.tooltip-code {
+								display: block;
+								width: 480px;
+            
+                .input-prepend {
+                  border: 1px solid #4d89d6;
+                  background: white;
+									@include border-radius(4px);
+                  
+                  span {
+                    padding: 6px 10px;
+                    background: #4d89d6;
+                    border-color: #4d89d6;
+									  @include border-radius(4px);
+                    @include border-right-radius(0px);
+                    margin-left: -1px;
+                  }
+
+                  input {
+                    width: 440px;
+                    margin: 0;
+                    padding: 10px 6px;
+                    height: auto;
+                    border: none;
+                    box-shadow: none;
+                    font-weight: normal;
+                  }
+                }
+							}
+						}
+
+						ul.projects {
+							list-style: none;
+
+							li {
+								position: relative;
+								margin-bottom: 5px;
+								padding: 9px 6px;
+								font-size: 13px;
+								font-weight: bold;
+								border: 1px solid #a0a0a0;
+								@include border-radius(4px);
+
+								a.close {
+									position: absolute;
+									right: 10px;
+									color: #666666;
+								}
+							}
+						}
+
+						.variations {
+							input[type=text] {
+								width: 370px;
+							}
+
+							.add-variation {
+								color: #adadad;
+								font-size: 13px;
+								font-weight: bold;
+							}
+
+							.dk_toggle {
+								width: 370px !important;
+								padding-top: 9px;
+								padding-bottom: 9px;
+								background-position: 330px center;
+							}
+
+							.variation {
+								position: relative;
+								display: block;
+								width: 370px;
+							  padding: 12px 6px;
+							  font-size: 13px;
+							  font-weight: bold;
+							  border: 1px solid #a0a0a0;
+							  @include border-radius(4px);
+
+							  a.close {
+							  	position: absolute;
+							  	right: 10px;
+							  }
+							}
+						}
+
+						button.button {
+							margin-top: 20px;
+							height: auto;
+						}
+					}
+				}
+			}
+		}
+
+		&.view {
+			.box {
+				.header {
+					ul {
+						li {
+							img {
+								margin-top: 8px;
+							}
+						}
+					}
+				}
+
+				.body {
+					padding: 30px;
+
+					ul.navigation {
+						margin-left: -45px;
+
+						li {
+							margin-left: 45px;
+
+							a {
+								padding-left: 20px;
+								border-left: 2px solid #dddfe1;
+								color: #414141;
+								font-size: 15px;
+
+								.number {
+									color: #252525;
+									font-size: 30px;
+									line-height: 35px;
+								}
+
+								&.selected {
+									border-color: #3d68a8;
+									color: #3d68a8;
+									font-weight: bold;
+
+									.number {
+										color: inherit;
+										font-weight: normal;
+									}
+								}
+							}
+						}
+					}
+
+					.graph_window {
+						position:relative;
+						height:350px;
+						overflow: hidden;
+						border: 1px solid #e9e9e9;
+						@include border-radius(5px);
+					}
+
+					.graph_container {
+						position:absolute;
+						left:-70px;
+					}
+
+					&.variations_data {
+						margin-top: 30px;
+						padding-left: 0;
+						padding-right: 0;
+						@include border-top-radius(5px);	
+
+						table {
+							width: 100%;
+							border: none;
+							border-collapse: collapse;
+
+							tr {
+								background: none;
+								border-top: 1px solid #f4f4f4;
+
+								&:first-child {
+									border-top: none;
+								}
+
+								th {
+									padding: 0 20px 15px 20px;
+									font-size: 14px;
+									line-height: 17px;
+								}
+
+								td {
+									position: relative;
+									padding: 15px 20px;
+									color: #979797;
+									text-align: center;
+									font-size: 13px;
+									font-weight: bold;
+
+									&.increase {
+										color: #82ca9c;
+									}
+
+									&.decrease {
+										color: #e58083;
+									}
+
+									&:nth-child(1) {
+										text-align: left;
+										color: #4e8ad8;
+									}
+
+									.percent-slider {
+										height: 0;
+										margin-top: 10px;
+										border: 1px solid #e3effa;
+
+										.ui-slider-handle {
+											top: -9px;
+											@include background(url(slider-handle.png));
+											background-repeat: no-repeat;
+											background-position: center center;
+											background-color: none;
+											border: none;
+											cursor: pointer;
+										}
+									}
+
+									.select {
+										display: inline-block;
+										text-align: left;
+										width: 75px;
+										padding: 3px 0px 3px 10px;
+										color: #000;
+										@include background(url(arrow-down-black.png));
+										background-position: 58px center;
+										background-repeat: no-repeat;
+										background-color: #f3f3f3;
+										border: 1px solid #c0c0c0;
+										@include border-radius(4px);
+									}
+
+									ul.actions {
+										display: none;
+										position: absolute;
+										top: 15px;
+										left: 50%;
+										margin: 0 0 0 -38px;
+										width: 75px;
+										list-style: none;
+										background: #fff;
+										border: 1px solid #bcbcbc;
+										@include border-radius(4px);
+										z-index: 9;
+
+										li {
+											border-bottom: 1px solid #f4f4f4;
+
+											&:last-child {
+												border: none;
+											}
+
+											a {
+												color: #979797;
+											}
+
+											.delete {
+												color: #e58083;
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}

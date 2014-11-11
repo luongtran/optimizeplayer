@@ -1,0 +1,280 @@
+- content_for :title, "My Projects"
+
+#modal-embed.modal.fade(tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true")
+  .modal-dialog
+    .modal-content
+      %button.btn.btn-default.modal-dismiss(type="button" data-dismiss="modal") Close
+      %ul.nav.nav-tabs
+        %li.classic
+          %a(href="#classic" data-toggle="tab") Classic
+        %li
+          %a(href="#popout" data-toggle="tab") Popout
+        %li
+          %a(href="#other" data-toggle="tab") Other
+      .tab-content
+        #classic.tab-pane.active
+          .copy-code
+            %h5 PLAY VIDEO IN WEBPAGE
+            %textarea.form-control(rows="4")
+              'no' src='https://pixelserv.stage.optimizeplayer.com/projects/371ad575be934a6450cf27a99
+            .pull-right
+              %button.btn.btn-primary(type="button") Copy
+        #popout.tab-pane
+          .copy-code
+            %h5 PLAY VIDEO IN POPOUT
+            .input-group
+              %input.form-control(type="text" value="'no' src='https://pixelserv.stage.optimizeplayer.com/projects/371ad575be934a6450cf27a99")
+              %span.input-group-btn
+                %button.btn.btn-primary(type="button") Copy
+          %ul.list-inline
+            %li.launch-with
+              %p Launch with
+              %input(type="radio" id="launch1" name="launch" checked value="thumbnail" )
+              %label(for="launch1") Thumbnail
+              %input(type="radio" id="launch2" name="launch" value="text")
+              %label(for="launch2") Text Link
+            %li.state-1
+              %p Video Size
+              %input.size(type="text" placeholder="640")
+              %span X
+              %input.size(type="text" placeholder="320")
+            %li.state-1
+              %p Thumbnail Size
+              %input.size(type="text" placeholder="150")
+              %span X
+              %input.size(type="text" placeholder="84")
+            %li.text-link.state-2
+              %p Link Text
+              %input(type="text" value="Hey, click on this and watch our new episode for free")
+          %ul.list-inline.state-1
+            %li
+              %p Preview
+              = image_tag("preview.png", width: "150")
+          %ul.list-inline.state-2.preview-text
+            %li
+              %p Preview
+              %a(href="#") Hey, click on this and watch our new episode for free
+        #other.tab-pane ...3
+
+%section(jquery-plugins="" role="my-projects")
+  #my-projects(ng-controller="FoldersCtrl" ng-init="search = '#{j @search}'")
+    / = render 'folders_crud'
+    .folders(role="sidebar")
+      .centralize
+        .btn-group
+          %button.btn.btn-primary(type="button" eat-click="" ng-click="current.showDialogId = 'new'") Create Folder
+          %button.btn.btn-primary.dropdown-toggle(type="button" data-toggle="dropdown")>
+            %span.caret
+            %span.sr-only Toggle Dropdown
+          %ul.dropdown-menu(role="menu")
+            %li
+              %a(eat-click="" href="#" ng-click="showSubfolderDialog()") Create Subfolder
+      %ul
+        %li.add-folder
+          .dsp-table
+            .dsp-cell.icon-folder
+              %i
+            .dsp-cell.name
+              %input(type="text" placeholder="Folder Name")
+            .dsp-cell.info
+              %a.remove(href="#")
+                = image_tag("icons/icon-delete.png", width: "11")
+        %li
+          .dsp-table
+            .dsp-cell.icon-folder
+              %i
+            .dsp-cell.name Campaigns
+            .dsp-cell.info
+              %a.remove(href="#")
+                = image_tag("icons/icon-delete.png", width: "11")
+              %span.count 999
+          %ul
+            %li.add-folder
+              .dsp-table
+                .dsp-cell.icon-folder
+                  %i
+                .dsp-cell.name
+                  %input(type="text" placeholder="Subfolder Name")
+                .dsp-cell.info
+                  %a.remove(href="#")
+                    = image_tag("icons/icon-delete.png", width: "11")
+            %li
+              .dsp-table
+                .dsp-cell.icon-folder
+                  %i
+                .dsp-cell.name Campaigns
+                .dsp-cell.info
+                  %a.remove(href="#")
+                    = image_tag("icons/icon-delete.png", width: "11")
+                  %span.count 999
+        %li
+          .dsp-table
+            .dsp-cell.icon-folder
+              %i
+            .dsp-cell.name Campaigns
+            .dsp-cell.info
+              %a.remove(href="#")
+                = image_tag("icons/icon-delete.png", width: "11")
+              %span.count 999
+          %ul
+            %li
+              .dsp-table
+                .dsp-cell.icon-folder
+                  %i
+                .dsp-cell.name Campaigns
+                .dsp-cell.info
+                  %a.remove(href="#")
+                    = image_tag("icons/icon-delete.png", width: "11")
+                  %span.count 999
+        %li
+          .dsp-table
+            .dsp-cell.icon-folder
+              %i
+            .dsp-cell.name Campaigns
+            .dsp-cell.info
+              %a.remove(href="#")
+                = image_tag("icons/icon-delete.png", width: "11")
+              %span.count 999
+        %li
+          .dsp-table
+            .dsp-cell.icon-folder
+              %i
+            .dsp-cell.name Campaigns
+            .dsp-cell.info
+              %a.remove(href="#")
+                = image_tag("icons/icon-delete.png", width: "11")
+              %span.count 999
+
+    / = render 'projects_crud'
+    .wrap
+      .folder-content
+        %ul.dsp-table.bulk-actions
+          %li.dsp-cell.handle
+          %li.dsp-cell.action-1
+            %select.selectpicker
+              %option Move Selected Projects
+              %option Delete Selected Projects
+              %option Edit Selected Projects
+          %li.dsp-cell.action-2
+            %select.selectpicker
+              %option To Funny Videos
+              %option To Empty Folder
+              %option To New Project
+          %li.dsp-cell
+            %a.btn.btn-primary.move(href="#") Move
+        %ul.dsp-table.on-encoding
+          %li.dsp-cell.handle
+            = image_tag("icons/icon-handle.png", width: "8")
+          %li.dsp-cell.select
+            .state-1
+              %input(type="checkbox" id="check1" name="check")
+              %label(for="check1")
+            .state-2
+              = image_tag("icons/icon-time.png", width: "22")
+          %li.dsp-cell.name
+            %h5
+              SMS Marketing Video
+              %i.icon-favorited.state-1
+            .state-1
+              %h6 Edited on 26th Jan 2014
+            .state-2
+              %h6 Encoding the video, please wait.
+          %li.dsp-cell.embed.state-1
+            %a(href="#")
+              = image_tag("icons/icon-embed.png", width: "18")
+          %li.dsp-cell.analytics.state-1
+            %a(href="#")
+              = image_tag("icons/icon-analytics.png", width: "10")
+          %li.dsp-cell.page.state-1
+            %a(href="#")
+              = image_tag("icons/icon-page.png", width: "17")
+          %li.dsp-cell.tags.state-1
+            %a(href="#")
+              = image_tag("icons/icon-tags.png", width: "15")
+          %li.dsp-cell.edit.state-1
+            %a(href="#")
+              = image_tag("icons/icon-edit.png", width: "14")
+          %li.dsp-cell.delete.state-1
+            %a(href="#")
+              = image_tag("icons/icon-delete.png", width: "11")
+        %ul.dsp-table
+          %li.dsp-cell.handle
+            = image_tag("icons/icon-handle.png", width: "8")
+          %li.dsp-cell.select
+            .state-1
+              %input(type="checkbox" id="check1" name="check")
+              %label(for="check1")
+            .state-2
+              = image_tag("icons/icon-time.png", width: "22")
+          %li.dsp-cell.name
+            %h5
+              SMS Marketing Video
+              %i.icon-favorited.state-1
+            .state-1
+              %h6 Edited on 26th Jan 2014
+            .state-2
+              %h6 Encoding the video, please wait.
+          %li.dsp-cell.embed.state-1
+            %a(href="#" data-toggle="modal" data-target="#modal-embed")
+              = image_tag("icons/icon-embed.png", width: "18")
+          %li.dsp-cell.analytics.state-1
+            %a(href="#")
+              = image_tag("icons/icon-analytics.png", width: "10")
+          %li.dsp-cell.page.state-1
+            %a(href="#")
+              = image_tag("icons/icon-page.png", width: "17")
+          %li.dsp-cell.tags.state-1
+            %a(href="#")
+              = image_tag("icons/icon-tags.png", width: "15")
+            .tags-list
+              %input(type="text" placeholder="Type tag here")
+              %ul.list-unstyled
+                %li
+                  old tag
+                  %a.remove(href="#")
+                    = image_tag("icons/icon-delete-white.png", width: "8")
+                %li
+                  school
+                  %a.remove(href="#")
+                    = image_tag("icons/icon-delete-white.png", width: "8")
+          %li.dsp-cell.edit.state-1
+            %a(href="#")
+              = image_tag("icons/icon-edit.png", width: "14")
+          %li.dsp-cell.delete.state-1
+            %a(href="#")
+              = image_tag("icons/icon-delete.png", width: "11")
+        %ul.dsp-table
+          %li.dsp-cell.handle
+            = image_tag("icons/icon-handle.png", width: "8")
+          %li.dsp-cell.select
+            .state-1
+              %input(type="checkbox" id="check1" name="check")
+              %label(for="check1")
+            .state-2
+              = image_tag("icons/icon-time.png", width: "22")
+          %li.dsp-cell.name
+            %h5
+              SMS Marketing Video
+              %i.icon-favorited.state-1
+            .state-1
+              %h6 Edited on 26th Jan 2014
+            .state-2
+              %h6 Encoding the video, please wait.
+          %li.dsp-cell.embed.state-1
+            %a(href="#")
+              = image_tag("icons/icon-embed.png", width: "18")
+          %li.dsp-cell.analytics.state-1
+            %a(href="#")
+              = image_tag("icons/icon-analytics.png", width: "10")
+          %li.dsp-cell.page.state-1
+            %a(href="#")
+              = image_tag("icons/icon-page.png", width: "17")
+          %li.dsp-cell.tags.state-1
+            %a(href="#")
+              = image_tag("icons/icon-tags.png", width: "15")
+          %li.dsp-cell.edit.state-1
+            %a(href="#")
+              = image_tag("icons/icon-edit.png", width: "14")
+          %li.dsp-cell.delete.state-1
+            %a(href="#")
+              = image_tag("icons/icon-delete.png", width: "11")

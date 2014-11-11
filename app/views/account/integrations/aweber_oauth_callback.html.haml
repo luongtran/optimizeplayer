@@ -1,0 +1,21 @@
+!!!
+%html
+  %head
+    = javascript_include_tag '//code.jquery.com/jquery-1.11.0.min.js'
+    :javascript
+      console.log(window.opener.document.getElementById('aweber_access_token'));
+      var aweber_access_token = window.opener.jQuery('#aweber_access_token');
+      aweber_access_token.val("#{@access_token[:access_token]}");
+      aweber_access_token.trigger('input');
+      var aweber_access_token_secret = window.opener.jQuery('#aweber_access_token_secret');
+      aweber_access_token_secret.val("#{@access_token[:access_token_secret]}");
+      aweber_access_token_secret.trigger('input');
+      window.close();
+  %body
+    %label Access Token
+    %span
+      = @access_token[:access_token]
+
+    %label Access Token Secret
+    %span
+      = @access_token[:access_token_secret]

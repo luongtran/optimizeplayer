@@ -1,0 +1,97 @@
+%a.collapse-button.collapsed(data-toggle="collapse" data-target="#target-16c") DISPLAY OPTIONS
+#target-16c.collapse
+  .display-options.collapse-box.add-padding
+    = render 'projects/shared/display_options', type: 'purchase'
+
+%a.collapse-button.collapsed(data-toggle="collapse" data-target="#target-17c") PURCHASE OPTIONS
+#target-17c.collapse
+  .form.collapse-box.add-padding
+    Stripe:
+    %select(selectpicker data-width="100%" ng-model="cta_store.currentCta.stripe_integration_id")
+      %option(value="") Select an option
+      %option(ng-repeat="i in getIntegrationsByProvider('stripe')"
+              ng-selected="cta_store.currentCta.stripe_integration_id == i.id"
+              value="{{i.id}}")
+        {{i.title}}
+    PayPal:
+    %select(selectpicker data-width="100%" ng-model="cta_store.currentCta.paypal_integration_id")
+      %option(value="") Select an option
+      %option(ng-repeat="i in getIntegrationsByProvider('paypal')"
+              ng-selected="cta_store.currentCta.paypal_integration_id == i.id"
+              value="{{i.id}}")
+        {{i.title}}
+    Delivery Method:
+    %select(selectpicker data-width="100%" ng-model="cta_store.currentCta.delivery_method")
+      %option(value="") None
+      %option(value="link") Download/Link
+      %option(value="play_video") Play Video
+
+    .clearfix(ng-if="cta_store.currentCta.delivery_method == 'link'")
+      %input(ng-model="cta_store.currentCta.download_link" placeholder="Download link" type="text")
+
+    .clearfix
+      %input(ng-model="cta_store.currentCta.ipn_url"   placeholder="IPN endpoint URL" type="text")
+
+    .clearfix
+      %input(ng-model="cta_store.currentCta.product_id" placeholder="Product ID" type="text")/
+
+    .clearfix
+      %input(ng-model="cta_store.currentCta.title" placeholder="Product title" type="text")/
+
+    .clearfix
+      %input(ng-model="cta_store.currentCta.sub_title" placeholder="Product sub title" type="text")/
+
+    .clearfix
+      %input(ng-model="cta_store.currentCta.price" placeholder="Product price" type="text")/
+
+    .clearfix
+      %input(ng-model="cta_store.currentCta.description" placeholder="Description" type="text")/
+
+    .clearfix
+      %input(ng-model="cta_store.currentCta.image" placeholder="Product image" type="text")/
+
+%a.collapse-button.collapsed(data-toggle="collapse" data-target="#target-18c") SHOW OPTIONS
+#target-18c.collapse
+  .form.collapse-box.add-padding
+    %time-options(type="Survey" ng-hide="cta_store.currentCta.delivery_method == 'play_video'")
+    %span(ng-show="cta_store.currentCta.delivery_method == 'play_video'") Your delivery method is play video.
+
+%a.collapse-button.collapsed(data-toggle="collapse" data-target="#target-19c") VISUAL CONTROLS
+#target-19c.collapse
+  .visual-controls
+    %div.cta-visual-controls
+      .text-color.add-padding.color-input.collapse-box
+        %span Title Text Color
+        .input-group
+          %input.minicolors(color-converter minicolors ng-model="cta_store.currentCta.title_color" type="text")      
+      .price-color.add-padding.color-input.collapse-box
+        %span Price Color
+        .input-group
+          %input.minicolors(color-converter minicolors ng-model="cta_store.currentCta.price_color" type="text")
+      .button-color.add-padding.color-input.collapse-box
+        %span Button Color
+        .input-group
+          %input.minicolors(color-converter minicolors ng-model="cta_store.currentCta.button_bg_color" type="text")
+        .range-opacity.clearfix
+          .pull-left
+            %input.slider-range(type="text" slider data-slider-min="0" data-slider-max="100" data-slider-step="1"  data-slider-tooltip="hide" style="width: 90px;" ng-model="cta_store.currentCta.button_bg_opacity")
+          .pull-right
+            %input.percent(type="text" percentage ng-model="cta_store.currentCta.button_bg_opacity")
+      .background-color.add-padding.color-input.collapse-box
+        %span Left Background Color
+        .input-group
+          %input.minicolors(color-converter minicolors ng-model="cta_store.currentCta.left_background_color" type="text")
+        .range-opacity.clearfix
+          .pull-left
+            %input.slider-range(type="text" slider data-slider-min="0" data-slider-max="100" data-slider-step="1"  data-slider-tooltip="hide" style="width: 90px;"  ng-model="cta_store.currentCta.left_background_color_opacity")
+          .pull-right
+            %input.percent(type="text" percentage ng-model="cta_store.currentCta.left_background_color_opacity")
+      .background-color.add-padding.color-input.collapse-box
+        %span Right Background Color
+        .input-group
+          %input.minicolors(color-converter minicolors ng-model="cta_store.currentCta.right_background_color" type="text")
+        .range-opacity.clearfix
+          .pull-left
+            %input.slider-range(type="text" slider data-slider-min="0" data-slider-max="100" data-slider-step="1"  data-slider-tooltip="hide" style="width: 90px;"  ng-model="cta_store.currentCta.right_background_color_opacity")
+          .pull-right
+            %input.percent(type="text" percentage ng-model="cta_store.currentCta.right_background_color_opacity")

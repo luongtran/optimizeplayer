@@ -1,0 +1,12 @@
+%li.files
+  %a(href="#" ng-click="switch()" eat-click)
+    %i.picon-video
+    files
+  .tooltip-files.tooltip(ng-show="sync.filesId == project.id")
+    %img.arrow(alt="tootltip" src="/assets/tooltip-files-arrow.png")/
+    %ul
+      %li(ng-show="project.filename")
+        %a(href="{{project.url}}") {{project.filename}}
+      %li(ng-show="!project.filename")
+        %span no files
+

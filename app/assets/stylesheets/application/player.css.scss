@@ -1,0 +1,35 @@
+.player {
+  &.no-embed {
+    .fp-embed {
+      display: none;
+    }
+  }
+
+  &.no-fullscreen {
+    .fp-fullscreen {
+      display: none;
+    }
+  }
+
+  &.flowplayer {
+    .fp-logo {
+      &.left-top {
+        left: 35px;
+        top: 35px;
+      }
+      &.left-bottom {
+        left: 35px;
+        bottom: 35px;
+      }
+      &.right-top {
+        right: 35px;
+        top: 35px;
+      }
+      &.right-bottom {
+        right: 35px;
+        bottom: 35px;
+      }
+    } 
+  }
+}
+

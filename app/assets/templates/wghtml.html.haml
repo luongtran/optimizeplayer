@@ -1,0 +1,9 @@
+%div
+  .widget-buttons
+    %a.remove{href: "#"}(ng-click="removeWidget({{widget.id}})" prevent-default)
+      %i.icon-remove
+    %a.edit{href: "#"}(ng-click="editWidget('{{widget.component}}',{{widget.id}})" prevent-default pos-xy)
+      %i.icon-edit
+  .wg-content-wrapper
+    %div.widget-html-content HTML
+    / %div{"ng-bind-html" => "widget.customHtml"}

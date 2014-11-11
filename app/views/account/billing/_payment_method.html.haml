@@ -1,0 +1,39 @@
+#payment-method.reveal-modal.billing-modal.centralize
+  .modal-header
+    %h4 BILLING INFORMATION
+    %h5 You can change your current billing info below
+  .modal-body
+    .form-billing.payment-method.no-background
+      .form
+        .current-card
+          %p Current Credit Card:
+          %h5
+            XXXX - XXXX - XXXX - #{current_account.last4}
+        = form_tag account_update_card_path, method: :post, "credit-card-form" => true do
+          %span.payment-errors
+          %input(data-stripe="name" name="card[name]" placeholder="Full Name..." type="text")/
+          %input(data-stripe="number" name="card[number]" placeholder="Credit Card Number..." type="text")/
+          %ul.card-flags
+            %li= image_tag "card-flag-visa.png"
+            %li= image_tag "card-flag-mastercard.png"
+            %li= image_tag "card-flag-discover.png"
+            %li= image_tag "card-flag-americanexpress.png"
+          %p Expires on:
+          .clearfix
+            %select.dropkick(data-stripe="exp-month" dropkick="" name="month")= options_for_select Array[*Date::MONTHNAMES.compact.collect {|v,i| [v, Date::MONTHNAMES.compact.index(v) + 1] }]
+            %select.dropkick(data-stripe="exp-year" dropkick="" name="year")= options_for_select "2013".."2022"
+          %input(name="billing_zip" placeholder="Billing ZIP..." type="text")/
+          %input(data-stripe="cvc" name="ccv" placeholder="CCV..." type="text")/
+          .popup(popup="")
+            %a.help(href="#") ?
+            .popup-content.popup-creditcard
+              %h6 You will find the CCV code on the back of your Credit Card.
+              %p 3 digit symbols next to your CC number
+              = image_tag "credit-card-back.png"
+          %ul.inline-list.clearfix.terms-conditions
+            %li(checkbox="")
+              %input.pretty(checked="checked" data-label="By confirming you agree to our" name="terms_conditions" type="checkbox" value="true")/
+            %li
+              %a(href="#") terms and conditions and refund policy
+          %button.button.radius.green(type="submit") Confirm Changes
+          %span.you_sure Are you sure?

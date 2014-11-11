@@ -1,0 +1,16 @@
+<div cta 
+     class="button-code-custom" 
+     ng-model="button" 
+     ng-style="{left: button.left, top: button.top, right: button.right, bottom: button.bottom}">
+  <a class="button radius" 
+      href="{{button.link}}"
+      ng-style="{
+                  background: 'rgba(' + button.background_color + ',' + button.background_opacity + ')', 
+                  color:      'rgba(' + button.text_color + ',' + button.text_opacity + ')', 
+                  fontFamily: button.font_family, 
+                  fontSize:   button.font_size, 
+                  fontWeight: button.font_style
+                 }">
+    <span>{{button.text}}</span>
+  </a>
+</div>

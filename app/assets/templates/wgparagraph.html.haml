@@ -1,0 +1,8 @@
+%div
+  .widget-buttons
+    %a.remove{href: "#"}(ng-click="removeWidget({{widget.id}})" prevent-default)
+      %i.icon-remove
+    %a.edit{href: "#"}(ng-click="editWidget('{{widget.component}}',{{widget.id}})" prevent-default pos-xy)
+      %i.icon-edit
+  .wg-content-wrapper
+    %div.widget-paragraph{style: "background-color:{{widget.backgroundColor}};color:{{widget.textColor}};font-size:{{widget.fontSize}}px;font-weight:{{widget.fontStyle}};font-family:{{widget.font}}", "ng-bind-html-unsafe" => "widget.text"}

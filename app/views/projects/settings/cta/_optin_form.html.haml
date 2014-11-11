@@ -1,0 +1,85 @@
+%a.collapse-button.collapsed(data-toggle="collapse" data-target="#target-29c") OPTIN OPTIONS
+#target-29c.collapse
+  .form.collapse-box.add-padding
+    %label Email Provider
+    %select(selectpicker data-width="100%" ng-model="cta_store.currentCta.integration_id")
+      %option(value="none") Select an option
+      %option(ng-repeat="i in getIntegrationsByType('email')"
+              ng-selected="cta_store.currentCta.integration_id == i.id"
+              value="{{i.id}}")
+        {{i.title}}
+
+    %label  List
+    %select(selectpicker data-width="100%" ng-model="cta_store.currentCta.list_id" 
+            ng-disabled="cta.mailchimp_lists.length==0 && cta.aweber_lists.length==0 && cta.getresponse_campaigns.length==0")
+      %option(value="none") Select an option
+      %option(ng-repeat="l in cta.mailchimp_lists" ng-selected="cta_store.currentCta.list_id == l.id" value="{{l.id}}") {{l.name}}
+      %option(ng-repeat="l in cta.aweber_lists" ng-selected="cta_store.currentCta.list_id == l.id" value="{{l.id}}") {{l.name}}
+      %option(ng-repeat="c in cta.getresponse_campaigns" ng-selected="cta_store.currentCta.campaign_id == c.id" value="{{c.id}}") {{c.name}}
+
+  .form.collapse-box.add-padding
+    %label Optin text
+    %input(name="optin_text" ng-model="cta_store.currentCta.header_text" placeholder="Text that will show up above the Optin" type="text")
+
+    %label Button text
+    %input(name="optin_button_text" ng-model="cta_store.currentCta.text" placeholder="Submit Button Text" type="text")
+
+    .font.color-input
+      Font type
+      %select(selectpicker data-width="100%" ng-model="cta_store.currentCta.font_family")
+        %option(value="none" ng-selected="cta_store.currentCta.font_family == 'none'") Change...
+        %option(value="Helvetica" ng-selected="cta_store.currentCta.font_family == 'Helvetica'") Helvetica
+        %option(value="Fantasy" ng-selected="cta_store.currentCta.font_family == 'Fantasy'") Fantasy
+      Font style
+      %select(selectpicker data-width="100%" ng-model="cta_store.currentCta.font_style")
+        %option(value="none" ng-selected="cta_store.currentCta.font_style == 'none'") Change...
+        %option(value="300" ng-selected="cta_store.currentCta.font_style == '300'") Light
+        %option(value="400" ng-selected="cta_store.currentCta.font_style == '400'") Normal
+        %option(value="700" ng-selected="cta_store.currentCta.font_style == '700'") Bold
+      Font size
+      %div
+        %input.font-size(style-field format="px" type="text" ng-model="cta_store.currentCta.font_size") 
+          %span px
+
+%a.collapse-button.collapsed(data-toggle="collapse" data-target="#target-30c") SHOW OPTIONS
+#target-30c.collapse
+  .collapse-box.add-padding
+    %input#skip-buttons(type="checkbox" ng-model="cta_store.currentCta.skip")
+    %label(for="skip-buttons") Skip Button
+  .form.collapse-box.add-padding
+    %time-options(type="Optin")
+
+%a.collapse-button.collapsed(data-toggle="collapse" data-target="#target-31c") VISUAL OPTIONS
+#target-31c.collapse
+  .visual-controls
+    .fullscreen-button.add-padding.collapse-box
+      %input#fullscreen(type="checkbox" ng-model="cta_store.currentCta.fullscreen" ng-checked="$eval(cta_store.currentCta.fullscreen) ")
+      %label(for="fullscreen") Fullscreen
+
+    .background-color.add-padding.color-input.collapse-box
+      %span Background Color
+      .input-group
+        %input.minicolors(color-converter minicolors ng-model="cta_store.currentCta.background_color" type="text")
+      .range-opacity.clearfix
+        .pull-left
+          %input.slider-range(type="text" slider data-slider-min="0" data-slider-max="100" data-slider-step="1"  data-slider-tooltip="hide" style="width: 90px;"  ng-model="cta_store.currentCta.background_opacity")
+        .pull-right
+          %input.percent(type="text" percentage ng-model="cta_store.currentCta.background_opacity")
+    .button-color.add-padding.color-input.collapse-box
+      %span Button Color
+      .input-group
+        %input.minicolors(color-converter minicolors ng-model="cta_store.currentCta.button_background_color" type="text")
+      .range-opacity.clearfix
+        .pull-left
+          %input.slider-range(type="text" slider data-slider-min="0" data-slider-max="100" data-slider-step="1"  data-slider-tooltip="hide" style="width: 90px;"  ng-model="cta_store.currentCta.button_background_opacity")
+        .pull-right
+          %input.percent(type="text" percentage ng-model="cta_store.currentCta.button_background_opacity")
+    .text-color.add-padding.color-input.collapse-box
+      %span Text Color
+      .input-group
+        %input.minicolors(color-converter minicolors ng-model="cta_store.currentCta.text_color" type="text")
+      .range-opacity.clearfix
+        .pull-left
+          %input.slider-range(type="text" slider data-slider-min="0" data-slider-max="100" data-slider-step="1"  data-slider-tooltip="hide" style="width: 90px;"  ng-model="cta_store.currentCta.text_opacity")
+        .pull-right
+          %input.percent(type="text" percentage ng-model="cta_store.currentCta.text_opacity")

@@ -1,0 +1,20 @@
+defaults: &defaults
+  aws_access_key_id: 'AKIAIKDA26PVMJ2JJOTA'
+  aws_secret_access_key: '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'
+
+development:
+  <<: *defaults
+  cloudfront_host: "//d1mlmuoezjfv5h.cloudfront.net"
+  bucket_name: "optimizeplayer_dev"
+staging:
+  <<: *defaults
+  cloudfront_host: "//d2hng9k1iufhl6.cloudfront.net"
+  bucket_name: "optimizeplayer_stage"
+production:
+  <<: *defaults  
+  cloudfront_host: "//dcrmw8t9lgh5y.cloudfront.net"
+  bucket_name: "optimizeplayer"
+test:
+  <<: *defaults
+  cloudfront_host: "//d1mlmuoezjfv5h.cloudfront.net"
+  bucket_name: "optimizeplayer_dev"

@@ -1,0 +1,11 @@
+.page-header
+  .row
+    .twelve.columns.clearfix
+      .pull-left
+        .page-title= (yield(:title).blank?) ? 'My projects' : yield(:title)
+      .pull-right
+        .input-append.form-search.clearfix
+          %form(action="/projects" method="get")
+            %input(name="search" placeholder="Search projects..." type="text" value="#{@search}")/
+            %button(type="submit")
+              %i.pbigicon-search

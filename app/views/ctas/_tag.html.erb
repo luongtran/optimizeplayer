@@ -1,0 +1,17 @@
+<div cta class="tag" ng-click="showTag()" ng-model="tag" ng-hide="tagVisible"></div>
+<div tag class="tagging" ng-show="tagVisible">
+  <div class="window clearfix"> <!-- add class .minimal if show only tag.title -->
+    <div class="close-cta-tag" ng-click="closeTag()">&times;</div> 
+    <ul class="dsp-table">
+      <li class="dsp-cell">
+        <img ng-src="{{tag.image}}" width="50" height="43"/>
+      </li>
+      <li class="dsp-cell">
+        <h3>{{tag.title}}</h3> 
+        <h4>{{tag.sub_title}}</h4> 
+      </li>
+    </ul>
+    <p>{{tag.description}}</p>
+    <a href="{{tag.link}}" class="btn btn-success">{{tag.button_text}}</a>
+  </div>
+</div>

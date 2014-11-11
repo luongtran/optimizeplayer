@@ -1,0 +1,61 @@
+%a.collapse-button.collapsed(data-toggle="collapse" data-target="#target-4c") BRAND LOGO
+#target-4c.collapse
+  .collapse-box.add-padding
+    %div.side-block.clearfix.upload-block(upload-form logo-upload ng-model="project.logo")
+      %upload-project-image(auto-upload="true" rc-type="public")
+      .start-image
+        %button.btn.btn-info(ng-hide="file" ng-click="browseFiles()") Browse
+        %div(ng-show="file")
+          %a.delete-image(href="#" ng-click="removeFile()")
+            = image_tag("icons/icon-delete.png", width: "12")
+          %img{"ng-src" => "{{file}}", :width => "170"}/
+          %a.pull-right.button.radius.flat.blue(ng-hide="isMoving" ng-click="moveLogo()") Move
+          %a.pull-right.button.radius.flat.blue(ng-show="isMoving" ng-click="saveLogo()") Save
+
+%a.collapse-button.collapsed(data-toggle="collapse" data-target="#target-5c") START IMAGE
+#target-5c.collapse
+  .collapse-box
+    %div.side-block.clearfix.upload-block(upload-form start-image-upload ng-model="project.start_image")
+      %upload-project-image(auto-upload="true")
+      .start-image
+        %button.btn.btn-info(ng-click="browseFiles()") Browse
+  .collapse-box(ng-show="project.start_image")
+    %div(start-image-upload ng-model="project.start_image" style="margin-top:5px; margin-left:5px;")
+      %a.delete-image(href="#" ng-click="removeFile()")
+        = image_tag("icons/icon-delete.png", width: "12")
+      %img{"ng-src" => "{{project.start_image}}", :width => "170"}/
+  .collapse-box(ng-cloak)
+    You can choose from thumbnails:
+    %ul.list-unstyled
+      %li(ng-repeat="link in project.assets[0].thumbnails"
+          ng-click="setStartImage(link)" style="margin-top:5px; margin-left:5px;")
+        %img{:src => "{{link}}", :width => "170", "ng-class" => "{'selected' : link == project.start_image}"}
+
+%a.collapse-button.collapsed(data-toggle="collapse" data-target="#target-6c") PLAYER COLORS
+#target-6c.collapse
+  %div.side-block.clearfix
+    .add-padding.color-input
+      Element Color
+      .input-group
+        %input.minicolors(color-converter minicolors ng-model="project.skin_color" type="text")
+
+%a.collapse-button.collapsed(data-toggle="collapse" data-target="#target-7c") SKINS
+#target-7c.collapse
+  .collapse-box.skins
+    %ul.list-unstyled
+      %li(ng-repeat="skin in skins" class="selected_{{skin.selected}}")
+        {{skin.name}}
+        %a.clearfix
+          %img(ng-src="/assets/{{skin.preview}}")
+        %button.btn.btn-primary.minimize(ng-click="setSkin(skin)") Use this skin
+
+%a.collapse-button.collapsed(data-toggle="collapse" data-target="#target-8c") REFER OptimizePlayer
+#target-8c.collapse
+  .collapse-box
+    %span.show_banner.pull-right(checkbox label="" ng-model="project.show_banner")
+  .banner
+    %label
+      %span.affiliate_link Display the "Powered By OptimizePlayer" banner and earn money!
+      %a(href="http://www.optimizeplayer.com/affiliates")
+        Learn More.
+      %input.affiliate_link(name="affiliate_link" ng-model="project.affiliate_link" placeholder="Enter Affiliate Link" type="text" ng-disabled="!project.show_banner || project.show_banner == 'false'")/

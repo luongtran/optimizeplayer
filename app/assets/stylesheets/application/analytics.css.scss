@@ -1,0 +1,296 @@
+section[role=analytics] {
+  background: #fff;
+
+  > .header {
+    padding: 7px 20px;
+    font-family:"AvenirNext-Med";
+    background: #fff;
+    border-bottom: 1px solid #d4e6e8;
+
+    span {
+      vertical-align: middle;
+    }
+
+    input[type=text] {
+      width: 90px;
+      padding-top: 6px;
+      padding-bottom: 6px;
+      text-align: center;
+    }
+
+    .pull-left span {
+      color: #33444c;
+    }
+
+    .pull-left .btn {
+      margin-left: 4px;
+    }
+  }
+
+  #chart {
+    height: 360px;
+    background: #f4f9fa;
+  }
+
+  .metrics {
+    padding: 0 0 20px 0;
+
+    ul {
+      padding: 20px 10px 0 10px;
+
+      li {
+        width: 25%;
+        padding: 0 10px 0 10px;
+        text-align: center;
+
+        .metric {
+          font-family:"AvenirNext-Med";
+          border: 1px solid #6996a9;
+          border-top-left-radius: 2px;
+          border-top-right-radius: 2px;
+
+          h1 {
+            margin: 20px 0 10px;
+            font-family: "AvenirNext-UltLt";
+            font-size: 60px;
+            line-height: 60px;
+          }
+
+          h4 {
+            margin: 20px 0 0 0;
+            padding: 5px 0;
+            color: #fff;
+            font-weight: normal;
+            font-size: 14px;
+            background: #6996a9;
+          }
+        }
+
+        &#total-loads .metric {
+          color: #8050e4;
+          border-color: #8050e4;
+
+          h4 {
+            background: #8050e4;
+          }
+        }
+
+        &#unique-views .metric {
+          color: #19d680;
+          border-color: #19d680;
+
+          h4 {
+            background: #19d680;
+          }
+        }
+
+        &#total-plays .metric {
+          color: #db5959;
+          border-color: #db5959;
+
+          h4 {
+            background: #db5959;
+          }
+        }
+      }
+    }
+  }
+
+  .heatmap {
+    padding-bottom: 45px;
+    border-top: 1px solid #d4e6e8;
+    font-family: "AvenirNext-Med";
+
+    ul {
+      padding: 10px 20px;
+      border-bottom: 1px solid #d4e6e8;
+
+      li:first-child {
+        width: 260px;
+        padding-right: 20px;
+      }
+
+      .date {
+        padding: 4px 6px;
+        font-size: 11px;
+        color: #fff;
+        background: #6996a9;
+        border-radius: 2px;
+      }
+
+      .hour {
+        font-size: 16px;
+      }
+
+      .user .counter {
+        padding: 1px 4px;
+        font-size: 11px;
+        color: #fff;
+        background: #2bafe1;
+        border-radius: 2px;
+      }
+
+      .graph {
+        position: relative;
+        height: 42px;
+        background: url('/assets/graph-lines.png') repeat 0 0 #88d0eb;
+        background-size: 20px;
+        border: 1px solid #1ca8dd;
+
+        &:hover {
+          position: relative;
+          height: 42px;
+          background: url('/assets/graph-lines-over.png') repeat 0 0 #86e7bd;
+          background-size: 20px;
+          border: 1px solid #4bd1b4;
+        }
+
+        .range {
+          position: absolute;
+          height: 100%;
+          background: rgba(255,255,255,0.5);
+
+          .mark {
+            position: absolute;
+            display: block;
+            top: 14px;
+            width: 12px;
+            height: 12px;
+            background: #fff;
+            border: 1px solid #1ca8dd;
+            border-radius: 50%;
+
+            &.begin {
+              left: -6px;
+              z-index: 99;
+            }
+
+            &.end {
+              right: -6px;
+            }
+
+            .popup {
+              display: none;
+              position: absolute;
+              left: -24px;
+              bottom: 10px;
+              padding: 0px 5px;
+              background: #fff;
+              border: 1px solid #6996a9;
+              border-radius: 2px;
+              white-space: nowrap;
+
+              &:after {
+                content: "";
+                display: block;
+                position: absolute;
+                left: 24px;
+                bottom: -7px;
+                width: 0;
+                height: 0;
+                border-top: 7px solid #6996a9;
+                border-left: 4px solid transparent;
+                border-right: 4px solid transparent;
+              }
+            }
+
+            &:hover .popup {
+              display: block;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+#modal-analytics-cta {
+  .modal-body {
+    padding-left: 0;
+    padding-right: 0;
+  }  
+
+  h4 {
+    margin: 0 20px 15px 20px;
+    font-size: 16px;
+    font-weight: normal;
+    color: #33444c;
+  }
+
+  ul {
+    padding: 0 20px 15px 20px;
+    margin: 0 0 15px 0;
+    border-bottom: 2px solid #ebf3f4;
+    
+    &:last-child {
+      padding-bottom: 0;
+      margin-bottom: 0;
+      border-bottom: none;
+    }
+
+    li {
+      width: 10%;
+      padding-right: 15px;
+      text-align: center;
+
+      &:last-child {
+        padding-right: 0px;
+      }
+
+      .answer {
+        padding-bottom: 10px;
+        font-family:"AvenirNext-Med";
+        border: 1px solid #6996a9;
+        border-top-left-radius: 2px;
+        border-top-right-radius: 2px;
+
+        h1 {
+          margin: 20px 0 10px;
+          font-family: "AvenirNext-UltLt";
+          font-size: 60px;
+          line-height: 60px;
+        }
+
+        span {
+          margin: 20px 0 0 0;
+          padding: 5px 0;
+          font-size: 14px;
+        }
+      }
+    }
+
+    &.survey {
+      li:nth-child(1) span {
+        color: #1ca8dd;
+      }
+
+      li:nth-child(2) span {
+        color: #ee1950;
+      }
+
+      li:nth-child(3) span {
+        color: #1cdd7b;
+      }
+    }
+
+    &.payment {
+      li:nth-child(1) span {
+        color: #e842b3;
+      }
+
+      li:nth-child(2) span {
+        color: #f49c12;
+      }
+    }
+
+    &.social {
+      li:nth-child(1) span {
+        color: #1ca8dd;
+      }
+
+      li:nth-child(2) span {
+        color: #2157c5;
+      }
+    }
+  }
+}

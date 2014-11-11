@@ -1,0 +1,53 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://api2.getresponse.com/
+    body:
+      encoding: UTF-8
+      string: '{"id":"1401870076-555670748-0","method":"get_campaigns","params":["f0184a94323d786c9ae69379fef1c19c",{}]}'
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - '*/*'
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Wed, 04 Jun 2014 08:21:17 GMT
+      Content-Type:
+      - application/json; charset=UTF-8
+      Transfer-Encoding:
+      - chunked
+      Access-Control-Allow-Headers:
+      - Content-Type
+      Access-Control-Allow-Origin:
+      - '*'
+    body:
+      encoding: UTF-8
+      string: '{"error":null,"id":"1401870076-555670748-0","result":{"TSO1":{"optin":"double","is_default":"no","from_email":"tesha@bizlaunchequity.com","name":"optimizeplayer","description":null,"reply_to_email":"tesha@bizlaunchequity.com","created_on":"2013-11-27
+        15:50:24","from_name":"LaTesha"},"pFJK":{"optin":"double","is_default":"no","from_email":"tesha@bizlaunchequity.com","name":"wptrainingninja_member","description":null,"reply_to_email":"tesha@bizlaunchequity.com","created_on":"2012-08-28
+        23:45:09","from_name":"WP Training Ninja"},"njbc":{"optin":"double","is_default":"no","from_email":"tesha@bizlaunchequity.com","name":"kredentials","description":null,"reply_to_email":"tesha@bizlaunchequity.com","created_on":"2013-04-05
+        18:36:11","from_name":"LaTesha"},"nz7V":{"optin":"double","is_default":"no","from_email":"tesha@bizlaunchequity.com","name":"vimzee","description":null,"reply_to_email":"tesha@bizlaunchequity.com","created_on":"2013-03-15
+        11:56:23","from_name":"LaTesha"},"pfdq":{"optin":"double","is_default":"no","from_email":"tesha@bizlaunchequity.com","name":"sqzpageninja","description":null,"reply_to_email":"tesha@bizlaunchequity.com","created_on":"2012-08-01
+        12:08:05","from_name":"LaTesha"},"pD33":{"optin":"double","is_default":"no","from_email":"tesha@bizlaunchequity.com","name":"tesha","description":null,"reply_to_email":"tesha@bizlaunchequity.com","created_on":"2012-11-12
+        11:50:01","from_name":"LaTesha"},"p7pI":{"optin":"double","is_default":"no","from_email":"tesha@bizlaunchequity.com","name":"productlaunch","description":null,"reply_to_email":"tesha@bizlaunchequity.com","created_on":"2012-09-17
+        17:05:55","from_name":"LaTesha"},"njYs":{"optin":"double","is_default":"no","from_email":"tesha@bizlaunchequity.com","name":"shortcuttts","description":null,"reply_to_email":"tesha@bizlaunchequity.com","created_on":"2013-04-05
+        18:34:50","from_name":"LaTesha"},"pF4y":{"optin":"double","is_default":"no","from_email":"tesha@bizlaunchequity.com","name":"wptrainingninja","description":null,"reply_to_email":"tesha@bizlaunchequity.com","created_on":"2012-08-24
+        21:41:40","from_name":"WP Training Ninja"},"njbp":{"optin":"double","is_default":"no","from_email":"tesha@bizlaunchequity.com","name":"swippie","description":null,"reply_to_email":"tesha@bizlaunchequity.com","created_on":"2013-04-05
+        18:36:18","from_name":"LaTesha"},"pDdP":{"optin":"double","is_default":"no","from_email":"tesha@bizlaunchequity.com","name":"tesha_freewpinstall","description":null,"reply_to_email":"tesha@bizlaunchequity.com","created_on":"2012-11-13
+        20:10:33","from_name":"LaTesha"},"pfda":{"optin":"single","is_default":"no","from_email":"tesha@bizlaunchequity.com","name":"jvz_bizlaunchequity","description":null,"reply_to_email":"tesha@bizlaunchequity.com","created_on":"2012-08-01
+        11:45:04","from_name":"LaTesha"},"LbcU":{"optin":"double","is_default":"no","from_email":"emanuelaelias@gmail.com","name":"emanuelas_yogaatthepark","description":null,"reply_to_email":"tesha@bizlaunchequity.com","created_on":"2014-05-15
+        15:05:36","from_name":"Emanuela"},"nKT8":{"optin":"double","is_default":"yes","from_email":"tesha@bizlaunchequity.com","name":"pixelserve","description":null,"reply_to_email":"tesha@bizlaunchequity.com","created_on":"2013-03-03
+        14:32:38","from_name":"LaTesha"},"njYE":{"optin":"double","is_default":"no","from_email":"tesha@bizlaunchequity.com","name":"rawapples","description":null,"reply_to_email":"tesha@bizlaunchequity.com","created_on":"2013-04-05
+        18:35:54","from_name":"LaTesha"}}}'
+    http_version: 
+  recorded_at: Wed, 04 Jun 2014 08:21:18 GMT
+recorded_with: VCR 2.9.0

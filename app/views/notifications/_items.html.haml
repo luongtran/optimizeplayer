@@ -1,0 +1,10 @@
+- @unread_notifications.each do |n|
+  %ul.dsp-table
+    = render "item", n: n
+    %li.dsp-cell
+      %a.confirm{id: n.id}(href="#")
+- @read_notifications.each do |n|
+  %ul.dsp-table
+    = render "item", n: n
+    %li.dsp-cell
+      %a.confirmed(disabled)

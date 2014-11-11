@@ -1,0 +1,36 @@
+# Sample localization file for English. Add more files in this directory for other locales.
+# See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
+
+en:
+  number_of_embeds: 
+    one: <b>1</b> EMBED
+    other: <b>%{count}</b> EMBEDS
+    unlimited: <b>UNLIMITED</b> EMBEDS
+  number_of_users:
+    one: <b>1</b> USER
+    other: <b>%{count}</b> USERS
+    unlimited: <b>UNLIMITED</b> USERS
+  number_of_jobs:
+    one: <b>1</b> ENCODING JOB
+    other: <b>%{count}</b> ENCODING JOBS
+    unlimited: <b>UNLIMITED</b> ENCODING JOBS
+  has_branding:
+    has: <b>OPTIMIZEPLAYER BRANDING</b>
+    hasnt: <b>UNBRANDED</b>  
+  can_add_cta:
+    has: <b>PREMIUM FEATURES</b>
+    hasnt: "" 
+  has_ads:
+    has: <b>Ads</b>
+    hasnt: ""
+  custom_skin: Custom skin
+  pay_as_you_go: Pay as you go plan
+  screenshare_support: Screenshare support
+  video_importing: Video Importing
+  bandwidth: <b>%{count}</b> BANDWIDTH
+  can_encode:
+    has: <b>CAN ENCODE</b>
+    hasnt: ""
+  can_host:
+    has: <b>OPTIMIZEPLAYER HOSTED</b>
+    hasnt: <b>SELF HOSTED</b>

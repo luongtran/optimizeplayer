@@ -1,0 +1,481 @@
+window.protocol = window.location.protocol;
+window.optimizeplayer =
+  barrelRoll: ->
+    $(document).trigger("purchaseSuccess")
+  init: (project, ctas, referer) ->
+    this.project = project
+    this.referer = referer
+    this.cta_store = ctas
+    this.initCtas()
+    this.initplayer()
+  initCtas: () ->
+    @ctas = []
+    @ctas = @ctas.concat(@cta_store.buttons)
+    @ctas = @ctas.concat(@cta_store.htmls)
+    @ctas = @ctas.concat(@cta_store.surveys)
+    @ctas = @ctas.concat(@cta_store.optins)
+    @ctas = @ctas.concat(@cta_store.tags)
+
+    if this.referer && this.referer.indexOf("video_token") >= 0
+      @ctas = @ctas.concat($.grep(@cta_store.purchases, (el) -> el.delivery_method != "play_video" ))
+    else
+      @ctas = @ctas.concat(@cta_store.purchases)
+      $.grep(@cta_store.purchases, (el) -> el.delivery_method == "play_video" ).map (cta) -> optimizeplayer.showCta(cta);
+
+    @cuepoints = []
+    @flat_cuepoints = []
+    for el in @ctas
+      el.flat_cuepoints = []
+      for range in el.cuepoints
+        el.flat_cuepoints = el.flat_cuepoints.concat(range)
+        if range[1] isnt false
+          optimizeplayer.flat_cuepoints = optimizeplayer.flat_cuepoints.concat(range)
+        else
+          optimizeplayer.flat_cuepoints.push range[0]
+        optimizeplayer.cuepoints.push range
+
+  ctas_status: {}
+  player: null
+  embed: $("#optimizeplayer").data("embed")
+  emailValidation: /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+  colorConverter:
+    # convert 0..255 R,G,B values to a hexidecimal color string
+    RGBToHex: (rgb) ->
+      r = rgb[0]
+      g = rgb[1]
+      b = rgb[2]
+      bin = r << 16 | g << 8 | b
+      ((h) ->
+        new Array(7 - h.length).join("0") + h
+      ) bin.toString(16).toUpperCase()
+
+    RGBToBin: (rgb) ->
+      hex = @RGBToHex(rgb)
+      "0x" + hex
+
+  getControls: ->
+
+    #default affiliate link
+    affilate_link = "http://www.optimizeplayer.com/?ims=bnr"
+    affilate_link = @project.affiliate_link  unless @project.affiliate_link is ""
+    url: protocol + "<%= Yetting.cloudfront_host %>/assets/skins/" + ((if @project.skin then @project.skin else "skin0")) + ".swf"
+    color:              if (@project.skin_color) then @colorConverter.RGBToBin(@project.skin_color.split(",")) else 0x449911
+    gap:                if (@project.cb_gap) then parseInt(@project.cb_gap) else 4
+    displayTime:        @isTrue(@project.display_time)
+    displayVolume:      @isTrue(@project.display_volume)
+    displaySmallPlay:   @isTrue(@project.play_button)
+    displayBigPlay:     @isTrue(@project.big_play_button)
+    displayFullscreen:  @isTrue(@project.full_screen)
+    displayControls:    @project.control_bar_hide_method isnt "hide"
+    allowPause:         @isTrue(@project.allow_pause)
+    allowMute:          @isTrue(@project.mute)
+    hideMethod:         if (@project.control_bar_hide_method and @project.control_bar_hide_method isnt "hide") then @project.control_bar_hide_method else "fade"
+    embedCode:          if @isTrue(@project.allow_embed)    then (if !@embed then @project.embedCode() else null)
+    facebookShare:      if @isTrue(@project.facebook_share) then {} else null
+    twitterShare:       if @isTrue(@project.twitter_share)  then {} else null
+    brandingURL:        if @isTrue(@project.show_banner)    then affilate_link else ""
+
+  getLogo: ->
+    logo = null
+    if @isTrue(@project.logo)
+      logo =
+        url: @project.logo
+        fullscreenOnly: false
+        displayTime: 2000
+        top: @project.logo_pos_top
+        left: @project.logo_pos_left
+    logo
+
+  getPlaylist: ->
+    list = []
+    if @project.start_image
+      list.push
+        url: @project.start_image
+        scaling: "orig"
+        eventCategory: @project.name
+
+    mainClip =
+      autoPlay: @project.auto_start is "autoplay"
+      autoBuffering: true
+      scaling: @project.scaling
+      url: @project.url
+      eventCategory: @project.title
+
+    if @flat_cuepoints.length > 0
+      mainClip.onCuepoint = [
+        @flat_cuepoints
+        (clip, cuepoint) ->
+          optimizeplayer.toggleOptin cuepoint
+      ]
+    list.push mainClip
+    list
+
+  # pause player regardless of allow_pause option
+  forcePause: ->
+    # save old status of allow_pause option
+    old_allow_pause = this.project.allow_pause
+    # set allow_pause option true to pause
+    this.project.allow_pause = true
+    this.player.pause()
+    # set all_pause option to the original state
+    this.project.allow_pause = old_allow_pause
+
+  toggleMobile: (el) ->
+    video = document.querySelector("video#video" + @project.cid + "_api")
+    if video and @ctas_status[el] isnt "shown"
+      video.webkitExitFullscreen()
+      @ctas_status[el] = "shown"
+    return
+
+  toggleOptin: (cuepoint) ->
+    for cta in optimizeplayer.ctas
+      i = cta.flat_cuepoints.indexOf(cuepoint)
+      next = cta.flat_cuepoints[i + 1]
+      if i >= 0
+        if cta.flat_cuepoints and i % 2 is 0
+          # show current cta
+          optimizeplayer.showCta cta
+          # pause option is true
+          if next is false
+            if cta.shown
+              optimizeplayer.hideCta cta
+              cta.shown = false
+            else
+              optimizeplayer.forcePause()
+              cta.shown = true
+        else
+          # hide current cta
+          optimizeplayer.hideCta cta
+      else
+        # hide old cta
+        optimizeplayer.hideCta cta
+
+  isTrue: (val) ->
+    val isnt "false" and val isnt false and val isnt `undefined`
+
+  ctaCssId: (cta) ->
+    (if (cta.type) then cta.type else "") + (if (cta.cid) then cta.cid else "") + cta.position + (if (cta.position is "inside") then "" else cta.location)
+
+  showCta: (cta) ->
+    ctaId = @ctaCssId(cta)
+    element = document.getElementById(ctaId)
+    @toggleMobile ctaId
+    if cta.type is "CtaOptin" and @isTrue(cta.fullscreen)
+      @animateOptin ctaId
+    else
+      element.style.display = "block"
+
+  hideCta: (cta) ->
+    ctaId = @ctaCssId(cta)
+    element = document.getElementById(ctaId)
+    element.style.display = "none"
+
+  animateOptin: (optinId) ->
+    element = document.getElementById(optinId)
+    optin = document.querySelector("#" + optinId + " .optin")
+    optin.style.top = "-100%"
+    optin.style.bottom = "100%"
+    element.style.display = "block"
+    window.setTimeout (->
+      optin.style.top = 0
+      optin.style.bottom = 0
+      return
+    ), 100
+
+  getAnalytics: ->
+    if @project.analytics
+      url: protocol + "<%= Yetting.cloudfront_host %>/assets/optimizeplayer.analytics.swf"
+      accountId: @project.analytics
+      events:
+        all: true
+    else
+      null
+
+  utils:
+    isMobile: ->
+      if typeof window.isMobile is "undefined"
+        check = false
+        ((a) ->
+          check = true  if /(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od)|iris|kindle|lge |maemo|midp|mmp|mobile.+firefox|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows (ce|phone)|xda|xiino/i.test(a) or /1207|6310|6590|3gso|4thp|50[1-6]i|770s|802s|a wa|abac|ac(er|oo|s\-)|ai(ko|rn)|al(av|ca|co)|amoi|an(ex|ny|yw)|aptu|ar(ch|go)|as(te|us)|attw|au(di|\-m|r |s )|avan|be(ck|ll|nq)|bi(lb|rd)|bl(ac|az)|br(e|v)w|bumb|bw\-(n|u)|c55\/|capi|ccwa|cdm\-|cell|chtm|cldc|cmd\-|co(mp|nd)|craw|da(it|ll|ng)|dbte|dc\-s|devi|dica|dmob|do(c|p)o|ds(12|\-d)|el(49|ai)|em(l2|ul)|er(ic|k0)|esl8|ez([4-7]0|os|wa|ze)|fetc|fly(\-|_)|g1 u|g560|gene|gf\-5|g\-mo|go(\.w|od)|gr(ad|un)|haie|hcit|hd\-(m|p|t)|hei\-|hi(pt|ta)|hp( i|ip)|hs\-c|ht(c(\-| |_|a|g|p|s|t)|tp)|hu(aw|tc)|i\-(20|go|ma)|i230|iac( |\-|\/)|ibro|idea|ig01|ikom|im1k|inno|ipaq|iris|ja(t|v)a|jbro|jemu|jigs|kddi|keji|kgt( |\/)|klon|kpt |kwc\-|kyo(c|k)|le(no|xi)|lg( g|\/(k|l|u)|50|54|\-[a-w])|libw|lynx|m1\-w|m3ga|m50\/|ma(te|ui|xo)|mc(01|21|ca)|m\-cr|me(rc|ri)|mi(o8|oa|ts)|mmef|mo(01|02|bi|de|do|t(\-| |o|v)|zz)|mt(50|p1|v )|mwbp|mywa|n10[0-2]|n20[2-3]|n30(0|2)|n50(0|2|5)|n7(0(0|1)|10)|ne((c|m)\-|on|tf|wf|wg|wt)|nok(6|i)|nzph|o2im|op(ti|wv)|oran|owg1|p800|pan(a|d|t)|pdxg|pg(13|\-([1-8]|c))|phil|pire|pl(ay|uc)|pn\-2|po(ck|rt|se)|prox|psio|pt\-g|qa\-a|qc(07|12|21|32|60|\-[2-7]|i\-)|qtek|r380|r600|raks|rim9|ro(ve|zo)|s55\/|sa(ge|ma|mm|ms|ny|va)|sc(01|h\-|oo|p\-)|sdk\/|se(c(\-|0|1)|47|mc|nd|ri)|sgh\-|shar|sie(\-|m)|sk\-0|sl(45|id)|sm(al|ar|b3|it|t5)|so(ft|ny)|sp(01|h\-|v\-|v )|sy(01|mb)|t2(18|50)|t6(00|10|18)|ta(gt|lk)|tcl\-|tdg\-|tel(i|m)|tim\-|t\-mo|to(pl|sh)|ts(70|m\-|m3|m5)|tx\-9|up(\.b|g1|si)|utst|v400|v750|veri|vi(rg|te)|vk(40|5[0-3]|\-v)|vm40|voda|vulc|vx(52|53|60|61|70|80|81|83|85|98)|w3c(\-| )|webc|whit|wi(g |nc|nw)|wmlb|wonu|x700|yas\-|your|zeto|zte\-/i.test(a.substr(0, 4))
+          return
+        ) navigator.userAgent or navigator.vendor or window.opera
+        window.isMobile = check
+      window.isMobile
+
+    isiOS: ->
+      if navigator.userAgent.match(/iPhone/i) or navigator.userAgent.match(/iPad/i) or navigator.userAgent.match(/iPod/i)
+        true
+      else
+        false
+
+    getParams: ->
+      vars = {}
+      hash = undefined
+      hashes = window.location.href.slice(window.location.href.indexOf("?") + 1).split("&")
+      i = 0
+
+      while i < hashes.length
+        hash = hashes[i].split("=")
+        vars[hash[0]] = hash[1]
+        i++
+      vars
+
+  session:
+    setKey: ->
+      session_key = @getKey("op_session")
+      if session_key
+        session_key
+      else
+        sid = ""
+        possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"
+        i = 0
+
+        while i < 25
+          sid += possible.charAt(Math.floor(Math.random() * possible.length))
+          i++
+        document.cookie = "op_session=" + sid + "; path=/"
+        sid
+
+    getKey: ->
+      name = "op_session="
+      i = undefined
+      c = undefined
+      ca = undefined
+      ca = document.cookie.split(";")
+      i = 0
+      while i < ca.length
+        c = ca[i]
+        c = c.substring(1, c.length)  while c.charAt(0) is " "
+        return c.substring(name.length, c.length)  if c.indexOf(name) is 0
+        i++
+      false
+
+  trackEvent: (type, params) ->
+    date = new Date()
+
+    if @embed
+      data =
+        type: type
+        time: @player.getTime()
+        session: @session.setKey()
+        referer: @referer
+        platform: window.navigator.platform
+        user_agent: "${keen.user_agent}"
+        mobile: @utils.isMobile()
+        ip: "${keen.ip}"
+        timestamp: date.getTime()
+        day: (date.getDate() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear())
+        keen:
+          addons: [
+            {
+              name: "keen:ip_to_geo"
+              input:
+                ip: "ip"
+
+              output: "location"
+            }
+            {
+              name: "keen:ua_parser"
+              input:
+                ua_string: "user_agent"
+
+              output: "navigator"
+            }
+          ]
+
+      if typeof params is "object"
+        for attrname of params
+          data[attrname] = params[attrname]
+      @refererParams = @utils.getParams()  unless @refererParams
+      data.opname = @refererParams.opname  if typeof @refererParams.opname is "string"
+      data.opemail = @refererParams.opemail  if typeof @refererParams.opemail is "string"
+      Keen.addEvent @project.cid, data
+
+  initplayer: ->
+    optimizeplayer = this
+    @initCtas()
+
+#    if @cta_store.optins.length > 0
+#      for optin in @cta_store.optins
+#        optinObj = document.querySelector("#" + @ctaCssId(optin))
+#        if optinObj
+#
+#          optinObj.style.marginTop = document.querySelector("#player-container#{optimizeplayer.project.cid.substr(0,4)}").offsetTop;
+#          # Send form by ajax
+#          optinObj.onsubmit = (e) ->
+#            e.preventDefault()
+#
+#            # Validate an email
+#            email = document.querySelector("#" + @id + " input[name=email]").value
+#            unless optimizeplayer.emailValidation.test(email)
+#              alert "Please enter a valid email"
+#              return 0
+#            optimizeplayerFormSubmitter.init(this).send ->
+#              optimizeplayer.hideCta optin
+#              optimizeplayer.player.play()
+
+    # Bind skipping
+    $(".skip-btn, .close-cta").on 'click', ->
+      $(this).closest(".cta").hide()
+      if !optimizeplayer.player.isPlaying()
+        optimizeplayer.player.play()
+
+    @player = flowplayer("video" + optimizeplayer.project.cid,
+      src: protocol + "<%= Yetting.cloudfront_host %>/assets/optimizeplayer.swf"
+      wmode: "opaque"
+    ,
+      showErrors: false
+      key: "<%= @key.present? ? key : (Rails.env.staging? ? '0b3060f7e56aa58d35a' : '0b3060f7e56aa58d35a') %>"
+      playlist: optimizeplayer.getPlaylist()
+      onLoad: ->
+        optimizeplayer.trackEvent "load"  if typeof optimizeplayer.state is "undefined"
+        optimizeplayer.state = "loaded"
+        @showOptinFromRange = ->
+          time = @getTime() * 1000
+          for cta in optimizeplayer.ctas
+            i = cta.cuepoints.length - 1
+
+            while i >= 0
+              range = cta.cuepoints[i]
+              if range[1] isnt false and time >= range[0] and time < range[1]
+                optimizeplayer.showCta cta
+                break
+              else
+                optimizeplayer.hideCta cta
+              i--
+
+        if optimizeplayer.project.auto_start is "autoplay_on_view"
+          optimizeplayer.playIfView()
+          window.addEventListener "scroll", optimizeplayer.playIfView
+          if documentHidden of document
+            document.addEventListener "visibilitychange", optimizeplayer.playIfView
+          else if (documentHidden = "mozHidden") of document
+            document.addEventListener "mozvisibilitychange", optimizeplayer.playIfView
+          else if (documentHidden = "webkitHidden") of document
+            document.addEventListener "webkitvisibilitychange", optimizeplayer.playIfView
+          else if (documentHidden = "msHidden") of document
+            document.addEventListener "msvisibilitychange", optimizeplayer.playIfView
+          else if "onfocusin" of document
+            document.onfocusin = document.onfocusout = optimizeplayer.playIfView
+          else
+            window.onpageshow = window.onpagehide = window.onfocus = window.onblur = optimizeplayer.playIfView
+        return
+
+      onBegin: ->
+        if optimizeplayer.isTrue(optimizeplayer.project.auto_mute)
+          @setVolume 0
+        else
+          @setVolume 100
+
+      onBeforeSeek: ->
+        optimizeplayer.before_seek = @getTime()
+
+      onSeek: (player, new_time) ->
+        optimizeplayer.trackEvent "seek",
+          from: optimizeplayer.before_seek
+        @showOptinFromRange()
+
+      onStart: ->
+        if optimizeplayer.utils.isiOS() and optimizeplayer.state is "loaded" or @getClip().autoPlay
+          optimizeplayer.trackEvent "start"
+          optimizeplayer.state = "started"
+        for cta in optimizeplayer.ctas
+          if JSON.parse(cta.on_start)
+            optimizeplayer.showCta cta
+            optimizeplayer.forcePause()
+          # optimizeplayer.hideCta cta if JSON.parse(cta.on_finish)
+
+      onPause: ->
+        optimizeplayer.trackEvent "pause"  if optimizeplayer.state isnt "loaded"
+        return 0  if @getTime() is 0
+        for cta in optimizeplayer.ctas
+          optimizeplayer.showCta cta if JSON.parse(cta.on_pause)
+
+      onResume: ->
+        if optimizeplayer.state is "loaded" and optimizeplayer
+          optimizeplayer.trackEvent "start"
+          optimizeplayer.state = "started"
+        else
+          optimizeplayer.trackEvent "resume"
+        for cta in optimizeplayer.ctas
+          optimizeplayer.hideCta cta if JSON.parse(cta.on_pause) or JSON.parse(cta.on_start) or JSON.parse(cta.on_finish)
+
+      onBeforePause: ->
+        false unless JSON.parse(optimizeplayer.project.allow_pause)
+
+      onFinish: ->
+        optimizeplayer.trackEvent "finish"
+        @play 0  if JSON.parse(optimizeplayer.project.loop)
+        for cta in optimizeplayer.ctas
+          optimizeplayer.showCta cta if JSON.parse(cta.on_finish)
+
+      onMetaData: ->
+        if optimizeplayer.project.dimensions is "responsive"
+          window.addEventListener "resize", ->  optimizeplayer.stretchPlayer()
+          optimizeplayer.stretchPlayer()
+        $(window).trigger "metaDataLoaded" unless typeof jQuery is "undefined"
+        return false
+
+      onError: (errorCode, errorMessage) ->
+        # Stream not found
+        if errorCode == 200
+          console.log errorMessage
+          this.stop
+        return
+
+      plugins:
+        gatracker: optimizeplayer.getAnalytics()
+        controls: null
+        skin_controls: optimizeplayer.getControls(optimizeplayer.project)
+
+      logo: optimizeplayer.getLogo(optimizeplayer.project)
+      play: null
+      branding: null
+    ).ipad()
+
+  stretchPlayer: ->
+    playerNode = document.getElementById("video" + @project.cid)
+    playerContainer = document.getElementById("player-container#{@project.cid.substr(0,4)}")
+    originalWidth = @player.getClip().metaData.width
+    originalHeight = @player.getClip().metaData.height
+    aspectRatio = originalWidth / originalHeight
+    if playerContainer and playerNode
+      parentWidth = playerContainer.parentNode.style.width
+      width = (if (parentWidth) then parentWidth else window.innerWidth)
+      height = width / aspectRatio
+      playerNode.style.width = parseInt(width) + "px"
+      playerNode.style.height = parseInt(height) + "px"
+
+  playIfView: (windowEvent) ->
+    videoHasFocus = true
+    if windowEvent? and windowEvent.type isnt "scroll"
+      v = true
+      h = false
+      evtMap =
+        focus: v
+        focusin: v
+        pageshow: v
+        blur: h
+        focusout: h
+        pagehide: h
+
+      windowEvent = windowEvent or window.event
+      if windowEvent.type of evtMap
+        videoHasFocus = evtMap[windowEvent.type]
+      else
+        videoHasFocus = (if document[documentHidden] then false else true)
+
+    playerNode = document.getElementById("video" + optimizeplayer.project.cid)
+    playAtPlayerY = parseInt(playerNode.style.height) / 2
+    playAtOffset = playerNode.getBoundingClientRect().top + playAtPlayerY
+    bottomPlayOffset = 0
+
+    # Play when got into viewport
+    if videoHasFocus is true and playAtOffset < window.innerHeight and playAtOffset > bottomPlayOffset and optimizeplayer.player.getState() isnt 3 and not optimizeplayer.playedOnView
+      optimizeplayer.player.play()
+      optimizeplayer.playedOnView = true
+
+    # Pause when disappear from viewport
+    if (videoHasFocus is false or playAtOffset > window.innerHeight or playAtOffset < bottomPlayOffset) and optimizeplayer.player.getState() isnt 4 and optimizeplayer.playedOnView
+      optimizeplayer.player.pause()
+      optimizeplayer.playedOnView = false

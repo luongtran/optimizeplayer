@@ -1,0 +1,26 @@
+- small_project = {:email_share => project.email_share, :twitter_share => project.twitter_share, :facebook_share => project.facebook_share, :google_share => project.google_share}
+%div{:class => "share-buttons_#{project.short_cid}", :project => small_project.to_json}(share-buttons ng-hide="showShareButtons()" ng-show="#{show_social_buttons}")
+  / AddThis Button BEGIN
+  .addthis_toolbox.addthis_default_style
+  - if project.email_share == "true"
+    %a.addthis_button_email{"ng-show" => "project.email_share"}
+  - else
+    %a.addthis_button_email{"style" => "display:none", "ng-show" => "project.email_share"}
+
+  - if project.twitter_share == "true"
+    %a.addthis_button_tweet{"ng-show" => "project.twitter_share"}
+  - else
+    %a.addthis_button_tweet{"style" => "display:none", "ng-show" => "project.twitter_share"}
+
+  - if project.facebook_share == "true"
+    %a.addthis_button_facebook_like{"fb:like:layout" => "button_count", "ng-show" => "project.facebook_share"}
+  - else
+    %a.addthis_button_facebook_like{"fb:like:layout" => "button_count", "style" => "display:none", "ng-show" => "project.facebook_share"}
+
+  -if project.google_share == "true"
+    %a.addthis_button_google_plusone{"g:plusone:size" => "medium", "ng-show" => "project.google_share"}
+  - else
+    %a.addthis_button_google_plusone{"g:plusone:size" => "medium", "style" => "display:none", "ng-show" => "project.google_share"}
+  :javascript
+    var addthis_config = {"data_track_addressbar":false};
+  / AddThis Button END

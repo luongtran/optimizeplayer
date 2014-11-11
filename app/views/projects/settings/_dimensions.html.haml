@@ -1,0 +1,27 @@
+%a.collapse-button.collapsed(data-toggle="collapse" data-target="#target-1c") DIMENSIONS
+#target-1c.collapse
+  .form.collapse-box.add-padding
+    %div(radio name="dimension" ng-model="project.dimensions")
+      %input(type="radio" id="responsive" ng-checked="project.dimensions=='responsive'" value="responsive" name="dimension")
+      %label(for="responsive") Responsive
+      %div(ng-show="project.dimensions=='responsive'")
+        %input.dimension-width(name="max_width" type="text" ng-model="project.max_width")
+        %input.dimension-height(name="max_height" type="text" ng-model="project.max_height")
+
+      %input(type="radio" id="640x360" ng-checked="project.dimensions=='640x360'" value="640x360" name="dimension")
+      %label(for="640x360") 640 x 360
+
+      %input(type="radio" id="720x405" ng-checked="project.dimensions=='720x405'" value="720x405" name="dimension")
+      %label(for="720x405") 720 x 405
+
+      %input(type="radio" id="960x540" ng-checked="project.dimensions=='960x540'" value="960x540" name="dimension")
+      %label(for="960x540") 960 x 540
+
+      %input(type="radio" id="1280x720" ng-checked="project.dimensions=='1280x720'" value="1280x720" name="dimension")
+      %label(for="1280x720") 1280 x 720
+
+      %input(type="radio" id="custom-value" ng-checked="project.dimensions=='custom'" value="custom" name="dimension")
+      %label(for="custom-value") Custom
+      %div(ng-show="project.dimensions=='custom'")
+        %input.dimension-width(custom-dimension name="custom_width" type="text" ng-model="project.custom_width")
+        %input.dimension-height(custom-dimension name="custom_height" type="text" ng-model="project.custom_height")

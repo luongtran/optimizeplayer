@@ -1,0 +1,71 @@
+%div
+  %textarea.paragraph-redactor{:name => "paragraph", :placeholder => "enter text here...", :rows => "5" }(ng-model="data.text" redactor)
+  / %input{:name => "style_text_align", :type => "hidden", :value => "center"}
+  / .clearfix
+  /   .pull-left.font-family
+  /     %select{:name => "style_t_font_family"}(ng-dropkick ng-model="data.font")
+  /       %option{:value => "Arial"} Arial
+  /       %option{:value => "Arial Black"} Arial Black
+  /       %option{:value => "Adamina"} Adamina
+  /       %option{:value => "Alice"} Alice
+  /       %option{:value => "Arvo"} Arvo
+  /       %option{:value => "Asap"} Asap
+  /       %option{:value => "Bitter"} Bitter
+  /       %option{:value => "Cabin"} Cabin
+  /       %option{:value => "Calligraffitti"} Calligraffitti
+  /       %option{:value => "Crimson Text"} Crimson Text
+  /       %option{:value => "Lato"} Lato
+  /       %option{:value => "Droid Sans"} Droid Sans
+  /       %option{:value => "Montserrat"} Montserrat
+  /       %option{:value => "Nixie ONe"} Nixie ONe
+  /       %option{:value => "OPen Sans"} OPen Sans
+  /       %option{:value => "Oswald"} Oswald
+  /       %option{:value => "PT Sans"} PT Sans
+  /       %option{:value => "Source Sans Pro"} Source Sans Pro
+  /       %option{:value => "VollKorn"} VollKorn
+  /       %option{:value => "Titillum Web"} Titillum Web
+  /       %option{:value => "Unbuntu"} Unbuntu
+  /       %option{:value => "Lobster Two"} Lobster Two
+  /       %option{:value => "Nixie One"} Nixie One
+  /       %option{:value => "Old Standard TT"} Old Standard TT
+  /       %option{:value => "Abril Fatface"} Abril Fatface
+  /       %option{:value => "PT Serif"} PT Serif
+  /       %option{:value => "PT Mono"} PT Mono
+  /       %option{:value => "JUnctio"} JUnctio
+  /   .pull-left.font-weight
+  /     %select.dropkick{:name => "style_t_font_weight"}(ng-dropkick ng-model="data.fontStyle")
+  /       %option{:value => "lighter"} Lighter
+  /       %option{:value => "normal"} Normal
+  /       %option{:value => "bold"} Bold
+  /   .pull-left.font-size
+  /     %label.px-label px
+  /     %div.font-size-box
+  /       %input.font-size-edit{:name => "paragraph_font_size", :type => "text" }(ng-editdrop ng-model="data.fontSize")
+  /     / %select.dropkick{:name => "style_t_font_size"}(ng-dropkick ng-model="data.fontSize")
+  /     /   %option{:value => "12px"} 12px
+  /     /   %option{:value => "14px"} 14px
+  /     /   %option{:value => "16px"} 16px
+  /     /   %option{:value => "18px"} 18px
+  /     /   %option{:value => "22px"} 22px
+  .clearfix
+    .pull-left.input-color
+      %span.color-picker-label
+        %img(src="/assets/icon-color-1.png")
+        Text Color
+      %label.color-picker-label
+        %input.color-picker{:name => "style_color", :type => "text"}(colorpicker-widgets ng-model="data.textColor")
+          / %span.color-preview
+    .pull-right.input-color
+      %span.color-picker-label
+        %img(src="/assets/icon-color-2.png")
+        Background
+      %label.color-picker-label
+        %input.color-picker{:name => "style_background_color", :type => "text"}(colorpicker-widgets ng-model="data.backgroundColor")
+          / %span.color-preview
+  / .clearfix
+  /   %label Width
+  /   %select.dropkick{:name => "style_t_font_size"}(dropkick ng-model="data.dataSizex")
+  /     %option{:value => 12} Full length
+  /     %option{:value => 6} Half length
+
+  %dialog-buttons

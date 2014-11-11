@@ -1,0 +1,47 @@
+%section(csn-finder ng-cloak id="file-browser" ng-show="(csns | filter: {provider: sourceType}).length > 0")
+  .header.clearfix
+    .pull-left
+      %select(ng-dropkick ng-model="current_csn" ng-dropkick-watch="[csns, sourceType]" ng-options="c.title for c in csns | filter: {provider: sourceType}")
+    .pull-left.animate-x(ng-class="{'animate-x-show': current_folder != undefined, 'animate-x-hide': current_folder == undefined}")
+      .input-append.form-search
+        %form.clearfix(action="/" method="get")
+          %button(type="submit")
+            %i.picon-search
+          %input(name="search" placeholder="Search for a file in folder" ng-model="search" type="text")/
+  .main.clearfix
+    .menu.pull-left
+      .sub-header(ng-show="current_csn")
+        %h2 Browsing {{current_csn.title}} Files
+        %h5 Showing {{current_csn.buckets.length}} folders
+      .sub-body
+        .folders-content
+          %h3.loader(ng-show="current_csn && current_csn.buckets == undefined")
+            = image_tag "file-loading.gif"
+          %ul.main-csn(ng-repeat="bucket in current_csn.buckets" ng-class="{highlight: isHighlighted(bucket)}")
+            %li
+              %a.folder.main-folder(ng-click="setCurrentFolder(bucket, true)" ng-class="{selected: isHighlighted(bucket)}")
+                %i.picon-folder
+                %span {{bucket.name}}
+              %ul(ng-tree="bucket.subdirs")
+                %li(each="item in subdirs" ng-show="item.files.length > 0 || item.subdirs.length > 0")
+                  %a.folder(ng-click="setCurrentFolder(item)" ng-class="{selected: isHighlighted(item)}")
+                    %i.picon-folder
+                    %span {{item.name}}
+    .files.pull-left.animate-x(ng-class="{'animate-x-show': current_folder != undefined, 'animate-x-hide': current_folder == undefined}")
+      .sub-header
+        %h2 {{current_folder.name}}
+        %h5 Showing {{current_folder.files.length}} files
+      .sub-body
+        .folders-content
+          %h3.loader(ng-show="current_folder && current_folder.isBucket && !current_folder.loaded")
+            = image_tag "file-loading.gif"
+          %ul(ng-repeat="file in current_folder.files | filter: search")
+            %li
+              %a(ng-class="{selected: file.url == asset.remote_url}" ng-click="setConnectedFile(file)")
+                {{file.name}}
+  .footer.clearfix(ng-show="asset.remote_url")
+    .right
+      %a.radius.button.green.submit-file(ng-click="selectFile()" ng-show="!inProgress") Select Video
+      %a.radius.button.green.submit-file(ng-show="inProgress") Copying to right bucket...
+%section(ng-cloak ng-show="(csns | filter: {provider: sourceType}).length == 0")
+  %h3 Please setup at least one CSN integration at Profile > Integrations

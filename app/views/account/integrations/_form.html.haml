@@ -1,0 +1,26 @@
+%form.integration-form(ng-submit="saveIntegration()")
+  .row
+    %label Title
+    %input(ng-model="integration.title" placeholder="Title" type="text" required)
+  .row
+    %label Provider
+    %select(ng-model="integration.provider" required)
+      %option(ng-repeat="p in providers" value="{{p.provider}}") {{p.label}}
+
+  .api-credentials(ng-switch="integration.provider")
+    .mailchimp(ng-switch-when="mailchimp")
+      = render 'account/integrations/providers/mailchimp_form'
+    .aweber(ng-switch-when="aweber")
+      = render 'account/integrations/providers/aweber_form'
+    .getresponse(ng-switch-when="getresponse")
+      = render 'account/integrations/providers/getresponse_form'
+    .stripe(ng-switch-when="stripe")
+      = render 'account/integrations/providers/stripe_form'
+    .paypal(ng-switch-when="paypal")
+      = render 'account/integrations/providers/paypal_form'
+    .amazons3(ng-switch-when="amazons3")
+      = render 'account/integrations/providers/amazons3_form'
+    .amazons3(ng-switch-when="rackspace")
+      = render 'account/integrations/providers/rackspace_form'
+  .row
+    %button.button.blue-submit.flat.button-block.radius(type="submit" ng-disabled="loading") {{integration.id ? 'Update' : 'Save'}}

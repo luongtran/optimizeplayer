@@ -1,0 +1,10 @@
+[ng\:cloak], [ng-cloak], .ng-cloak {
+  display: none !important;
+}
+
+.page-loader {
+  display: none;
+}
+.page-loader[ng\:cloak], .page-loader[ng-cloak], .page-loader.ng-cloak {
+  display: block !important;
+}

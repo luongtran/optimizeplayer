@@ -1,0 +1,53 @@
+@import "compass/css3";
+
+.btn {
+  padding: 6px 21px;
+  font-size: 14px;
+  font-family:"AvenirNext-Demi";
+  font-weight: normal;
+}
+
+.btn-default {
+  border: 1px solid #d4e6e8;
+  color: #6996a9;
+}
+
+.btn-primary {
+  background: #1ca8dd;
+  border: 1px solid #148fbd;
+}
+
+.btn-info {
+  background: #f4f9fa;
+  border: 1px solid #d4e6e8;
+  color: #6996a9;
+}
+
+.btn-success {
+  background: #18d67f;
+  border: 1px solid #0ea25e;
+  color: #fff;
+}
+
+.btn-default:hover, .btn-default:focus, .btn-default:active, .btn-default.active, .open .dropdown-toggle.btn-default {
+	background: #FAFCFD;
+	border: 1px solid #d4e6e8;
+	color: #6996a9;
+}
+
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .open .dropdown-toggle.btn-primary {
+  background: #148fbd;
+  border: 1px solid #148fbd;
+}
+
+.btn-info:hover, .btn-info:focus, .btn-info:active, .btn-info.active, .open .dropdown-toggle.btn-info {
+  background: #e8f2f3;
+  border: 1px solid #d4e6e8;
+  color: #6996a9;
+}
+
+.btn-success:hover, .btn-success:focus, .btn-success:active, .btn-success.active, .open .dropdown-toggle.btn-success {
+  background: #0ea25e;
+  border: 1px solid #0ea25e;
+  color: #fff;
+}

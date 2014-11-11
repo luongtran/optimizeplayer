@@ -1,0 +1,21 @@
+%a.collapse-button.collapsed(data-toggle="collapse" data-target="#target-20c") TAG OPTIONS
+#target-20c.collapse
+  .form.collapse-box.add-padding
+    %input(ng-model="cta_store.currentCta.title" placeholder="Title" type="text")/
+
+    %input(ng-model="cta_store.currentCta.sub_title" placeholder="Sub Title" type="text")/
+
+    %input(ng-model="cta_store.currentCta.image" placeholder="Image url" type="text")/
+
+    %input(ng-model="cta_store.currentCta.link" placeholder="Link" type="text")/
+
+    %input(ng-model="cta_store.currentCta.button_text" placeholder="Button text" type="text")/
+
+    %input(ng-model="cta_store.currentCta.description" placeholder="Description" type="text")/
+
+    %input(ng-model="cta_store.currentCta.sub_description" placeholder="Sub Description" type="text")/
+
+%a.collapse-button.collapsed(data-toggle="collapse" data-target="#target-21c") SHOW OPTIONS
+#target-21c.collapse
+  .form.collapse-box.add-padding
+    %time-options(type="Tag")

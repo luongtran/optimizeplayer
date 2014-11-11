@@ -1,0 +1,79 @@
+@import "compass/css3";
+
+.skin-3 {
+  .flowplayer {
+    .fp-controls {
+      background-image: none;
+      background-color: #dedede;
+    }
+
+    .fp-time {
+      color: #464646;
+      font-size: 11px;
+      text-shadow: none;
+    }
+
+    .fp-duration {
+      color: #464646;
+    }
+
+    .fp-timeline {
+      border-color: 1px solid #646464;
+      background-color: #646464;
+    }
+
+    .fp-buffer {
+      background-color: #acacac;
+    }
+
+    .fp-progress {
+      background-image: none;
+      background-color: #d1d1d1;
+    }
+
+    .fp-volume {
+      right: 50px;
+    }
+
+    .fp-mute {
+      height: 14px;
+      margin-right: 8px;
+      background: url(../video-skins/skin-3/bt-volume.png) no-repeat center center transparent;
+    }
+
+    .fp-volumeslider {
+      width: 41px;
+      background: #adadad;
+      border-color: #727272;
+    }
+
+    .fp-volumelevel {
+      position: relative;
+      background: #dddddd;
+
+      &:after {
+        content: "";
+        position: absolute;
+        display: block;
+        right: -8px;
+        top: -5px;
+        width: 15px;
+        height: 16px;
+        background: url(../video-skins/skin-3/bt-volume-icon.png) no-repeat center center transparent;
+      }
+    }
+
+    .fp-settings {
+      right: 15px;
+      width: 17px;
+      height: 18px;
+      background: url(../video-skins/skin-3/bt-fp-settings.png) no-repeat center center transparent;
+    }
+    
+    &.is-muted .fp-mute {
+      opacity: 1;
+      filter: alpha(opacity = 100);
+      background-image: url(../video-skins/skin-3/bt-volume-mute.png);
+    }
+  }
+}

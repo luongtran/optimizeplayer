@@ -1,0 +1,19 @@
+%div
+  .uploader-wrapper(ng-controller="ImageUploadCtrl")
+    %csn-widget-direct-upload(on-add="onFileAdd" on-progress-change="onProgressChange" on-done="onDone" csn="opts.csnForUpload")
+
+    .after-upload.clearfix
+      .progressbar(ng-show="data.original_filename && ( (statusNotice.length > 0) || data.needs_encoding || (data.file_origin != 'connect') )")
+        .progress.large-6.round(ng-class="{success: statusNotice == 'Uploading'}")
+          %span.meter(ng-style="{ width: percentage }")
+        %span.percent {{ percentage }}
+
+    .preview-image.clearfix
+      %img{"ng-src" => "{{data.image_url}}"}
+
+    / %label Select File from PS directory:
+    / .fileWrapper{style: "width: 308px;"}
+    /   %input.fileInputText{readonly: "readonly", style: "height: 30px; width: 219px; line-height: 30px;", type: "text"}/
+    /   %input.fileInputButton{style: "height:30px ; width:75px", type: "button", value: "Browse"}/
+  .clearfix.actions
+    %dialog-buttons

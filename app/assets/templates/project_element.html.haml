@@ -1,0 +1,86 @@
+%ul.dsp-table(data-id="{{project.id}}" ng-class="{'static':project.favorite, 'active-green':selected}")
+  %span.project-id(style="display: none") {{ project.id }}
+  %li.dsp-cell.handle(ng-class="{'draggable': !project.favorite}")
+    = image_tag("icons/icon-handle.png", width: "8")
+  %li.dsp-cell.select
+    .state-1
+      %input(type="checkbox" id="{{project.id}}" name="{{project.id}}" ng-click="toggleIdInIds()")
+      %label(for="{{project.id}}")
+  %li.dsp-cell.name
+    %span
+      %form.name{style:"float:left;"}(ng-submit="updateProjectName(project)" ng-show="nameEditing")
+        %input(ng-model="newTitle" type="text" ng-blur="updateProjectName(project)" required focus-me="nameEditing")
+      %h5
+        %span#project-title(ng-click="clickOnProject()" ng-dblclick="dblclickOnProject()" ng-hide="nameEditing" limit-text="170" refresh-switch="sync.tab") {{project.title}}
+        %project-favorite(project="project" on-update="onFavoriteUpd")
+    .state-1
+      %h6 Edited on {{ project.date }}
+    .state-2
+      %h6 Encoding the video, please wait.
+  %li.dsp-cell.embed.state-1
+    %a(href="#" data-toggle="modal" data-target="#modal-embed" ng-click="clickOnEmbed()")
+      = image_tag("icons/icon-embed.png", width: "18")
+  %li.dsp-cell.analytics.state-1
+    %a(href="/projects/{{project.cid}}/analytics")
+      = image_tag("icons/icon-analytics.png", width: "10")
+  %li.dsp-cell.page.state-1
+    %a(ng-href="videopage/{{project.cid}}")
+      = image_tag("icons/icon-page.png", width: "17")
+  %project-tags(project="project" sync="sync")
+  %li.dsp-cell.edit.state-1
+    %a(href="/projects/{{project.cid}}/edit")
+      = image_tag("icons/icon-edit.png", width: "14")
+  %li.dsp-cell.delete.state-1
+    %a(href="/projects/{{project.cid}}" data-method="delete" data-confirm="Are you sure?" rel="nofollow")
+      = image_tag("icons/icon-delete.png", width: "11")
+  #modal-embed.modal.fade(tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true")
+    .modal-dialog
+      .modal-content
+        %button.btn.btn-default.modal-dismiss(type="button" data-dismiss="modal") Close
+        %ul.nav.nav-tabs
+          %li.classic.active
+            %a(href="#classic" data-toggle="tab") Classic
+          %li
+            %a(href="#popout" data-toggle="tab") Popout
+        .tab-content
+          #classic.tab-pane.active
+            .copy-code
+              %h5 PLAY VIDEO IN WEBPAGE
+              %textarea.form-control#classic-embed-link(rows="4")
+              .pull-right
+                %button.btn.btn-primary.clip_button{"data-clipboard-target" => "classic-embed-link"} Copy
+          #popout.tab-pane
+            .copy-code
+              %h5 PLAY VIDEO IN POPOUT
+              .input-group
+                %input.form-control(type="text" value="'no' src='https://pixelserv.stage.optimizeplayer.com/projects/371ad575be934a6450cf27a99")
+                %span.input-group-btn
+                  %button.btn.btn-primary(type="button") Copy
+            %ul.list-inline
+              %li.launch-with
+                %p Launch with
+                %input(type="radio" id="launch1" name="launch" checked value="thumbnail" )
+                %label(for="launch1") Thumbnail
+                %input(type="radio" id="launch2" name="launch" value="text")
+                %label(for="launch2") Text Link
+              %li.state-1
+                %p Video Size
+                %input.size(type="text" placeholder="640")
+                %span X
+                %input.size(type="text" placeholder="320")
+              %li.state-1
+                %p Thumbnail Size
+                %input.size(type="text" placeholder="150")
+                %span X
+                %input.size(type="text" placeholder="84")
+              %li.text-link.state-2
+                %p Link Text
+                %input(type="text" value="Hey, click on this and watch our new episode for free")
+            %ul.list-inline.state-1
+              %li
+                %p Preview
+                = image_tag("preview.png", width: "150")
+            %ul.list-inline.state-2.preview-text
+              %li
+                %p Preview
+                %a(href="#") Hey, click on this and watch our new episode for free

@@ -1,0 +1,53 @@
+@font-face {
+	font-family:"AvenirNext-UltLt";
+	src: url('fontface/2AF116_0_0.eot');
+    src: url('fontface/2AF116_0_0.eot?#iefix') format('embedded-opentype'),
+         url('fontface/2AF116_0_0.woff') format('woff'),
+         url('fontface/2AF116_0_0.ttf') format('truetype'),
+         url("fontface/2AF116_0_0.svg#AvenirNextLTPro-UltLt") format("svg");
+	font-weight: normal;
+    font-style: normal;
+}
+		
+@font-face {
+	font-family:"AvenirNext-Reg";
+	src: url('fontface/2AF116_1_0.eot');
+    src: url('fontface/2AF116_1_0.eot?#iefix') format('embedded-opentype'),
+         url('fontface/2AF116_1_0.woff') format('woff'),
+         url('fontface/2AF116_1_0.ttf') format('truetype'),
+         url("fontface/2AF116_1_0.svg#AvenirNextLTPro-Regular") format("svg");
+	font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+	font-family:"AvenirNext-Demi";
+	src: url('fontface/2AF116_2_0.eot');
+    src: url('fontface/2AF116_2_0.eot?#iefix') format('embedded-opentype'),
+         url('fontface/2AF116_2_0.woff') format('woff'),
+         url('fontface/2AF116_2_0.ttf') format('truetype'),
+         url("fontface/2AF116_2_0.svg#AvenirNextLTPro-Demi") format("svg");
+	font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+	font-family:"AvenirNext-Med";
+	src: url('fontface/2AF116_3_0.eot');
+    src: url('fontface/2AF116_3_0.eot?#iefix') format('embedded-opentype'),
+         url('fontface/2AF116_3_0.woff') format('woff'),
+         url('fontface/2AF116_3_0.ttf') format('truetype'),
+         url("fontface/2AF116_3_0.svg#AvenirNextLTPro-Medium") format("svg");
+	font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family:"AvenirNext-Bold";
+    src: url('fontface/2AF8AF_0_0.eot');
+    src: url('fontface/2AF8AF_0_0.eot?#iefix') format('embedded-opentype'),
+         url('fontface/2AF8AF_0_0.woff') format('woff'),
+         url('fontface/2AF8AF_0_0.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}

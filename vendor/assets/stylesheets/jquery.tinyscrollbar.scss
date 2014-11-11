@@ -1,0 +1,163 @@
+@import "compass/css3";
+
+.horizontal-scrollbar { 
+  .viewport {
+    height: 125px;
+    overflow: hidden;
+    position: relative;
+  }
+  
+  .overview {
+    list-style: none;
+    width: 2460px;
+    padding: 0;
+    margin: 0;
+    position: absolute;
+    left: 0;
+    top: 0;
+    
+    img {
+      float: left;
+    }
+  }
+  
+  .scrollbar {
+    @include box-shadow(#FFFFFF 0px 1px 3px);
+    @include border-radius(10px);
+    height: 15px;
+    position: relative;
+    margin: 0 0 5px;
+    clear: both;
+  }
+  
+  .track {
+    @include background(linear-gradient(top, #CECECE, #DEDEDE));
+    @include box-shadow(inset #A4A4A4 0px 1px 5px);
+    @include border-radius(10px);
+    
+    width: 100%;
+    height: 15px;
+    position: relative;
+  }
+  
+  .thumb {
+    width: 82px;
+    height: 18px;
+    border: 1px solid #949494;
+    
+    @include border-radius(10px);
+    @include box-shadow(#5a5a5a 0px 2px 6px);
+    
+    background: url('scrollbar-thumb.png') no-repeat #B7B7B7;
+    cursor: pointer;
+    overflow: hidden;
+    position: absolute;
+    left: 0;
+    top: -2px;
+    
+    .end {
+      //background: transparent url(../images/bg-scrollbar-thumb-x.png) no-repeat 0 50%;
+      overflow: hidden;
+      height: 25px;
+      width: 5px;
+    }
+  }
+  
+  .disable {
+    display: none;
+  }
+}
+
+.vertical-scrollbar {
+  .viewport {
+    width: 250px; 
+    height: 457px; 
+    overflow-y: hidden; 
+    overflow-x: auto;
+    position: relative;
+    border-right: 1px solid #cbd4dd;
+  }
+
+  .overview {
+    width: auto;
+    min-width: 100%;
+    list-style: none; 
+    position: absolute; 
+    left: 0; 
+    top: 0;
+  }
+
+  .thumb {
+    background-color: #003D5D;
+
+    .end {
+      background-color: #003D5D;
+    }
+  }
+
+  .scrollbar {
+    position: relative; 
+    float: right; 
+    padding: 0 9px;
+    border-right: 1px solid #cbd4dd;
+    background: #f9f9f9;
+  }
+
+  .track {
+    @include background(#ccc linear-gradient(left, #ccc, #e5e5e5));
+    @include border-radius(5px);
+    @include box-shadow(inset 0px 3px 2px #ccc);
+    height: 100%; 
+    width: 10px; 
+    position: relative; 
+    border: 1px solid #b3b3b3;
+  }
+
+  .thumb {
+    @include background(#e7e7e7 linear-gradient(top, #e7e7e7, #b8b8b8));
+    @include border-radius(7px);
+    @include box-shadow(inset 0px 0px 2px #fff);
+    background-image: url('scrollbar-thumb-vertical.png');
+    background-position: center center;
+    background-repeat: no-repeat;
+    border: 1px solid #949494;
+    height: 20px; 
+    width: 14px; 
+    cursor: pointer; 
+    overflow: hidden; 
+    position: absolute; 
+    top: 0;
+    left: -3px;
+  }
+
+  .thumb .end {
+    overflow: hidden; 
+    height: 0px; 
+    width: 13px;
+  }
+
+  .disable {
+    display: none;
+  }
+}
+
+.scrollbar-menu {
+  .viewport {
+    width: 180px;
+    height: 425px;
+    border-right: none;
+  }
+
+  .scrollbar {
+    background: none;
+    border: none;
+  }
+}
+
+.noSelect {
+  user-select: none;
+  -o-user-select: none;
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+}

@@ -1,0 +1,39 @@
+# ================================================================================
+#   activeadmin_settings.yml
+#   ---configuration file v1.0---
+# ================================================================================
+#
+# This file is used to store a list of activeadmin settings. Settings are split
+# into groups like this:
+# 
+# Here is a setting template:
+#   General Group:
+#     Setting Title:
+#       type:            string (default) / text / file / link
+#       description:     setting one sentence description
+#       default_value:   default value is used when setting value is blank
+#
+# Type details: 
+#   Link setting value expected to be in a format of: (link title) http://link.url
+#
+# ================================================================================
+Site:
+  Site Admin Email:
+    description: Site Administrator Email
+    default_value: contact@optimizeplayer.com
+Integration:
+  Stripe Publishable Key:
+    description: Stripe publishable key
+    default_value: pk_test_1iXqstGEnXWg7b1N8mMXwq1M
+  Stripe Secret Key:
+    description: Stripe secret key
+    default_value: sk_test_YiKztCOZH3PF2RiFlBVhK34y
+  Aweber Consumer Key:
+    description: Aweber application consumer key from http://labs.aweber.com
+    default_value: AkVhUnNzqyrTG4F6SW3E2Tcp
+  Aweber Consumer Secret:
+    description: Aweber application consumer secret from http://labs.aweber.com
+    default_value: EywLT5BbwcIXWHjVWm63fUnjIwoZz6AZVYoOd8RQ
+  Postmark API Key:
+    description: Postmark API key
+    default_value: edeac359-cdb1-4ba4-95dd-9dc2fa5ce64b

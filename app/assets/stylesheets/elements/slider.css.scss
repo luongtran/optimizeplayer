@@ -1,0 +1,81 @@
+.jscroller
+{
+  position: static;
+  z-index: 998;
+}
+.slider
+{
+  position: absolute;
+  z-index: 1000;
+}
+.inner
+{
+  width: 1px;
+  height: 100%;
+  z-index: 999;
+}
+.lgripper
+{
+  position: relative;
+  z-index: 1001;
+  top: 0px;
+  border: none;
+  outline: none;
+  margin-left: -4px;
+}
+.ticks
+{
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  float: left;
+  position: absolute;
+  z-index: 997;
+}
+.ticks li
+{
+  display: inline;
+  float: left;
+  font-size: xx-small;
+}
+.slider.style1
+{
+  background-color: #D7D7D7;
+}
+.inner.style1
+{
+  background-color: #DFECF4;
+}
+.lgripper.style1
+{
+  background: url(tracker.png) 0px 0px no-repeat;
+}
+
+.slider.style2
+{
+  background-color: #D7D7D7;
+}
+.inner.style2
+{
+  background-color: #DFECF4; 
+}
+.lgripper.style2
+{
+  background: url(tracker_black.png) 0px 0px no-repeat;
+}
+
+.slider.style3
+{
+  background-color: #e2e5e7;
+  background-color: rgba(226, 229, 231, 0.8);
+  padding: 1px;
+}
+
+.inner.style3
+{
+  background: #4d89d4;
+}
+.lgripper.style3
+{
+  background: image-url('controls.png') left -51px no-repeat;
+}

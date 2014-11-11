@@ -1,0 +1,5 @@
+%li.dsp-cell{class: "#{n.notification_type.downcase}"}
+  =image_tag "/assets/icons/icon-#{get_icon(n.notification_type)}.png", class: "notification_icon"
+  %h5= n.title
+  %p= n.description
+  %p= n.url

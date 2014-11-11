@@ -1,0 +1,231 @@
+#modal-analytics-cta.modal.fade(tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true")
+	.modal-dialog
+		.modal-content
+			.modal-header
+				%h5 CTA Analytics
+				%button.btn.btn-default.modal-dismiss(type="button" data-dismiss="modal") Close
+			.modal-body
+				%h4 Survey: How much would you be willing to pay for online yoga class?
+				%ul.dsp-table.survey
+					%li.dsp-cell
+						.answer
+							%h1 79
+							%span From $20 - $40
+					%li.dsp-cell
+						.answer
+							%h1 24
+							%span $40 - $100 with a 50% discount
+					%li.dsp-cell
+						.answer
+							%h1 6
+							%span Other
+				%h4 Payment:
+				%ul.dsp-table.payment
+					%li.dsp-cell
+						.answer
+							%h1 $249
+							%span Revenue thru Paypal
+					%li.dsp-cell
+						.answer
+							%h1 $4,502
+							%span Revenue thru Stripe
+				%h4 Social:
+				%ul.dsp-table.social
+					%li.dsp-cell
+						.answer
+							%h1 $61
+							%span Twitter Shares
+					%li.dsp-cell
+						.answer
+							%h1 4
+							%span Facebook Shares
+							
+%section(role="analytics")
+	.header.clearfix
+		.pull-left
+			%span Analytics for SMS Marketing Video
+			%a.btn.btn-info(href="#" data-toggle="modal" data-target="#modal-analytics-cta") View CTA Analytics
+			%a.btn.btn-info(href="#") Export
+		.pull-right
+			%span Filter Analytics from
+			%input(type="text" value="2/3/2014")
+			%span to
+			%input(type="text" value="2/6/2014")
+	.wrap.no-sidebar
+		#chart
+		.metrics
+			%ul.dsp-table
+				%li.dsp-cell#total-loads
+					.metric
+						%h1 25.6K
+						%span Page Loads
+						%h4 242.2k All together
+				%li.dsp-cell#unique-views
+					.metric
+						%h1 25.6K
+						%span Unique Viewers
+						%h4 242.2k All together
+				%li.dsp-cell#total-plays
+					.metric
+						%h1 25.6K
+						%span Plays
+						%h4 242.2k All together
+				%li.dsp-cell#play-rate
+					.metric
+						%h1 84.8%
+						%span Play Rate
+						%h4 53.6% All together
+			%ul.dsp-table
+				%li.dsp-cell#mobile-plays
+					.metric
+						%h1 25.6K
+						%span Mobile Plays
+						%h4 242.2k All together
+				%li.dsp-cell#desktop-plays
+					.metric
+						%h1 25.6K
+						%span Desktop Plays
+						%h4 242.2k All together
+				%li.dsp-cell#completions-count
+					.metric
+						%h1 25.6K
+						%span Completions
+						%h4 242.2k All together
+				%li.dsp-cell#hours-watched
+					.metric
+						%h1 412h
+						%span Hours Watched
+						%h4 145 days All together
+		.heatmap
+			%ul.dsp-table
+				%li.dsp-cell
+					%span.date April 22, 2014
+			%ul.dsp-table
+				%li.dsp-cell
+					.hour 8:15 AM
+					.user
+						Johnny 
+						%span.counter 6 
+						from San Francisco, CA
+					.ip 192.168.1.1
+				%li.dsp-cell
+					.graph
+						.range(style="width:0px; left: 80px;")
+							%span.mark.begin
+								.popup Subscribed to Newsletter CTA
+							%span.mark.end
+					from: https://projects.invisionapp.com/d/main#/console/939182/23417070/comments/12414289
+			%ul.dsp-table
+				%li.dsp-cell
+					.hour 8:15 AM
+					.user
+						Johnny 
+						%span.counter 6 
+						from San Francisco, CA
+					.ip 192.168.1.1
+				%li.dsp-cell
+					.graph
+						.range(style="width:200px; left: 180px;")
+							%span.mark.begin
+								.popup Subscribed to Newsletter CTA
+							%span.mark.end
+					from: https://projects.invisionapp.com/d/main#/console/939182/23417070/comments/12414289
+			%ul.dsp-table
+				%li.dsp-cell
+					%span.date April 22, 2014
+			%ul.dsp-table
+				%li.dsp-cell
+					.hour 8:15 AM
+					.user
+						Johnny 
+						%span.counter 6 
+						from San Francisco, CA
+					.ip 192.168.1.1
+				%li.dsp-cell
+					.graph
+						.range(style="width:0px; left: 80px;")
+							%span.mark.begin
+								.popup Subscribed to Newsletter CTA
+							%span.mark.end
+					from: https://projects.invisionapp.com/d/main#/console/939182/23417070/comments/12414289
+			%ul.dsp-table
+				%li.dsp-cell
+					.hour 8:15 AM
+					.user
+						Johnny 
+						%span.counter 6 
+						from San Francisco, CA
+					.ip 192.168.1.1
+				%li.dsp-cell
+					.graph
+						.range(style="width:200px; left: 180px;")
+							%span.mark.begin
+								.popup Subscribed to Newsletter CTA
+							%span.mark.end
+					from: https://projects.invisionapp.com/d/main#/console/939182/23417070/comments/12414289
+
+<!--Google Chart: Load the AJAX API-->
+%script{:type => "text/javascript", :src	=> "https://www.google.com/jsapi"}
+:javascript
+	google.load("visualization", "1", {packages:["corechart"]});
+	google.setOnLoadCallback(drawChart);
+	function drawChart() {
+		var data = google.visualization.arrayToDataTable([
+			['Month',			'Page Loads',	'Unique Viewers',		'Plays'],
+			['8 April',		14000,					0,								10000],
+			['15 April',	10000,					5000,							12000],
+			['22 April',	12000,					6000,							22000],
+			['29 April',	21000,					14000,						20000],
+			['8 May',			19000,					17000,						21000],
+			['15 May',		20000,					15000,						25000],
+			['22 May',		15000,					7000,							15000],
+			['29 May',		5000,						6000,							5000],
+			['8 June',		0,							5000,							0],
+			['15 June',		0,							0,								0],
+			['22 June',		5000,						0,								5000],
+			['29 June',		6000,						5000,							6000],
+			['8 July',		0,							5000,							0],
+			['15 July',		0,							0,								0],
+			['22 July',		5000,						0,								5000],
+			['29 July',		6000,						5000,							6000]
+		]);
+		
+		//Format Thousands to K
+		var formattedData = data.clone();
+		for (var i = 0; i < formattedData.getNumberOfRows(); i++) {
+			for (var j = 1; j < formattedData.getNumberOfColumns(); j++) {
+				var dataPoint = formattedData.getValue(i, j);
+				formattedData.setValue(i, j, dataPoint / 1000);
+				formattedData.setFormattedValue(i, j, dataPoint.toString());
+			}
+		}
+
+		var options = {
+			title: '',
+			chartArea: {width: '100%'},
+			backgroundColor: 'transparent',
+			lineWidth: 1,
+			colors: ['#8050e4', '#19d680', '#db5959'],
+			legend: {position: 'none'},
+			pointSize: 12,
+			hAxis: {
+				textStyle: {
+					color: '#6996a9',
+				},
+			},
+			vAxis: {
+				format: '#,###k',
+				textStyle: {
+					color: '#6996a9'
+				},
+				textPosition: 'in',
+				baselineColor: '#ddebed',
+				gridlines: {
+					color: 'transparent',
+				}
+			}
+		};
+
+		var chart = new google.visualization.LineChart(document.getElementById('chart'));
+		chart.draw(formattedData, options);
+	}

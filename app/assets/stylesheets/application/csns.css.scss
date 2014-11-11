@@ -1,0 +1,101 @@
+@import "compass/css3";
+section[role=csns] {
+	#message {
+		h1 {
+			margin-bottom: 40px;
+			font-size: 35px;
+			font-weight: normal;
+			color: #3b3b3b;
+		}
+
+		h2 {
+			margin: 50px 0 15px 0;
+			font-size: 35px;
+			color: #3b3b3b;
+		}
+
+		h3 {
+			margin: 0 0 25px 0;
+			color: #3b3b3b;
+			font-size: 22px;
+			font-weight: normal;
+		}
+
+		.button {
+			width: 135px;
+			height: auto;
+			padding: 15px 0;
+		}
+
+		.water-mark {
+			margin: 0 25px;
+		}
+
+		.box {
+			width: 50%;
+			margin-top: 35px;
+			box-shadow: none;
+			border: none;
+			border-radius: 0;
+			background: none;
+
+			.header {
+				height: auto;
+				padding: 40px 90px;
+				border: none;
+				color: #518bd4;
+				font-size: 20px;
+				background: #f7f7f7;
+				box-shadow: none;
+			}
+
+			.body {
+				position: relative;
+				padding: 35px 60px;
+				background: #fff;
+
+				p {
+					height: 130px;
+					font-size: 17px;
+				}
+
+				.arrow {
+					position: absolute;
+					top: 90px;
+				}
+			}
+
+			&:first-child {
+				.header {
+					@include border-top-left-radius(5px);
+				}
+
+				.body {
+					@include border-bottom-left-radius(5px);
+
+					.arrow {
+						left: 55px;
+					}
+				}
+			}
+
+			&:last-child {
+				border-left: 1px solid #dcdcdc;
+
+				.header {
+					@include border-top-right-radius(5px);
+					@include box-shadow(inset 28px 0px 48px -18px rgba(0, 0, 0, 0.1));
+				}
+
+				.body {
+					@include border-bottom-right-radius(5px);
+					@include box-shadow(inset 28px 0px 48px -18px rgba(0, 0, 0, 0.1));
+
+					.arrow {
+						right: 55px;
+					}
+				}
+			}
+		}
+	}
+}

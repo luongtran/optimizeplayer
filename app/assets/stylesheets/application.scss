@@ -1,0 +1,366 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+ += require_tree ./application
+ *= require bootstrap.min
+ *= require bootstrap-select.min
+ *= require bootstrap-slider
+ *= require fontface
+ *= require jquery.tinyscrollbar
+ *= require jquery.prettycheckable
+ *= require jquery.fileinput
+ *= require jquery-ui
+ *= require ./application/dropkick
+ *= require font-awesome.min
+ *= require ./application/video_page
+ *= require ./application/video_preview
+ += require_tree ./elements
+ += require_tree ./modules
+ *= require_self
+ *= require redactor-rails
+ *= require embed
+ */
+
+@import "compass/css3";
+
+/* General */
+html, body {
+  width: 100%;
+  min-height: 100%;
+  margin: 0px;
+  padding: 0px;
+  overflow-x: hidden;
+}
+
+body {
+  font-size: 14px;
+  font-family:"AvenirNext-Reg";
+  color: #6996a9;
+  background: #f4f9fa;
+}
+
+a {
+  color: inherit;
+}
+
+header {
+  height: 60px;
+  padding: 12px 0;
+  background: #fff;
+  border-bottom: 1px solid #d7e8ea;
+
+  &.notifications-on {
+    position: relative;
+    z-index: 2000;
+  }
+
+  nav {
+    margin: 0 20px;
+
+    ul {
+      > li.logo {
+        position: relative;
+        width: 180px;
+
+        a {
+          display: inline-block;
+          margin-right: 40px;
+        }
+
+        .notifications {
+          position: absolute;
+          top: 8px;
+          right: 7px;
+          line-height: 7px;
+          margin: 0;
+          padding: 5px;
+          font-family: "AvenirNext-Bold";
+          font-size: 11px;
+          color: #fff;
+          background: #ff5f7d;
+          border: 1px solid #dd1c40;
+          border-radius: 10px;
+
+          &:hover {
+            text-decoration: none;
+          }
+        }
+      }
+
+      > li.search form {
+        position: relative;
+        width: 100%;
+        margin: 0;
+        padding: 0 10px 0 0;
+
+        .form-group {
+          width: 100%;
+        }
+
+        button {
+          position: absolute;
+          padding: 9px 10px;
+          line-height: 13px;
+
+          img {
+            vertical-align: top;
+          }
+        }
+
+        input {
+          width: 100% !important;
+          padding-left: 35px;
+          font-family:"AvenirNext-Med";
+          color: inherit;
+        }
+      }
+
+      > li.main-menu {
+        width: 475px;
+
+        .nav {
+          float: right;
+
+          a {
+            padding: 6px 15px;
+          }
+
+          a.btn {
+            padding: 6px 21px;
+          }
+        }
+      }
+    }
+  }
+}
+
+.wrap {
+  width: 100%;
+  padding-left: 230px;
+  padding-right: 20px;
+  -webkit-transition: all 0.5s ease-in-out;
+  -moz-transition: all 0.5s ease-in-out;
+  -o-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
+}
+
+.wrap.no-sidebar,
+.wrap.open {
+  padding: 0;
+}
+
+div[role=sidebar] {
+  position: absolute;
+  top: 60px;
+  left: 0;
+  bottom: 0;
+  width: 214px;
+  border-right: 1px solid #d4e6e8;
+  overflow-y: auto;
+
+  .btn-group {
+    position: relative;
+    margin: 12px 0;
+    border-bottom: 1px solid #d4e6e8;
+
+    button.btn:first-child {
+      position: relative;
+      padding-left: 32px;
+      border-right: none;
+      z-index: 1001;
+    }
+
+    button.btn.dropdown-toggle {
+      position: relative;
+      padding: 6px 11px;
+      border-left: none;
+      z-index: 1001;
+    }
+
+    .dropdown-menu {
+        width: 100%;
+        margin-top: -3px;
+        border-top-right-radius: 0;
+        border-top-left-radius: 0;
+        border: 1px solid #148fbd;
+        background: #148fbd;
+    }
+
+    .dropdown-menu > li > a {
+      font-family: "AvenirNext-Demi";
+      color: #fff;
+    }
+
+    .dropdown-menu > li > a:hover {
+      background: none;
+    }
+  }
+}
+
+/* Auxiliar Class */
+.dsp-table {
+  display: table;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+
+  > .dsp-cell {
+    display: table-cell;
+    vertical-align: middle;
+  }
+}
+
+.centralize {
+  text-align: center;
+}
+
+.pull-left {
+  float: left;
+}
+
+.pull-right {
+  float: right;
+}
+
+.clearfix:after {
+  display: block;
+  clear: both;
+  visibility: hidden;
+  line-height: 0;
+  height: 0;
+
+  content: ' ';
+}
+
+/* Bootstrap Overwrite */
+.nav>li>a {
+  font-family:"AvenirNext-Med";
+}
+.nav>li>a:hover, .nav>li>a:focus {
+  background: none;
+}
+.nav>li>a.btn-primary:hover, .nav>li>a.btn-primary:focus {
+  background: #1ca8dd;
+}
+.nav-pills>li.active>a, .nav-pills>li.active>a:hover, .nav-pills>li.active>a:focus {
+  background: none;
+  color: #1ca8dd;
+}
+
+.input-group {
+  width: 100%;
+  margin-bottom: 12px;
+}
+.input-group-addon {
+    width: 40px;
+    background: #fff;
+    border-color: #dfedee;
+}
+.input-group-addon + .form-control {
+    border-left: none !important;
+}
+
+.progress {
+  background: #f4f9fa;
+  box-shadow: none;
+}
+.progress-bar {
+  background-color: #1ca8dd;
+  box-shadow: none;
+}
+
+.label {
+  padding: 3px 3px;
+  font-size: 14px;
+  font-weight: normal;
+  font-family: 'AvenirNext-Demi';
+}
+
+.label-default {
+  background: #6996a9;
+}
+
+#loading-spinner {
+  .spinner {
+    top: 50px !important;
+  }
+}
+
+.submit-file {
+  cursor: pointer;
+}
+
+
+input.dimension-height {
+  margin-left:10px;
+  width:70px !important;
+}
+
+input.dimension-width {
+  loat:left;
+  width:70px !important;
+}
+
+input.start-time {
+  width:60px !important;
+}
+
+input.end-time {
+  loat:left;
+  width:60px !important;
+}
+
+.media-controls {
+  label {
+    margin: 0px;
+  }
+}
+
+.tm-tag-remove {
+  margin-left: 10px;
+  font-weight: bold;
+  float:right;
+  display: none
+}
+
+li.tm-tag:hover {
+  color: #00a5df;
+
+  .tm-tag-remove {
+    display: block;
+  }
+}
+
+.global-zeroclipboard-container, .global-zeroclipboard-container:hover{
+  display: block;
+  opacity: 0;
+}
+
+.font-size {
+  width: 85% !important;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+#fileupload {
+  height: inherit;
+  width: inherit;
+}
+
+/* Media Queries */
+@media (min-width: 1428px) {
+  .wrap {
+    width: 960px;
+    margin: 0 auto;
+    padding-left: 0;
+  }
+}

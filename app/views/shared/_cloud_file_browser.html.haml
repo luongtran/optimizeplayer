@@ -1,0 +1,43 @@
+.clearfix
+  .pull-left
+    %h3 Select a file from your storage
+  .pull-right.account-actions
+    %select(selectpicker data-width="170px" ng-model="current_csn" ng-options="c.title for c in csns | filter: {provider: sourceType}")
+.files-content.dsp-table
+  .dsp-cell
+    #uploading-status(ng-show="isLoadingFile")
+      #uploading-progress
+        %span
+          Uploading video - {{percentage}}
+        .progress.progress-striped.active
+          .progress-bar{"aria-valuemax" => "100", "aria-valuemin" => "100", "aria-valuenow" => "100", :role => "progressbar", :style => "width: {{percentage}}"}
+    #uploading-status(ng-show="!current_csn.buckets")
+      #uploading-progress
+        %span
+          Downloading
+        .progress.progress-striped.active
+          .progress-bar{"aria-valuemax" => "100", "aria-valuemin" => "100", "aria-valuenow" => "100", :role => "progressbar", :style => "width: 100%"}
+    %ul.list-unstyled.folders(ng-show="current_csn.buckets && !isLoadingFile")
+      %li(ng-repeat="bucket in current_csn.buckets" ng-class="{selected: isHighlighted(bucket)}")
+        %a(ng-click="setCurrentFolder(bucket, true)")
+          {{bucket.name}}
+        %ul(ng-tree="bucket.subdirs")
+          %li(each="item in subdirs" ng-show="item.files.length > 0 || item.subdirs.length > 0" ng-class="{selected: isHighlighted(item)}")
+            %a.folder(ng-click="setCurrentFolder(item)")
+              {{item.name}}
+    %div{style: "margin-left:15px;margin-bottom:5px;"}(upload-form ng-show="!isLoadingFile && current_csn.buckets")
+      %csn-direct-upload(auto-upload="true" rc-type="public")
+      %button.btn.btn-primary(ng-hide="!!uploadData" ng-click="browseFiles()") Upload a file
+  .dsp-cell.files-list
+    %form.navbar-form(role="search")
+      %button.btn.btn-link(type="submit")
+        = image_tag("icons/icon-search.png", width: "14")
+      .form-group
+        %input.form-control(type="text" placeholder="Search" ng-model="searchFile")
+    %h3#list-reloading(ng-show="current_folder && current_folder.isBucket && !current_folder.loaded")
+      .progress.progress-striped.active
+        .progress-bar{"aria-valuemax" => "100", "aria-valuemin" => "100", "aria-valuenow" => "100", :role => "progressbar", :style => "width: 100%"}
+    %ul.list-unstyled.files
+      %li(ng-repeat="file in current_folder.files | filter: searchFile")
+        %input(type="radio" id="amazon-file-{{$index + 1}}" name="select")
+        %label(for="amazon-file-{{$index + 1}}" ng-click="setConnectedFile(file)") {{file.name}}

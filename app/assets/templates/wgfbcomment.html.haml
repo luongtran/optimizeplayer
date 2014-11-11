@@ -1,0 +1,7 @@
+%div
+  .widget-buttons
+    %a.remove{href: "#"}(ng-click="removeWidget({{widget.id}})" prevent-default)
+      %i.icon-remove
+  / .fb-comments{"data-href" => "{{widget.url}}", "data-width" => 470}
+.wg-content-wrapper
+  .fb-comments{ "data-href" =>  "{{widget.url}}", "data-numposts" => 1, "data-colorscheme" => "light"}

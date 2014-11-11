@@ -1,0 +1,19 @@
+.wrap
+  .folder-content(ng-controller="ProjectListCtrl")
+    %ul.dsp-table.bulk-actions(ng-init="action = 'Move'" ng-cloak ng-show="selectedIds.length > 0" )
+      %li.dsp-cell.handle
+      %li.dsp-cell.action-1
+        %select(selectpicker ng-model="action")
+          %option(value="Move") Move Selected Project(s)
+          %option(value="Delete") Delete Selected Project(s)
+          %option(value="Export") Export Selected Project(s)
+      %li.dsp-cell.action-2(ng-show="action == 'Move'")
+        %select.folders-list(selectpicker ng-model="destFolderId")
+          %option(selected="selected" value="0") Select an option
+          %option(ng-repeat="f in folders|foldersToOptions"
+                  value="{{f.id}}") {{f.name}}
+      %li.dsp-cell#bulk-button
+        %a.btn.btn-primary.move(eat-click ng-click="bulkAction()") {{action}}
+    %ul.list(ui-sortable="sortableOptions" ng-model="projects")
+      %project-element(ng-cloak project="project" ng-repeat="project in projects" 
+                      sync="tooltips" selected-ids="selectedIds" favorites-resort="favoritesResort")

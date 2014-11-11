@@ -1,0 +1,2 @@
+class CtaButton < Cta
+end

@@ -1,0 +1,11 @@
+.row
+  %label Access Key Id
+  %input(placeholder="Access Key Id" ng-model="integration.api_credentials.access_key_id" type="text" required)
+.row
+  %label Secret Access Key
+  %input(placeholder="Secret Access Key" ng-model="integration.api_credentials.secret_access_key" type="text" required)
+.row
+  %label Bucket
+  %input(placeholder="Bucket" ng-model="integration.api_credentials.bucket" type="text" required)
+.row
+  %span(checkbox ng-model="integration.api_credentials.use_cloudfront" class="green" label="Use Cloudfront")

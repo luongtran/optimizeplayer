@@ -1,0 +1,19 @@
+development:
+  access_key: "478a60dc807beb76a0d6"
+  secret_key: "5e56455e1c3af51d6913"
+  cloud_id: "7b23706257bc999c7a8a8311a3c7f161"
+
+production:
+  access_key: "478a60dc807beb76a0d6"
+  secret_key: "5e56455e1c3af51d6913"
+  cloud_id: "7b23706257bc999c7a8a8311a3c7f161"
+
+staging:
+  access_key: "478a60dc807beb76a0d6"
+  secret_key: "5e56455e1c3af51d6913"
+  cloud_id: "7b23706257bc999c7a8a8311a3c7f161"
+
+test:
+  access_key: "478a60dc807beb76a0d6"
+  secret_key: "5e56455e1c3af51d6913"
+  cloud_id: "7b23706257bc999c7a8a8311a3c7f161"

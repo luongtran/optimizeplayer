@@ -1,0 +1,50 @@
+= form_for [:account, current_user], html: {class: "user-info"}, :remote => true do |f|
+  .clearfix
+    .errors
+      = flash[:danger]
+    .pull-left
+      %label Name
+      .input-group
+        %span.input-group-addon
+          = image_tag("icons/icon-user.png", width: "12")
+        = f.text_field :name, placeholder: "Name", :class => "form-control"
+      %label Email
+      .input-group
+        %span.input-group-addon
+          = image_tag("icons/icon-email.png", width: "15")
+        = f.text_field :email, disabled: true, placeholder: "Email", :class => "form-control"
+      .passwords
+        %label Change Password
+        .input-group
+          %span.input-group-addon
+            = image_tag("icons/icon-password.png", width: "12")
+          = f.password_field :current_password, placeholder: "Current Password", :class => "form-control"
+        .input-group
+          %span.input-group-addon
+            = image_tag("icons/icon-password.png", width: "12")
+          = f.password_field :password, placeholder: "New Password", :class => "form-control"
+        .input-group
+          %span.input-group-addon
+            = image_tag("icons/icon-password.png", width: "12")
+          = f.password_field :password_confirmation, placeholder: "Confirm Password", :class => "form-control"  
+    .pull-right.upload-photo
+      .avatar
+        %label Avatar
+        .dsp-table
+          .dsp-cell
+            .image
+              = gravatar_image_tag("#{current_user.email}".gsub('spam', 'mdeering'), :alt => "#{current_user.name}")
+          .dsp-cell
+            %h4 Change your current photo
+            %h5 Allowed formats .jpg .gif. png
+            %a.btn.btn-info(href="http://gravatar.com/emails/" target="_blank") Upload photo
+      .logo
+        %label Logo
+        .image
+          .placeholder
+        .dsp-table
+          .dsp-cell
+            %h4 Change the logo
+            %h5 Transparent .png 300x57
+          .dsp-cell
+            %a.btn.btn-info Upload logo

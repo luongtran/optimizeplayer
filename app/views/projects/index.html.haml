@@ -1,0 +1,7 @@
+- content_for :title, "My Projects"
+
+%section(jquery-plugins="" role="my-projects")
+  #my-projects(ng-controller="FoldersCtrl" ng-init="search = '#{j @search}'")
+    = render 'folders_crud'
+    = render 'projects_crud'
+

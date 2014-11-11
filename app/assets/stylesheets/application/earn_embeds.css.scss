@@ -1,0 +1,60 @@
+@import "compass/css3";
+section[role=earn_embeds] {
+	#earn-embeds {
+		ul {
+			list-style: none;
+			margin: 40px 20px;
+
+			li {
+				border-bottom: 1px solid #cbd4dd;
+				margin-bottom: 20px;
+
+				&:last-child {
+					border-bottom: none;
+				}
+
+				.image {
+					width: 56px;
+					height: 56px;
+					background: url('/assets/icons-in-box.png') no-repeat 0 0 transparent;
+					margin-right: 20px;
+
+					&.second {
+						background-position: 0 -66px;
+					}
+					&.third {
+						background-position: 0 -132px;
+					}
+					&.fourth {
+						background-position: 0 -198px;
+					}
+					&.fifth {
+						background-position: 0 -264px;
+					}
+				}
+
+				.text {
+					width: 700px;
+
+					h4 {
+						font-size: 16px;
+						color: #4c87d3;
+						margin-top: 0;
+					}
+				}
+
+				.numbers {
+					font-weight: bold;
+					text-align: center;
+					padding-top: 20px;
+
+					.number {
+						color: #cd4b3f;
+						font-size: 30px;
+						line-height: 30px;
+					}
+				}
+			}
+		}
+	}
+}

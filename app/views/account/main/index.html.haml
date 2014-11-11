@@ -1,0 +1,61 @@
+- content_for :title, "Settings"
+%section(role="account")
+  .page-body
+    .row
+      .twelve.columns
+        #account
+          .box-menu
+            = render "account/shared/sidenav", {active: "account"}
+            .right-content
+              .header.clearfix
+                .pull-left
+                  %h3
+                    = image_tag "icon-user.png"
+                    Account
+                .pull-right
+                  %a.help(href="#") ?
+              .body
+                .usage
+                  = account_usage_bar
+                = form_for [:account, current_user], html: {class: "user-info"} do |f|
+                  .clearfix
+                    .errors
+                      = flash[:danger]
+                    .inline
+                      %p Name
+                      .input-prepend.clearfix
+                        %span.add-on
+                          %i.picon-user
+                        = f.text_field :name
+                      %p Email
+                      .input-prepend.clearfix
+                        %span.add-on
+                          %i.picon-email
+                        = f.text_field :email, disabled: true
+                    .inline
+                      %ul.inline-list.upload-photo
+                        %li
+                          .image
+                            = gravatar_image_tag("#{current_user.email}".gsub('spam', 'mdeering'), :alt => "#{current_user.name}")
+                        %li
+                          %p Change your current photo
+                          %p
+                            %a.button.gray.radius(href="http://gravatar.com/emails/" target="_blank") UPLOAD PHOTO
+                          %p.formats
+                            allowed formats
+                            %br/
+                            %b .jpg .gif .png
+                  .passwords
+                    %p Change Password
+                    .input-prepend.clearfix
+                      %span.add-on
+                        %i.picon-lock
+                      = f.password_field :current_password, placeholder: "Old Password"
+                    .input-prepend.clearfix
+                      %span.add-on
+                        %i.picon-lock
+                      = f.password_field :password, placeholder: "New Password"
+                    .input-prepend.clearfix
+                      %span.add-on
+                        %i.picon-lock
+                      = f.password_field :password_confirmation, placeholder: "Confirm Password"

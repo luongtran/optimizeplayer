@@ -1,0 +1,110 @@
+%section#video-page(role="projects")
+  .header.clearfix
+    .pull-left
+      %ul.list-inline.clearfix
+        %li.selected
+          %a.edit-files(href="#edit-files") Edit Files
+        %li
+          %a.preview(href="#preview") Preview
+    .pull-right
+      %ul.dsp-table.url-name
+        %li.dsp-cell
+          .input-group
+            %span.input-group-addon http://optimizeplayer.com/
+            %input.form-control(type="text")
+        %li.dsp-cell
+          %button.btn.btn-success Save
+  .cta-options.open(role="sidebar")
+    .sidebar
+      %a.collapse-button.collapsed(data-toggle="collapse" data-target="#target-1") WIDGETS
+      #target-1.collapse
+        .collapse-box.widgets
+          %ul.dsp-table
+            %li.dsp-cell
+              %a(href="#" data-target="#modal-widget-title" data-toggle="modal")
+                = image_tag("/assets/icons/icon-widget-title.png", width: "46")
+            %li.dsp-cell
+              %a(href="#")
+                = image_tag("/assets/icons/icon-widget-paragraph.png", width: "46")
+            %li.dsp-cell
+              %a(href="#")
+                = image_tag("/assets/icons/icon-widget-image.png", width: "46")
+          %ul.dsp-table
+            %li.dsp-cell
+              %a(href="#")
+                = image_tag("/assets/icons/icon-widget-html.png", width: "46")
+            %li.dsp-cell
+              %a(href="#")
+                = image_tag("/assets/icons/icon-widget-button.png", width: "46")
+            %li.dsp-cell
+              %a(href="#")
+                = image_tag("/assets/icons/icon-widget-twitter.png", width: "46")
+          %ul.dsp-table
+            %li.dsp-cell
+              %a(href="#")
+                = image_tag("/assets/icons/icon-widget-like.png", width: "46")
+            %li.dsp-cell
+              %a(href="#")
+                = image_tag("/assets/icons/icon-widget-comment.png", width: "46")
+            %li.dsp-cell
+              %a(href="#")
+                = image_tag("/assets/icons/icon-widget-discuss.png", width: "46")
+      %a.collapse-button.collapsed(data-toggle="collapse" data-target="#target-2") LAYOUT
+      #target-2.collapse
+        .collapse-box.layouts
+          %ul.dsp-table
+            %li.dsp-cell
+              %a(href="#")
+                = image_tag("/assets/icons/icon-layout-1.png", width: "46")
+            %li.dsp-cell
+              %a(href="#")
+                = image_tag("/assets/icons/icon-layout-2.png", width: "46")
+            %li.dsp-cell
+              %a(href="#")
+                = image_tag("/assets/icons/icon-layout-3.png", width: "46")
+          %ul.dsp-table
+            %li.dsp-cell
+              %a(href="#")
+                = image_tag("/assets/icons/icon-layout-4.png", width: "46")
+            %li.dsp-cell
+              %a(href="#")
+                = image_tag("/assets/icons/icon-layout-5.png", width: "46")
+            %li.dsp-cell
+              %a(href="#")
+                = image_tag("/assets/icons/icon-layout-6.png", width: "46")
+          .add-padding
+            %input#show-header(type="checkbox")
+            %label(for="show-header") Show Header
+            .color-input
+              Background Color
+              .input-group
+                %i(style="background: #18D67F;")
+                %input(type="text" value="#18D67F")
+      %a.collapse-button.collapsed(data-toggle="collapse" data-target="#target-3") SEO OPTIONS
+      #target-3.collapse
+        .collapse-box.seo-options.form.add-padding
+          %input(type="text" placeholder="Seo title")
+          %input(type="text" placeholder="Keywords (cat, dog, etc.)")
+          %textarea(rows="6" placeholder="Description")
+
+  .page-content.layout-1(ng-class="template.class")
+    .widgets-layout-bg
+    .wrap
+      .video-content
+        .gridster(ng-cloak)
+          %ul
+            %li(data-row="1" data-col="3" data-sizex="8" data-sizey="8")
+              = image_tag("/assets/video-placeholder.png", width: "100%", height: "100%")
+            %li(data-row="9" data-col="1" data-sizex="6" data-sizey="2")
+              lorem ipsum dolor sit amet
+              %a.edit(href="#")
+                = image_tag("/assets/icons/icon-edit.png", width: "15")
+              %a.remove(href="#")
+                = image_tag("/assets/icons/icon-delete.png", width: "12")
+            %li(data-row="9" data-col="7" data-sizex="6" data-sizey="2")
+              lorem ipsum dolor sit amet
+              %a.edit(href="#")
+                = image_tag("/assets/icons/icon-edit.png", width: "15")
+              %a.remove(href="#")
+                = image_tag("/assets/icons/icon-delete.png", width: "12")
+      

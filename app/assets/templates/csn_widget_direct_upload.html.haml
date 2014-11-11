@@ -1,0 +1,4 @@
+%form.csn-upload-form(action="{{action}}" method="post" enctype="multipart/form-data")
+  %input(ng-repeat="(name, value) in hidden_inputs" name="{{name}}" type="hidden" value="{{value}}")
+  %label Upload File:
+  %input{name: "file", type: "file"}(nicefile)

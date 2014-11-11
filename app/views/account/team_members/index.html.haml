@@ -1,0 +1,42 @@
+- content_for :title, "Settings"
+%section(role="account")
+  .page-body
+    .row
+      .twelve.columns
+        #account
+          .box-menu
+            = render "account/shared/sidenav", {active: "team"}
+            .right-content
+              .header.clearfix
+                .pull-left
+                  %h3
+                    = image_tag "icon-team.png"
+                    Team
+                .pull-right
+                  %a.help(href="#") ?
+              .body.team
+                #tooltip-delete-member
+                  = image_tag('/assets/tooltip-error-arrow.png')
+                  %span
+                    %i.picon-trash
+                    Delete team member?
+                %ul.inline-list.clearfix.members
+                  - current_account.users.each do |u|
+                    %li
+                      .image(overlayed="" tooltip="")
+                        - if can? :destroy, u
+                          .overlay
+                            = link_to raw("<i class='picon-close-white'></i>"), account_team_member_path(u), confirm: 'Are you sure?', method: :delete, class: "use-tooltip close", "data-tooltip" => "delete-member"
+                        = gravatar_image_tag("#{u.email}".gsub('spam', 'mdeering'), alt: "#{u.name}")
+                        = link_to u.username, edit_account_team_member_path(u)
+                  - if can? :invite, User
+                    %li#add_team_member
+                      .image
+                        %a.add
+                          %i.picon-plus
+                      %a + Team Member
+                .invite
+                  %h4 Invite Team Members
+                  = form_tag invite_account_team_members_path, method: :post do
+                    = text_area_tag :members, nil, rows: 4, placeholder: "Example: john@mail.com, tom@mail.com, ..."
+                    %input.radius.button.green(type="submit" value="Invite Members")/

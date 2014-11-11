@@ -1,0 +1,6 @@
+%div
+  .widget-buttons
+    %a.remove{href: "#"}(ng-click="removeWidget({{widget.id}})" prevent-default)
+      %i.icon-remove
+  .wg-content-wrapper
+    %a.twitter-timeline{ :href=>"{{widget.url}}", :class=>"twitter-share-button", "data-lang"=>"en" } Tweet

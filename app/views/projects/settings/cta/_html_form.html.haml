@@ -1,0 +1,14 @@
+%a.collapse-button.collapsed(data-toggle="collapse" data-target="#target-26c") DISPLAY OPTIONS
+#target-26c.collapse
+  .display-options.collapse-box.add-padding
+    = render 'projects/shared/display_options', type: 'html'
+
+%a.collapse-button.collapsed(data-toggle="collapse" data-target="#target-27c") SHOW OPTIONS
+#target-27c.collapse
+  .form.collapse-box.add-padding
+    %time-options(type="Html")
+
+%a.collapse-button.collapsed(data-toggle="collapse" data-target="#target-28c") HTML OPTIONS
+#target-28c.collapse
+  .display-options.collapse-box.add-padding
+    %textarea.form-control(rows="4" ng-model="cta_store.currentCta.html" placeholder="Enter HTML Code" rows="4")

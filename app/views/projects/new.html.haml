@@ -1,0 +1,16 @@
+%section#new-project.clearfix(ng-controller="ProjectNewCtrl")
+  %ul#new-project-tabs
+    %li
+      %a.tab-1
+    %li(ng-click="sourceType='rackspace'; current_folder=undefined" ng-class="{selected: sourceType=='rackspace'}")
+      %a.tab-2
+    %li(ng-click="sourceType='amazons3'; current_folder=undefined" ng-class="{selected: sourceType=='amazons3'}")
+      %a.tab-3
+    %li 
+      %a.tab-4
+  %article
+    = render 'projects/wizard/file_browser'
+
+  = render 'projects/wizard/upload_form'
+  = render 'projects/wizard/processing_video'
+  = render 'projects/wizard/encode_form'

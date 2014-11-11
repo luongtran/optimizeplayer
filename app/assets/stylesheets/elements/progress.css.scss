@@ -1,0 +1,61 @@
+@import "compass/css3";
+
+// Customize Progress Bar
+div {
+
+  &.progress {
+    padding: 0;
+    margin: 0;
+    height: 13px;
+    @include box-shadow(inset 0px 2px 3px #d4d7d9, #fff 0px 1px 1px);
+
+    &.flat {
+      box-shadow: none;
+      .meter {
+        box-shadow: none;
+      }
+    }
+
+    .meter {
+      -moz-transition: 0.3s width;
+      -webkit-transition: 0.3s width;
+      transition: 0.3s width;
+      border: 1px solid #43763c;
+      @include background(linear-gradient(top, #5daf52, #43963b));
+      @include box-shadow(inset 0px 1px 1px #89c581, #c3c3c3 0px 1px 6px);
+    }
+
+    &.success {
+      .meter {
+        border: 1px solid #43763c;
+        @include background(linear-gradient(top, #5daf52, #43963b));
+        @include box-shadow(inset 0px 1px 1px #89c581, #c3c3c3 0px 1px 6px);
+      }
+    }
+
+    &.secondary {
+      .meter {
+        border: 1px solid #898989;
+        @include background(linear-gradient(top, #acacac, #9f9f9f));
+        @include box-shadow(inset 0px 1px 1px #b8b8b8, #c3c3c3 0px 1px 6px);
+      }
+    }
+
+    &.alert {
+      .meter {
+        border: 1px solid #d65540;
+        @include background(linear-gradient(top, #f56f53, #f2503c));
+        @include box-shadow(inset 0px 1px 1px #f89582, #c3c3c3 0px 1px 6px);
+      }
+    }
+
+    &.warning {
+      .meter {
+        border: 1px solid #c9923e;
+        @include background(linear-gradient(top, #ffbc4e, #ffa637));
+        @include box-shadow(inset 0px 1px 1px #ffdb9f, #c3c3c3 0px 1px 6px);
+      }
+    }
+  }
+}
+

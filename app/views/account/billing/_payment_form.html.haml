@@ -1,0 +1,46 @@
+- attrs ||= {}
+- recurring ||= true
+- price ||= -1
+- html_opts = current_account.has_credit_card? ? {class: "confirmation downgrade"} : {"credit-card-form" => true, class: "card-form"}
+= form_tag url, {method: :post}.merge(html_opts) do
+  - attrs.each do |key, value|
+    = hidden_field_tag key, value
+  - if current_account.has_credit_card?
+    - unless price == -1
+      %h5
+        Your Credit Card will be charged
+        \#{"$ #{price}.00"}
+        - " for your next month" if recurring
+    %p
+      Current Credit Card:
+    %b
+      XXXX - XXXX - XXXX - #{current_account.last4}
+    %a.back-form Update CC Details
+    %button.confirm-changes.button.radius.green Confirm Changes
+    or
+    %a.close-modal(href="#") Nevermind
+  - else
+    %h5
+      %i.icon-lock>
+      Enter your Billing Information
+    %span.payment-errors
+    %input(data-stripe="name" name="card[name]" placeholder="Full Name..." type="text")/
+    %input(data-stripe="number" name="card[number]" placeholder="Credit Card Number..." type="text")/
+    %ul.card-flags
+      %li= image_tag "card-flag-visa.png"
+      %li= image_tag "card-flag-mastercard.png"
+      %li= image_tag "card-flag-discover.png"
+      %li= image_tag "card-flag-americanexpress.png"
+    %p Expires on:
+    .clearfix
+      %select.dropkick(data-stripe="exp-month" ng-dropkick name="month")= options_for_select Array[*Date::MONTHNAMES.compact.collect {|v,i| [v, Date::MONTHNAMES.compact.index(v) + 1] }]
+      %select.dropkick(data-stripe="exp-year" ng-dropkick name="year")= options_for_select "2013".."2022"
+    %input(name="billing_zip" placeholder="Billing ZIP..." type="text")/
+    %input(data-stripe="cvc" name="ccv" placeholder="CCV..." type="text")/
+    .popup(popup="")
+      %a.help(href="#") ?
+      .popup-content.popup-creditcard
+        %h6 You will find the CCV code on the back of your Credit Card.
+        %p 3 digit symbols next to your CC number
+        = image_tag "credit-card-back.png"
+    %button.button.radius.green(type="submit") Submit Details

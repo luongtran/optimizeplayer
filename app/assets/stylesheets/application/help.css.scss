@@ -1,0 +1,62 @@
+@import "compass/css3";
+section[role=help] {
+	&#help {
+		ul {
+			&.items {
+				margin: 40px 0 17px 0;
+
+				li {
+					width: 280px;
+					text-align: center;
+
+					.image {
+						position: relative;
+						width: 56px;
+						height: 56px;
+						background: url('/assets/icons-in-box.png') no-repeat 0 0 transparent;
+						margin: 0 auto;
+
+						&.first {
+							background-position: 0 -330px;
+						}
+						&.second {
+							background-position: 0 -396px;
+						}
+						&.third {
+							background-position: 0 -462px;
+						}
+
+						[class^="picon"] {
+							position: absolute;
+							right: 5px;
+							top: 2px;
+						}
+					}
+
+					h4 {
+						font-size: 16px;
+						color: #4c87d3;
+					}
+				}
+			}
+		}
+
+		.contact {
+			display: none;
+			
+			form {
+				margin: 20px 0 0 0;
+
+				textarea {
+					border: 1px solid #345e92;
+					width: 610px;
+				}
+			}
+		}
+		
+		.knowledgebase iframe {
+		  height: 730px;
+		  overflow: hidden;
+		}
+	}
+}

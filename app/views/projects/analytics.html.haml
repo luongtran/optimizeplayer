@@ -1,0 +1,25 @@
+.analytics-dashboard(data-project-cid="#{@project.cid}" data-project-duration="#{@project.duration}" ng-controller="AnalyticsCtrl" analytics-widgets)
+  %h1 Analytics for #{@project.title}
+  %hr
+  .metric.counter#total-loads
+  .metric.counter#unique-views
+  .metric.counter#total-plays
+  .metric.counter#play-rate
+  .metric.counter#mobile-plays
+  .metric.counter#desktop-plays
+  .metric.counter#completions-count
+  .metric.counter
+    %div
+      %h1 {{analytics.hours_watched}}
+      %h2 Hours watched
+  .metric#countries-distribution
+  %hr
+  
+  .heatmaps
+    %h2 Heatmaps
+    %ul
+      %li.heatmap(ng-repeat="viewer in analytics.viewers")
+        %heatmap(viewer="viewer")
+          {{viewer_data.ip}} | {{viewer_data.location.country}}, {{viewer_data.location.city}} | {{viewer_data.referer}}
+          .segments
+            .segment(ng-repeat='segment in segments' ng-style='{left: segment.left, width: segment.width}')

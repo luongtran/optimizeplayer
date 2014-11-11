@@ -1,0 +1,18 @@
+.centralize
+  %img.logo(alt="OptimizePlayer" src="/assets/logo.png" width="184")/
+= simple_form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
+  %h5 Enter your details to sign into the dashboard.
+  .input-group
+    %span.input-group-addon
+      = image_tag("icons/icon-email.png", width: "15")
+    = f.input :email, :required => false, :autofocus => true, :placeholder => "Email", :autocomplete => "off", label: false, input_html: {class: 'form-control'}
+  .input-group
+    %span.input-group-addon
+      = image_tag("icons/icon-password.png", width: "12")
+    = f.input :password, :required => false, :placeholder => "Password", label: false, input_html: {class: 'form-control'}
+  = f.button :submit, "Sign In Now", class: "btn btn-primary"
+  %ul.dsp-table
+    %li.dsp-cell
+      = f.input :remember_me, :as => :boolean, inline_label: "Remember me", boolean_style: :inline, input_html: {'id' => 'user_remember_me'} if devise_mapping.rememberable?
+    %li.dsp-cell
+      = link_to "Forgot Password?", new_password_path(:user)

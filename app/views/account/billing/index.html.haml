@@ -1,0 +1,106 @@
+- content_for :title, "Settings"
+%section(role="account")
+  .page-body
+    = render partial: 'plans', locals:{ plans: @plans, current_plan: @current_plan }
+    = render partial: 'payment_history'
+    = render partial: 'payment_method'
+    .row
+      .twelve.columns
+        #account
+          .box-menu
+            = render "account/shared/sidenav", {active: "billing"}
+            .right-content
+              .header.clearfix
+                .pull-left
+                  %ul
+                    %li
+                      %h3
+                        = image_tag "icon-billing.png"
+                        Billing
+                    %li
+                      %a(data-reveal-id="payment-method" href="#")
+                        %i.picon-creditcard
+                        Billing Information
+                    %li
+                      %a(data-reveal-id="payment-history" href="#")
+                        %i.picon-moneyhistory
+                        View Payment History
+                .pull-right
+                  %a.help(href="#") ?
+              .body.billing
+                .centralize
+                  %h4 Please select the plan that suits your needs best
+                  %p
+                    Your current account is #{@current_plan.name}
+                .plans.clearfix
+                  - @plans.each do |plan|
+                    %div(class="inline plan plan-#{plan.plan_type}")
+                      .plan-header
+                        %h5
+                          = plan.name
+                        %p
+                          - if plan.plan_type == 'free'
+                            = raw("&mdash;")
+                            = raw("No charge")
+                          - else
+                            = raw("&mdash;")
+                            - if plan.plan_type == 'recurring'
+                              = raw("$#{plan.amount/100}/#{plan.interval}")
+                            - else
+                              = raw("$#{plan.amount/100}")
+                          = raw("&mdash;")
+                      .plan-body
+                        - plan.features.each do |feature|
+                          -#- unless plan.can_host? && feature != 'bandwidth'
+                          %p
+                            = feature.html_safe
+                        - if plan.plan_type == 'free'
+                          %p &nbsp;
+                        %ul.price.html_save
+                          - if plan.plan_type == 'free'
+                            %li
+                              %span.value FREE
+                          - else
+                            %li $
+                            %li
+                              %span.value
+                                = plan.amount/100
+                            %li
+                              %span.cents 00
+                              - if plan.plan_type == 'recurring'
+                                %span.per
+                                  = raw("/#{plan.interval}")
+                      .plan-footer
+                        - if plan == @current_plan
+                          %a.button.radius(data-reveal-id="#{plan.id}" href="#") CURRENT
+                        - else
+                          - unless plan.plan_type == 'free'
+                            - if plan.position < @current_plan.position
+                              - if @subscription.downgradable?
+                                %a.button.disabled.radius(data-reveal-id="#{plan.id}" href="#") Downgrade
+                              - else
+                                %a.button.radius(data-reveal-id="#{plan.id}" href="#") Downgrade
+                            - else
+                              %a.button.radius(data-reveal-id="#{plan.id}" href="#") Upgrade
+                          - else
+                            %a.button.radius(href="#{account_update_plan_path}") SELECT
+                        %a.details(href="#") view details
+                .clearfix
+                  .pull-left.doubts
+                    .balloon
+                      %p Have a question or you are not sure about something?
+                      %p Don’t worry, we won’t leave you hanging.Contact us and we will help you.
+                      = image_tag("arrow-balloon-doubt.png", class: "arrow")
+                    = image_tag("logo-gray.png", class: "logo")
+                    %a.button.radius(href="#") GET IN TOUCH
+                - if @external_links.present?
+                  .highlight.centralize
+                    %h4 That`s not all. Try some of our great addons
+                    %p Checkout our three addon services below
+                  .addons.clearfix
+                    - @external_links.each do |el|
+                      .pull-left.addon.centralize
+                        = image_tag el.image.url(:thumb)
+                        %h5
+                          = el.title
+                        %a.button.radius.green(href="#{el.url}" target="_blank") Learn More and Buy

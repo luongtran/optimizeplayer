@@ -1,0 +1,126 @@
+@import "compass/css3";
+section[role=new_project] {
+	#my-uploads {
+		.box {
+			.body {
+				padding-left: 0;
+				padding-right: 0;
+
+				.main-area {
+					padding: 15px 10px;
+					border-bottom: 1px solid #8d8d8d;
+					@include background(linear-gradient(top, #f1f1f1, #d3d3d3));
+
+					.select-all {
+						input[type=checkbox] {
+							vertical-align: 8px;
+							margin-right: 15px;
+						}
+
+						.begin-project {
+							display: block;
+							margin: 15px 0 0 36px;
+						}
+					}
+
+					.upload-box {
+						position: relative;
+						@include border-radius(6px);
+						border: 2px dashed #959595;
+						padding: 20px;
+						width: 519px;
+						height: 77px;
+
+						.upload-action {
+							margin: 0;
+							position: absolute;
+							width: 100%;
+							height: 100%;
+							top: 0;
+							left: 0;
+							z-index: 1;
+							cursor: pointer;
+						}
+
+						span {
+							&.message {
+								font-size: 15px;
+								font-weight: bold;
+								color: #636363;
+								margin: 0 10px;
+								vertical-align: 5px;
+							}
+						}
+
+						.pc {
+							margin-right: 10px;
+						}
+
+						.csn {
+							position: relative;
+							z-index: 2;
+						}
+					}
+				}
+
+				.files {
+					table {
+						width: 100%;
+						border: none;
+						border-collapse: collapse;
+						background: transparent;
+
+						tr {
+							&:nth-child(even) {
+								background: transparent;
+							}
+
+							&.disabled {
+								opacity: 0.4;
+								filter: alpha(opacity=40);
+							}
+						}
+
+						td {
+							border-bottom: 1px solid #cbd4dd;
+
+							&.col1 {
+								width: 40px;
+								border-right: 1px solid #cbd4dd;
+							}
+
+							&.col2 {
+								padding-left: 20px;
+							}
+
+							&.col3 {
+								width: 315px;
+							}
+
+							&.col4 {
+								width: 30px;
+								padding-right: 5px
+							}
+
+							&.col5 {
+								width: 30px;
+								padding-left: 5px;
+							}
+
+							.progress {
+								display: inline-block;
+								width: 250px;
+							}
+
+							.file-name {
+								display: inline-block;
+								vertical-align: top;
+								margin-left: 25px;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}

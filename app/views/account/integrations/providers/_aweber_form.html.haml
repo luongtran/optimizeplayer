@@ -1,0 +1,7 @@
+.row
+  %label Access Token
+  %a(href="#{aweber_authorize_account_integrations_path}" target="_blank") Get Help Here
+  %input(placeholder="Access Token" ng-model="integration.api_credentials.access_token" type="text" id="aweber_access_token" readonly="readonly" required)
+.row
+  %label Access Token Secret
+  %input(placeholder="Access Token Secret" ng-model="integration.api_credentials.access_token_secret" id="aweber_access_token_secret" type="text" readonly="readonly" required)

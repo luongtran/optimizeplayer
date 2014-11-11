@@ -1,0 +1,11 @@
+<%= render 'projects/player/code', project: @project, embed: true %>
+
+<% content_for :javascripts do %>
+  <%= javascript_include_tag "#{Yetting.cloudfront_host}/assets/optimizeplayer.min.js" %>
+  <script>
+    Keen.configure({
+      projectId: "52ec388b05cd66719f00000b",
+      writeKey: "4ed4532971c6688fd640391b1f139af16b0b8f265328fba451f1edb880be4b499bf7b9cd0cb58e2231129b48b9dea4ac31a93c866a87c3fd5cf83f35bfc1eeeff7a365a9ec3122c7c6df27162d0dd766b8f23ea92ac7bb15e5e9a44555f0f8d1bff41930c041b8f09627115a20f46de0"
+    });
+  </script>
+<% end %>

@@ -1,0 +1,158 @@
+#modal-widget-title.modal.fade.modal-widgets(tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true")
+  .modal-dialog
+    .modal-content
+      .modal-header
+        %h4 Add a Title
+      .modal-body
+        %form
+          .form-group
+            %label Title
+            %input.form-control(type="text" placeholder="Enter your title here")
+          %ul.dsp-table.font-style
+            %li.dsp-cell
+              %select(selectpicker data-width="100%")
+                %option Arial
+                %option Helvetica
+                %option Sans Serif
+            %li.dsp-cell
+              %select(selectpicker data-width="100%")
+                %option Light
+                %option Normal
+                %option Bold
+            %li.dsp-cell
+              %input.font-size.form-control(type="text" value="18px")
+          %ul.dsp-table
+            %li.dsp-cell.color-input
+              Text Color
+              .input-group
+                %i(style="background: #18D67F;")
+                %input(type="text" value="#18D67F")
+            %li.dsp-cell.color-input
+              Background Color
+              .input-group
+                %i(style="background: #18D67F;")
+                %input(type="text" value="#18D67F")
+      .modal-footer
+        %button.btn.btn-info(data-dismiss="modal") Cancel
+        %button.btn.btn-primary Save
+
+#modal-files.modal.fade(tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true")
+  .modal-dialog
+    .modal-content(ng-controller="ProjectNewCtrl")
+      %button.btn.btn-default.modal-dismiss(type="button" data-dismiss="modal" ng-click="loadInfo = false") Close
+      %ul.nav.nav-tabs
+        %li.active
+          %a(href="#hosting" data-toggle="tab" ng-click="tab='hosting'") OptimizePlayer
+        %li
+          %a(href="#amazon" data-toggle="tab" ng-click="tab='amazon'") Amazon
+        %li
+          %a(href="#rackspace" data-toggle="tab" ng-click="tab='rackspace'") RackSpace
+      .tab-content(csn-finder ng-cloak ng-controller="AssetUploadCtrl")
+        #hosting.tab-pane.active
+          .state-1
+            .files-content.dsp-table
+              .dsp-cell
+                .drag-content#dropzone(ng-hide="isLoadingFile")
+                  %h5 You can drag and drop files here
+                  %span or
+                  %csn-direct-upload(auto-upload="true" on-add="onFileAdd" on-progress-change="onProgressChange" on-done="onDone" on-fail="onFail" csn="opts.csnForUpload")
+                  %a.btn.btn-primary(href="#" ng-click="browseUserFiles()") Browse
+                #uploading-status(ng-show="isLoadingFile")
+                  #uploading-progress
+                    %span
+                      Uploading video - {{percentage}}
+                    .progress.progress-striped.active
+                      .progress-bar{"aria-valuemax" => "100", "aria-valuemin" => "100", "aria-valuenow" => "100", :role => "progressbar", :style => "width: {{percentage}}"}
+              .dsp-cell.files-list
+                %form.navbar-form(role="search")
+                  %button.btn.btn-link(type="submit")
+                    = image_tag("icons/icon-search.png", width: "14")
+                  .form-group
+                    %input.form-control(type="text" placeholder="Search" ng-model="search")
+                #uploading-status(ng-show="current_hosting_csn && current_hosting_csn.buckets == undefined")
+                  #uploading-progress
+                    %span
+                      Downloading
+                    .progress.progress-striped.active
+                      .progress-bar{"aria-valuemax" => "100", "aria-valuemin" => "100", "aria-valuenow" => "100", :role => "progressbar", :style => "width: 100%"}
+                #uploading-status(ng-show="current_hosting_folder.files == undefined && current_hosting_csn.buckets != undefined")
+                  #uploading-progress
+                    %span
+                      There are no files...
+                %ul.list-unstyled.files(ng-repeat="file in current_hosting_folder.files | filter: search")
+                  %div
+                    %li
+                      %span(style="width:90%;")
+                        %input(type="radio" id="file-{{$index + 1}}" name="select")
+                        %label(for="file-{{$index + 1}}" ng-click="setHostingConnectedFile(file)") {{file.name}}
+                      %span(style="float:right;")
+                        %a.delete{"ng-click" => "deleteFile(file, $index)", :title => "Delete"}
+                          %img{:alt => "Icon-delete", :src => "/assets/icons/icon-delete.png", :width => "11"}
+        #amazon.tab-pane(ng-controller="IntegrationCtrl")
+          .provider(ng-show="showS3Auth")
+            %h4 Sign ln or Connect to Upload a Video
+            #err
+              %p{"ng-bind-html" => "invalidCredentialsMessage"}
+            %input(type="text" placeholder="Nickname" ng-model="integration.api_credentials.title")
+            %input(type="text" placeholder="Bucket" ng-model="integration.api_credentials.bucket")
+            %input(type="text" placeholder="Access key" ng-model="integration.api_credentials.access_key_id")
+            %input(type="text" placeholder="Secret Key" ng-model="integration.api_credentials.secret_access_key")
+            %input#cloudfront(type="checkbox" ng-model="integration.api_credentials.use_cloudfront" )
+            %label(for="cloudfront") Use Cloudfront
+            %button.btn.btn-primary(ng-disabled="loading" type="submit" ng-click="saveIntegration()") Connect Provider
+          %div(ng-show="!showS3Auth")
+            = render 'shared/cloud_file_browser'
+        #rackspace.tab-pane(ng-controller="IntegrationCtrl")
+          .provider(ng-show="showRackspaceAuth")
+            %h4 Sign ln or Connect to Upload a Video
+            #err
+              %p{"ng-bind-html" => "invalidCredentialsMessage"}
+            %input(type="text" placeholder="Nickname" ng-model="integration.api_credentials.title")
+            %input(type="text" placeholder="Container name" ng-model="integration.api_credentials.bucket")
+            %input(type="text" placeholder="Username" ng-model="integration.api_credentials.username")
+            %input(type="text" placeholder="Api Key" ng-model="integration.api_credentials.api_key")
+            %button.btn.btn-primary(ng-disabled="loading" type="submit" ng-click="saveIntegration()") Connect Provider
+          %div(ng-show="!showRackspaceAuth")
+            = render 'shared/cloud_file_browser'
+        .footer.clearfix(ng-show="goToNextStep")
+          %div{style: "float:right;clear:right;"}
+            %a.btn-primary.btn.submit-file(ng-click="toUpdatingProject()" ng-show="!inProgress") Select Video
+
+= render "shared/modals/account"
+
+#modal-notifications.modal.fade(tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true")
+  .modal-dialog
+    .modal-content
+      %ul.dsp-table
+        %li.dsp-cell
+          %h4 Latest Notifications
+        %li.dsp-cell
+          %a.close-notifications(href="#" data-dismiss="modal" ng-click="upward = 'notifications-off'")
+            = image_tag("icons/icon-delete-gray.png", width: "15")
+      #modal-notifications-content
+
+%header(role="banner" ng-class="upward")
+  %nav
+    %ul.dsp-table
+      %li.dsp-cell.logo
+        %a(href="/" ng-click="reloadRoot()")
+          = image_tag("logo.png", width: "184")
+        #notifications_count
+      %li.dsp-cell.search
+        %form.navbar-form.navbar-left(action="/projects" method="get" role="search")
+          %button.btn.btn-link(type="submit")
+            = image_tag("icons/icon-search.png", width: "14")
+          .form-group
+            %input.form-control(name="search" placeholder="Search" type="text" value="#{@search}")/
+      %li.dsp-cell.main-menu
+        %ul.nav.nav-pills
+          %li
+            = link_to "My Projects", projects_path, class: ("active" if current_page?(projects_path))
+          %li
+            %a(href="#") Analytics
+          %li
+            = link_to "Help", "http://docs.optimizeplayer.com", target: "_blank"
+          %li
+            %a(href="#" data-toggle="modal" data-target="#modal-account") Account
+          %li
+            %a.btn.btn-primary(href="#" data-toggle="modal" data-target="#modal-files" ng-click="loadInfo = true") New Project

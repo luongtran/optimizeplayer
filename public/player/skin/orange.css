@@ -1,0 +1,21 @@
+.skin-orange .fp-controls {
+  background-image: none;
+  background-color: #242424; }
+.skin-orange .fp-time {
+  color: #747474; }
+.skin-orange .fp-mute {
+  display: none; }
+.skin-orange .fp-duration {
+  color: #747474; }
+.skin-orange .fp-timeline {
+  background-color: #191919; }
+.skin-orange .fp-buffer {
+  background-color: #2a2a2a; }
+.skin-orange .fp-progress {
+  background-image: none;
+  background-color: #dd5125; }
+.skin-orange .fp-volumeslider {
+  background-color: #ffffff;
+  border-color: #242424; }
+.skin-orange .fp-volumelevel {
+  background-color: #dd5125; }

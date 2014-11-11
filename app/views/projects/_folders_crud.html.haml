@@ -1,0 +1,23 @@
+.folders(role="sidebar")
+  .centralize
+    .btn-group
+      %button.btn.btn-primary(eat-click ng-click="showNewFolderForm = true" ng-click="current.showDialogId = 'new'") Create Folder
+      %button.btn.btn-primary.dropdown-toggle(data-toggle="dropdown" ng-class="{'open' : showDropdownFlag}" ng-click="showDropdownFlag = !showDropdownFlag")>
+        %span.caret
+        %span.sr-only Toggle Dropdown
+      %ul.dropdown-menu(role="menu")
+        %li
+          %a(eat-click="" href="#" ng-class="{'disabled': current.data.name == 'uncategorized' || current.data.parent_id }"
+             ng-click="showSubfolderDialog()") Create Subfolder
+  %ul
+    %li.add-folder(ng-cloak ng-show="current.showDialogId == 'new'")
+      %form.dsp-table(name="newFolder" ng-submit="saveFolder()")
+        .dsp-cell.icon-folder
+          %i
+        .dsp-cell.name
+          %input(ng-model="newFolderName" required type="text" placeholder="Folder Name")
+        .dsp-cell.info
+          %a.remove(ng-click="current.showDialogId = null")
+            = image_tag("icons/icon-delete.png", width: "11")
+    %folder(model="folder" current="current" system="folder.name == 'uncategorized'" on-remove="onFolderRemove"
+            ng-cloak ng-repeat="folder in folders")

@@ -1,0 +1,280 @@
+---
+http_interactions:
+- request:
+    method: put
+    uri: https://xingjin.s3.amazonaws.com/
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - fog/1.22.0
+      X-Amz-Acl:
+      - public-read
+      Date:
+      - Sat, 07 Jun 2014 07:52:39 +0000
+      Authorization:
+      - AWS AKIAJJNC4SXZU5LIB33A:cpK4K4tzOFdaJ2LyLUbf/lztERk=
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      X-Amz-Id-2:
+      - tLrUq93EPkWxMHYiEDr51gJzXQW3UJQxO6muqgFFaP8G2f4yG//kXyTJ299vfMZS
+      X-Amz-Request-Id:
+      - CEF74C303C4A4B99
+      Date:
+      - Sat, 07 Jun 2014 07:52:43 GMT
+      Location:
+      - /xingjin
+      Content-Length:
+      - '0'
+      Connection:
+      - close
+      Server:
+      - AmazonS3
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Sat, 07 Jun 2014 07:52:42 GMT
+- request:
+    method: put
+    uri: https://xingjin.s3.amazonaws.com/
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - fog/1.22.0
+      X-Amz-Acl:
+      - public-read
+      Date:
+      - Sat, 07 Jun 2014 07:52:42 +0000
+      Authorization:
+      - AWS AKIAJJNC4SXZU5LIB33A:bEpqfhzk9QFOQImyG93LMu7+IoE=
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      X-Amz-Id-2:
+      - keYmXf274iv3PI6kNeF4XfJWceRd+/zA3+QDLvPEjpcQ0z/dm/y5NDJJ4SZ5O3qB
+      X-Amz-Request-Id:
+      - 7E98D3DEE04F4B5D
+      Date:
+      - Sat, 07 Jun 2014 07:52:46 GMT
+      Location:
+      - /xingjin
+      Content-Length:
+      - '0'
+      Connection:
+      - close
+      Server:
+      - AmazonS3
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Sat, 07 Jun 2014 07:52:46 GMT
+- request:
+    method: get
+    uri: https://cloudfront.amazonaws.com/2010-11-01//distribution
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - fog/1.22.0
+      Date:
+      - Sat, 07 Jun 2014 07:52:46 +0000
+      Authorization:
+      - AWS AKIAJJNC4SXZU5LIB33A:M0QCMAPXyoqD90mjZl+pcDtFbPk=
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      X-Amzn-Requestid:
+      - b939b76f-ee18-11e3-a3bb-3f34e6a91127
+      Content-Type:
+      - text/xml
+      Content-Length:
+      - '4064'
+      Date:
+      - Sat, 07 Jun 2014 07:52:49 GMT
+    body:
+      encoding: UTF-8
+      string: |-
+        <?xml version="1.0"?>
+        <DistributionList xmlns="http://cloudfront.amazonaws.com/doc/2010-11-01/"><Marker></Marker><MaxItems>100</MaxItems><IsTruncated>false</IsTruncated><DistributionSummary><Id>E1EO1UK01N3OR1</Id><Status>Deployed</Status><LastModifiedTime>2013-11-29T13:14:19.384Z</LastModifiedTime><DomainName>dcrmw8t9lgh5y.cloudfront.net</DomainName><S3Origin><DNSName>optimizeplayer.s3.amazonaws.com</DNSName></S3Origin><Enabled>true</Enabled></DistributionSummary><DistributionSummary><Id>E1AXLMOZND9KRF</Id><Status>Deployed</Status><LastModifiedTime>2013-11-16T16:07:21.996Z</LastModifiedTime><DomainName>d1mlmuoezjfv5h.cloudfront.net</DomainName><S3Origin><DNSName>optimizeplayer_dev.s3.amazonaws.com</DNSName></S3Origin><Enabled>true</Enabled></DistributionSummary><DistributionSummary><Id>E1IB5TSISCWTT</Id><Status>Deployed</Status><LastModifiedTime>2014-05-15T02:15:57.920Z</LastModifiedTime><DomainName>d1fqfyp6kf4ta7.cloudfront.net</DomainName><S3Origin><DNSName>morning_chairs_tale.s3.amazonaws.com</DNSName></S3Origin><Enabled>false</Enabled></DistributionSummary><DistributionSummary><Id>EPYIZ890RPMUJ</Id><Status>Deployed</Status><LastModifiedTime>2013-12-27T09:02:30.669Z</LastModifiedTime><DomainName>d2hng9k1iufhl6.cloudfront.net</DomainName><S3Origin><DNSName>optimizeplayer_stage.s3.amazonaws.com</DNSName></S3Origin><Enabled>true</Enabled></DistributionSummary><DistributionSummary><Id>E1KU9VGAF2TIQ5</Id><Status>Deployed</Status><LastModifiedTime>2014-02-21T07:29:01.148Z</LastModifiedTime><DomainName>d1fvrqwjet26vv.cloudfront.net</DomainName><S3Origin><DNSName>defaut.s3.amazonaws.com</DNSName></S3Origin><Enabled>true</Enabled></DistributionSummary><DistributionSummary><Id>E3S4SV4SVONPAW</Id><Status>Deployed</Status><LastModifiedTime>2014-05-15T02:14:21.292Z</LastModifiedTime><DomainName>d22bb4tm6aovin.cloudfront.net</DomainName><S3Origin><DNSName>tesh_fassssstt.s3.amazonaws.com</DNSName></S3Origin><Enabled>true</Enabled></DistributionSummary><DistributionSummary><Id>E33P1T48LGJ17E</Id><Status>Deployed</Status><LastModifiedTime>2014-05-27T17:51:52.685Z</LastModifiedTime><DomainName>d25gvdlveqrhmx.cloudfront.net</DomainName><S3Origin><DNSName>tesh_fassssstt.s3.amazonaws.com</DNSName></S3Origin><Enabled>true</Enabled></DistributionSummary><DistributionSummary><Id>E2HYJ3MEQ43HWE</Id><Status>Deployed</Status><LastModifiedTime>2014-05-29T20:17:06.114Z</LastModifiedTime><DomainName>d13uryp6tqrx2y.cloudfront.net</DomainName><S3Origin><DNSName>tesh_fassssstt.s3.amazonaws.com</DNSName></S3Origin><Enabled>true</Enabled></DistributionSummary><DistributionSummary><Id>E384SLF9D47HKB</Id><Status>Deployed</Status><LastModifiedTime>2014-06-05T18:58:50.484Z</LastModifiedTime><DomainName>d3vv3n219qsaot.cloudfront.net</DomainName><S3Origin><DNSName>jinxing823.s3.amazonaws.com</DNSName></S3Origin><Enabled>false</Enabled></DistributionSummary><DistributionSummary><Id>E2GTM1E6WDFLLM</Id><Status>Deployed</Status><LastModifiedTime>2014-06-05T19:18:48.902Z</LastModifiedTime><DomainName>d2rzf6l3ngrtbx.cloudfront.net</DomainName><S3Origin><DNSName>baozhi.s3.amazonaws.com</DNSName></S3Origin><Enabled>false</Enabled></DistributionSummary><DistributionSummary><Id>E3OZGLFEO0GGAK</Id><Status>Deployed</Status><LastModifiedTime>2014-06-05T19:18:49.037Z</LastModifiedTime><DomainName>d88g7bdhcufim.cloudfront.net</DomainName><S3Origin><DNSName>baozhi123.s3.amazonaws.com</DNSName></S3Origin><Enabled>false</Enabled></DistributionSummary><DistributionSummary><Id>EKI5PZ7JB40YP</Id><Status>Deployed</Status><LastModifiedTime>2014-06-05T19:19:18.926Z</LastModifiedTime><DomainName>d1e3udneo0cld7.cloudfront.net</DomainName><S3Origin><DNSName>baozhi234.s3.amazonaws.com</DNSName></S3Origin><Enabled>true</Enabled></DistributionSummary><DistributionSummary><Id>E14EZ47RRFAKAD</Id><Status>Deployed</Status><LastModifiedTime>2014-06-06T18:38:50.722Z</LastModifiedTime><DomainName>dcohiu8tsncjd.cloudfront.net</DomainName><S3Origin><DNSName>xingjin.s3.amazonaws.com</DNSName></S3Origin><Enabled>true</Enabled></DistributionSummary></DistributionList>
+    http_version: 
+  recorded_at: Sat, 07 Jun 2014 07:52:50 GMT
+- request:
+    method: put
+    uri: https://xingjin.s3.amazonaws.com/
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - fog/1.22.0
+      X-Amz-Acl:
+      - public-read
+      Date:
+      - Sat, 07 Jun 2014 07:52:50 +0000
+      Authorization:
+      - AWS AKIAJJNC4SXZU5LIB33A:0sN+4lcp7l5aphAUjjxbRWXCywQ=
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      X-Amz-Id-2:
+      - YfZObSmmGmjGOSjBsvprY2/2G06v4cTleGce6QM+a1fMn0pfce0GvfcK8KbDNez8
+      X-Amz-Request-Id:
+      - 8D6F80865478F93E
+      Date:
+      - Sat, 07 Jun 2014 07:52:54 GMT
+      Location:
+      - /xingjin
+      Content-Length:
+      - '0'
+      Connection:
+      - close
+      Server:
+      - AmazonS3
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Sat, 07 Jun 2014 07:52:54 GMT
+- request:
+    method: put
+    uri: https://xingjin.s3.amazonaws.com/?cors
+    body:
+      encoding: UTF-8
+      string: |-
+        <CORSConfiguration>
+          <CORSRule>
+            <MaxAgeSeconds>3000</MaxAgeSeconds>
+            <AllowedOrigin>https://*.</AllowedOrigin>
+            <AllowedMethod>POST</AllowedMethod>
+            <AllowedMethod>GET</AllowedMethod>
+            <AllowedMethod>PUT</AllowedMethod>
+            <AllowedHeader>*</AllowedHeader>
+          </CORSRule>
+        </CORSConfiguration>
+    headers:
+      User-Agent:
+      - fog/1.22.0
+      Content-Md5:
+      - LJSvsA96/VFN2ePXK96lJQ==
+      Content-Type:
+      - application/json
+      Date:
+      - Sat, 07 Jun 2014 07:52:54 +0000
+      Authorization:
+      - AWS AKIAJJNC4SXZU5LIB33A:mUf/N4uXSKk7PmMMk82/kC+ove0=
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      X-Amz-Id-2:
+      - CUk3L5ima+eeGkZlVAE8MlcvwpouEhJXsdMvPujp1N7eOlQurZBbayZxFss/IX5e
+      X-Amz-Request-Id:
+      - E279CD3D03A075A4
+      Date:
+      - Sat, 07 Jun 2014 07:52:57 GMT
+      Content-Length:
+      - '0'
+      Connection:
+      - close
+      Server:
+      - AmazonS3
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Sat, 07 Jun 2014 07:52:57 GMT
+- request:
+    method: put
+    uri: https://xingjin.s3.amazonaws.com/
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - fog/1.22.0
+      X-Amz-Acl:
+      - public-read
+      Date:
+      - Sat, 07 Jun 2014 07:52:57 +0000
+      Authorization:
+      - AWS AKIAJJNC4SXZU5LIB33A:ML6nv+gxGAfWFcJT7o9YTNTR7ew=
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      X-Amz-Id-2:
+      - F8Aax2EOy4CSofHhj+/slk5o0m2DKIoUJpJpm245ggrBul04hGsM17POu/TlKEg2
+      X-Amz-Request-Id:
+      - FAFC32710DE6445B
+      Date:
+      - Sat, 07 Jun 2014 07:53:02 GMT
+      Location:
+      - /xingjin
+      Content-Length:
+      - '0'
+      Connection:
+      - close
+      Server:
+      - AmazonS3
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Sat, 07 Jun 2014 07:53:01 GMT
+- request:
+    method: get
+    uri: https://s3.amazonaws.com/
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - fog/1.22.0
+      Date:
+      - Sat, 07 Jun 2014 07:53:01 +0000
+      Authorization:
+      - AWS AKIAJJNC4SXZU5LIB33A:i46V7oiA1fwoIOFRXoasPqnbNPA=
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      X-Amz-Id-2:
+      - 00PosVtzD06IjMofygUw4GUZuX5bLJcGK2FGsFC7abYOPa5EoY9MxoZQc3WL9YHk
+      X-Amz-Request-Id:
+      - 9CA4B0689FF7BB34
+      Date:
+      - Sat, 07 Jun 2014 07:53:06 GMT
+      Content-Type:
+      - application/xml
+      Transfer-Encoding:
+      - ''
+      Connection:
+      - close
+      Server:
+      - AmazonS3
+    body:
+      encoding: UTF-8
+      string: |-
+        <?xml version="1.0" encoding="UTF-8"?>
+        <ListAllMyBucketsResult xmlns="http://s3.amazonaws.com/doc/2006-03-01/"><Owner><ID>c87b8a5f1a41fde2437bbbcc99298543a93276bdd8bfd9cc0aa12cf78fbb5d9d</ID><DisplayName>lateshaburroughs</DisplayName></Owner><Buckets><Bucket><Name>MusicVideosMizu</Name><CreationDate>2013-11-06T01:37:24.000Z</CreationDate></Bucket><Bucket><Name>andrefe</Name><CreationDate>2014-05-28T21:10:04.000Z</CreationDate></Bucket><Bucket><Name>baozhi123</Name><CreationDate>2014-06-05T19:15:30.000Z</CreationDate></Bucket><Bucket><Name>baozhi234</Name><CreationDate>2014-06-05T19:19:08.000Z</CreationDate></Bucket><Bucket><Name>defaut</Name><CreationDate>2013-12-24T10:13:37.000Z</CreationDate></Bucket><Bucket><Name>elasticbeanstalk-us-east-1-355305061714</Name><CreationDate>2013-11-06T02:48:14.000Z</CreationDate></Bucket><Bucket><Name>latesha_optimizeplayer</Name><CreationDate>2014-01-28T22:02:05.000Z</CreationDate></Bucket><Bucket><Name>lateshaburroughs</Name><CreationDate>2013-11-06T03:36:10.000Z</CreationDate></Bucket><Bucket><Name>lodoss</Name><CreationDate>2014-02-06T10:59:20.000Z</CreationDate></Bucket><Bucket><Name>marketerlessons</Name><CreationDate>2013-11-06T03:42:06.000Z</CreationDate></Bucket><Bucket><Name>mujuice</Name><CreationDate>2014-01-22T23:36:38.000Z</CreationDate></Bucket><Bucket><Name>optimize_player_videos</Name><CreationDate>2014-06-03T12:48:13.000Z</CreationDate></Bucket><Bucket><Name>optimizeplayer</Name><CreationDate>2013-11-12T22:07:25.000Z</CreationDate></Bucket><Bucket><Name>optimizeplayer_dev</Name><CreationDate>2013-11-16T16:06:19.000Z</CreationDate></Bucket><Bucket><Name>optimizeplayer_stage</Name><CreationDate>2013-12-27T08:57:28.000Z</CreationDate></Bucket><Bucket><Name>optimizeplayer_tesha</Name><CreationDate>2014-04-15T15:12:50.000Z</CreationDate></Bucket><Bucket><Name>permissionsxingbucket</Name><CreationDate>2014-04-28T14:41:20.000Z</CreationDate></Bucket><Bucket><Name>pixelnerve98</Name><CreationDate>2013-12-05T00:18:28.000Z</CreationDate></Bucket><Bucket><Name>pixelserve0</Name><CreationDate>2013-09-11T20:30:40.000Z</CreationDate></Bucket><Bucket><Name>pixelserve2</Name><CreationDate>2013-11-13T02:47:33.000Z</CreationDate></Bucket><Bucket><Name>pixelserve30</Name><CreationDate>2013-12-26T14:43:20.000Z</CreationDate></Bucket><Bucket><Name>pixelserve88</Name><CreationDate>2013-12-26T15:31:19.000Z</CreationDate></Bucket><Bucket><Name>qwertykeyboard</Name><CreationDate>2013-12-11T21:08:08.000Z</CreationDate></Bucket><Bucket><Name>roicommand</Name><CreationDate>2012-04-04T00:52:35.000Z</CreationDate></Bucket><Bucket><Name>rvk-op-test-cf</Name><CreationDate>2013-12-07T20:49:30.000Z</CreationDate></Bucket><Bucket><Name>rvk-op-test2</Name><CreationDate>2013-12-01T19:54:38.000Z</CreationDate></Bucket><Bucket><Name>rvkproblems</Name><CreationDate>2014-01-17T14:55:42.000Z</CreationDate></Bucket><Bucket><Name>rvktestcloudfront</Name><CreationDate>2014-01-15T12:51:34.000Z</CreationDate></Bucket><Bucket><Name>tesh_fassssstt</Name><CreationDate>2014-05-15T01:48:04.000Z</CreationDate></Bucket><Bucket><Name>tesh_laptop</Name><CreationDate>2014-05-28T15:30:41.000Z</CreationDate></Bucket><Bucket><Name>tesh_local</Name><CreationDate>2014-05-04T20:59:05.000Z</CreationDate></Bucket><Bucket><Name>tesha_fassssstt</Name><CreationDate>2014-05-29T20:13:42.000Z</CreationDate></Bucket><Bucket><Name>teshlaptop</Name><CreationDate>2014-05-28T15:32:25.000Z</CreationDate></Bucket><Bucket><Name>teshnewdesignbranch</Name><CreationDate>2014-05-28T20:40:43.000Z</CreationDate></Bucket><Bucket><Name>usersvideos</Name><CreationDate>2014-06-04T10:28:06.000Z</CreationDate></Bucket><Bucket><Name>wfss2014</Name><CreationDate>2014-05-26T18:45:59.000Z</CreationDate></Bucket><Bucket><Name>wpidiot</Name><CreationDate>2011-09-25T20:36:47.000Z</CreationDate></Bucket><Bucket><Name>xingjin</Name><CreationDate>2014-04-23T17:21:30.000Z</CreationDate></Bucket></Buckets></ListAllMyBucketsResult>
+    http_version: 
+  recorded_at: Sat, 07 Jun 2014 07:53:05 GMT
+recorded_with: VCR 2.9.0

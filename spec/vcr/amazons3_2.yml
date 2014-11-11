@@ -1,0 +1,280 @@
+---
+http_interactions:
+- request:
+    method: put
+    uri: https://xingjin.s3.amazonaws.com/
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - fog/1.22.0
+      X-Amz-Acl:
+      - public-read
+      Date:
+      - Sat, 07 Jun 2014 07:47:32 +0000
+      Authorization:
+      - AWS AKIAJJNC4SXZU5LIB33A:DxJOWMo8UXgnyWsmrprqHpZ+E+E=
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      X-Amz-Id-2:
+      - s0ZDCSSMVCm9/ZncqE9z/unobC7vCw7Y4ns9tonGOxsMVQ5AZ4i8h3+vbQWMUiQL
+      X-Amz-Request-Id:
+      - 30BDE1E8C0AC3C6E
+      Date:
+      - Sat, 07 Jun 2014 07:47:36 GMT
+      Location:
+      - /xingjin
+      Content-Length:
+      - '0'
+      Connection:
+      - close
+      Server:
+      - AmazonS3
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Sat, 07 Jun 2014 07:47:35 GMT
+- request:
+    method: put
+    uri: https://xingjin.s3.amazonaws.com/
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - fog/1.22.0
+      X-Amz-Acl:
+      - public-read
+      Date:
+      - Sat, 07 Jun 2014 07:47:35 +0000
+      Authorization:
+      - AWS AKIAJJNC4SXZU5LIB33A:p4D3TRueJEvMl+KpAmEzli478CY=
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      X-Amz-Id-2:
+      - 9ueiKFl/le+gBuzi9iXYypK+V0K1NCr8ws8ikBMgJKYGqicTdR4ifK507R/yIZ6V
+      X-Amz-Request-Id:
+      - 08FB50112BA94081
+      Date:
+      - Sat, 07 Jun 2014 07:47:39 GMT
+      Location:
+      - /xingjin
+      Content-Length:
+      - '0'
+      Connection:
+      - close
+      Server:
+      - AmazonS3
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Sat, 07 Jun 2014 07:47:38 GMT
+- request:
+    method: get
+    uri: https://cloudfront.amazonaws.com/2010-11-01//distribution
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - fog/1.22.0
+      Date:
+      - Sat, 07 Jun 2014 07:47:38 +0000
+      Authorization:
+      - AWS AKIAJJNC4SXZU5LIB33A:u99MBqISteuNoH2zBmAJJKqK6pk=
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      X-Amzn-Requestid:
+      - 03538e4d-ee18-11e3-b2fb-3b8eb017ed5f
+      Content-Type:
+      - text/xml
+      Content-Length:
+      - '4064'
+      Date:
+      - Sat, 07 Jun 2014 07:47:45 GMT
+    body:
+      encoding: UTF-8
+      string: |-
+        <?xml version="1.0"?>
+        <DistributionList xmlns="http://cloudfront.amazonaws.com/doc/2010-11-01/"><Marker></Marker><MaxItems>100</MaxItems><IsTruncated>false</IsTruncated><DistributionSummary><Id>E1EO1UK01N3OR1</Id><Status>Deployed</Status><LastModifiedTime>2013-11-29T13:14:19.384Z</LastModifiedTime><DomainName>dcrmw8t9lgh5y.cloudfront.net</DomainName><S3Origin><DNSName>optimizeplayer.s3.amazonaws.com</DNSName></S3Origin><Enabled>true</Enabled></DistributionSummary><DistributionSummary><Id>E1AXLMOZND9KRF</Id><Status>Deployed</Status><LastModifiedTime>2013-11-16T16:07:21.996Z</LastModifiedTime><DomainName>d1mlmuoezjfv5h.cloudfront.net</DomainName><S3Origin><DNSName>optimizeplayer_dev.s3.amazonaws.com</DNSName></S3Origin><Enabled>true</Enabled></DistributionSummary><DistributionSummary><Id>E1IB5TSISCWTT</Id><Status>Deployed</Status><LastModifiedTime>2014-05-15T02:15:57.920Z</LastModifiedTime><DomainName>d1fqfyp6kf4ta7.cloudfront.net</DomainName><S3Origin><DNSName>morning_chairs_tale.s3.amazonaws.com</DNSName></S3Origin><Enabled>false</Enabled></DistributionSummary><DistributionSummary><Id>EPYIZ890RPMUJ</Id><Status>Deployed</Status><LastModifiedTime>2013-12-27T09:02:30.669Z</LastModifiedTime><DomainName>d2hng9k1iufhl6.cloudfront.net</DomainName><S3Origin><DNSName>optimizeplayer_stage.s3.amazonaws.com</DNSName></S3Origin><Enabled>true</Enabled></DistributionSummary><DistributionSummary><Id>E1KU9VGAF2TIQ5</Id><Status>Deployed</Status><LastModifiedTime>2014-02-21T07:29:01.148Z</LastModifiedTime><DomainName>d1fvrqwjet26vv.cloudfront.net</DomainName><S3Origin><DNSName>defaut.s3.amazonaws.com</DNSName></S3Origin><Enabled>true</Enabled></DistributionSummary><DistributionSummary><Id>E3S4SV4SVONPAW</Id><Status>Deployed</Status><LastModifiedTime>2014-05-15T02:14:21.292Z</LastModifiedTime><DomainName>d22bb4tm6aovin.cloudfront.net</DomainName><S3Origin><DNSName>tesh_fassssstt.s3.amazonaws.com</DNSName></S3Origin><Enabled>true</Enabled></DistributionSummary><DistributionSummary><Id>E33P1T48LGJ17E</Id><Status>Deployed</Status><LastModifiedTime>2014-05-27T17:51:52.685Z</LastModifiedTime><DomainName>d25gvdlveqrhmx.cloudfront.net</DomainName><S3Origin><DNSName>tesh_fassssstt.s3.amazonaws.com</DNSName></S3Origin><Enabled>true</Enabled></DistributionSummary><DistributionSummary><Id>E2HYJ3MEQ43HWE</Id><Status>Deployed</Status><LastModifiedTime>2014-05-29T20:17:06.114Z</LastModifiedTime><DomainName>d13uryp6tqrx2y.cloudfront.net</DomainName><S3Origin><DNSName>tesh_fassssstt.s3.amazonaws.com</DNSName></S3Origin><Enabled>true</Enabled></DistributionSummary><DistributionSummary><Id>E384SLF9D47HKB</Id><Status>Deployed</Status><LastModifiedTime>2014-06-05T18:58:50.484Z</LastModifiedTime><DomainName>d3vv3n219qsaot.cloudfront.net</DomainName><S3Origin><DNSName>jinxing823.s3.amazonaws.com</DNSName></S3Origin><Enabled>false</Enabled></DistributionSummary><DistributionSummary><Id>E2GTM1E6WDFLLM</Id><Status>Deployed</Status><LastModifiedTime>2014-06-05T19:18:48.902Z</LastModifiedTime><DomainName>d2rzf6l3ngrtbx.cloudfront.net</DomainName><S3Origin><DNSName>baozhi.s3.amazonaws.com</DNSName></S3Origin><Enabled>false</Enabled></DistributionSummary><DistributionSummary><Id>E3OZGLFEO0GGAK</Id><Status>Deployed</Status><LastModifiedTime>2014-06-05T19:18:49.037Z</LastModifiedTime><DomainName>d88g7bdhcufim.cloudfront.net</DomainName><S3Origin><DNSName>baozhi123.s3.amazonaws.com</DNSName></S3Origin><Enabled>false</Enabled></DistributionSummary><DistributionSummary><Id>EKI5PZ7JB40YP</Id><Status>Deployed</Status><LastModifiedTime>2014-06-05T19:19:18.926Z</LastModifiedTime><DomainName>d1e3udneo0cld7.cloudfront.net</DomainName><S3Origin><DNSName>baozhi234.s3.amazonaws.com</DNSName></S3Origin><Enabled>true</Enabled></DistributionSummary><DistributionSummary><Id>E14EZ47RRFAKAD</Id><Status>Deployed</Status><LastModifiedTime>2014-06-06T18:38:50.722Z</LastModifiedTime><DomainName>dcohiu8tsncjd.cloudfront.net</DomainName><S3Origin><DNSName>xingjin.s3.amazonaws.com</DNSName></S3Origin><Enabled>true</Enabled></DistributionSummary></DistributionList>
+    http_version: 
+  recorded_at: Sat, 07 Jun 2014 07:47:45 GMT
+- request:
+    method: put
+    uri: https://xingjin.s3.amazonaws.com/
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - fog/1.22.0
+      X-Amz-Acl:
+      - public-read
+      Date:
+      - Sat, 07 Jun 2014 07:47:45 +0000
+      Authorization:
+      - AWS AKIAJJNC4SXZU5LIB33A:f7sLXby+jo+ppQmo82LZduee78U=
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      X-Amz-Id-2:
+      - uMhzFYEtmZ7e7zLLFWf3XCKwFGeUpfaRil6dmtH3eD866UZ78XQ2UgSpfnfQCeSs
+      X-Amz-Request-Id:
+      - 00AE5EA889BC0953
+      Date:
+      - Sat, 07 Jun 2014 07:47:50 GMT
+      Location:
+      - /xingjin
+      Content-Length:
+      - '0'
+      Connection:
+      - close
+      Server:
+      - AmazonS3
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Sat, 07 Jun 2014 07:47:49 GMT
+- request:
+    method: put
+    uri: https://xingjin.s3.amazonaws.com/?cors
+    body:
+      encoding: UTF-8
+      string: |-
+        <CORSConfiguration>
+          <CORSRule>
+            <MaxAgeSeconds>3000</MaxAgeSeconds>
+            <AllowedOrigin>https://*.</AllowedOrigin>
+            <AllowedMethod>POST</AllowedMethod>
+            <AllowedMethod>GET</AllowedMethod>
+            <AllowedMethod>PUT</AllowedMethod>
+            <AllowedHeader>*</AllowedHeader>
+          </CORSRule>
+        </CORSConfiguration>
+    headers:
+      User-Agent:
+      - fog/1.22.0
+      Content-Md5:
+      - LJSvsA96/VFN2ePXK96lJQ==
+      Content-Type:
+      - application/json
+      Date:
+      - Sat, 07 Jun 2014 07:47:49 +0000
+      Authorization:
+      - AWS AKIAJJNC4SXZU5LIB33A:E/day4v0Obq34Pxw6Hyp0uAlcQo=
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      X-Amz-Id-2:
+      - grOWeV7Kd40fLl78FkTyh6O0Wxk7QLrZPYMi/ZjPlGUZQ5S/r+OCQd/lbG1v+Dye
+      X-Amz-Request-Id:
+      - 2E1BFC7FC1F8D5F7
+      Date:
+      - Sat, 07 Jun 2014 07:47:53 GMT
+      Content-Length:
+      - '0'
+      Connection:
+      - close
+      Server:
+      - AmazonS3
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Sat, 07 Jun 2014 07:47:53 GMT
+- request:
+    method: put
+    uri: https://xingjin.s3.amazonaws.com/
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - fog/1.22.0
+      X-Amz-Acl:
+      - public-read
+      Date:
+      - Sat, 07 Jun 2014 07:47:53 +0000
+      Authorization:
+      - AWS AKIAJJNC4SXZU5LIB33A:UMX+MunsebCLfHMHloHVWfFUICA=
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      X-Amz-Id-2:
+      - WzZ/K11iHU3estwPCEWaeTr1soyLxWQVjUxm50aOK21ga/CLhMlaS5Q59gtaiA0Z
+      X-Amz-Request-Id:
+      - 63A5298050CD0D4C
+      Date:
+      - Sat, 07 Jun 2014 07:47:56 GMT
+      Location:
+      - /xingjin
+      Content-Length:
+      - '0'
+      Connection:
+      - close
+      Server:
+      - AmazonS3
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Sat, 07 Jun 2014 07:47:56 GMT
+- request:
+    method: get
+    uri: https://xingjin.s3.amazonaws.com/
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - fog/1.22.0
+      Date:
+      - Sat, 07 Jun 2014 07:47:56 +0000
+      Authorization:
+      - AWS AKIAJJNC4SXZU5LIB33A:eqCXM3J/ReBmFegGOYae2lyRzGQ=
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      X-Amz-Id-2:
+      - yh2p7pD83obITFCamR8d5NLrUOKvJxdwmSrZ22SSGr53D5+2OhFPfNKPoaZBgwiD
+      X-Amz-Request-Id:
+      - 9A41E4A1A431CABB
+      Date:
+      - Sat, 07 Jun 2014 07:47:59 GMT
+      Content-Type:
+      - application/xml
+      Transfer-Encoding:
+      - ''
+      Connection:
+      - close
+      Server:
+      - AmazonS3
+    body:
+      encoding: UTF-8
+      string: |-
+        <?xml version="1.0" encoding="UTF-8"?>
+        <ListBucketResult xmlns="http://s3.amazonaws.com/doc/2006-03-01/"><Name>xingjin</Name><Prefix></Prefix><Marker></Marker><MaxKeys>1000</MaxKeys><IsTruncated>false</IsTruncated><Contents><Key>uploads/op-JMFINALCC2-203.mp4</Key><LastModified>2014-04-27T13:00:09.000Z</LastModified><ETag>&quot;043290329b54999383c8c49242484f41&quot;</ETag><Size>314870063</Size><Owner><ID>c87b8a5f1a41fde2437bbbcc99298543a93276bdd8bfd9cc0aa12cf78fbb5d9d</ID><DisplayName>lateshaburroughs</DisplayName></Owner><StorageClass>STANDARD</StorageClass></Contents><Contents><Key>uploads/op-JMFINALCC2-526.mp4</Key><LastModified>2014-04-26T00:03:20.000Z</LastModified><ETag>&quot;8a0ed40be2e81a3e8b50c3d3fa9add72&quot;</ETag><Size>314870063</Size><Owner><ID>c87b8a5f1a41fde2437bbbcc99298543a93276bdd8bfd9cc0aa12cf78fbb5d9d</ID><DisplayName>lateshaburroughs</DisplayName></Owner><StorageClass>STANDARD</StorageClass></Contents><Contents><Key>uploads/op-NAJ_FINAL_-58.mp4</Key><LastModified>2014-04-25T22:47:24.000Z</LastModified><ETag>&quot;76ad30b553cb1b9aaadd661d5befd850&quot;</ETag><Size>288613671</Size><Owner><ID>c87b8a5f1a41fde2437bbbcc99298543a93276bdd8bfd9cc0aa12cf78fbb5d9d</ID><DisplayName>lateshaburroughs</DisplayName></Owner><StorageClass>STANDARD</StorageClass></Contents><Contents><Key>uploads/op-Video_1-_How_to_Register_a_Domain_Name-256.mp4</Key><LastModified>2014-04-23T17:26:04.000Z</LastModified><ETag>&quot;7025aa8fea4a54007bd1ad3a2fc63aca&quot;</ETag><Size>7110390</Size><Owner><ID>c87b8a5f1a41fde2437bbbcc99298543a93276bdd8bfd9cc0aa12cf78fbb5d9d</ID><DisplayName>lateshaburroughs</DisplayName></Owner><StorageClass>STANDARD</StorageClass></Contents><Contents><Key>uploads/op-bbm-120.mp4</Key><LastModified>2014-04-28T03:11:54.000Z</LastModified><ETag>&quot;e1bf8706dee7673fd137d4524ad89e4d&quot;</ETag><Size>230924459</Size><Owner><ID>c87b8a5f1a41fde2437bbbcc99298543a93276bdd8bfd9cc0aa12cf78fbb5d9d</ID><DisplayName>lateshaburroughs</DisplayName></Owner><StorageClass>STANDARD</StorageClass></Contents><Contents><Key>uploads/op-bbm-205.mp4</Key><LastModified>2014-04-28T04:37:12.000Z</LastModified><ETag>&quot;2cd066cf81e67e1ca8538864d2ba77dd&quot;</ETag><Size>230858583</Size><Owner><ID>c87b8a5f1a41fde2437bbbcc99298543a93276bdd8bfd9cc0aa12cf78fbb5d9d</ID><DisplayName>lateshaburroughs</DisplayName></Owner><StorageClass>STANDARD</StorageClass></Contents><Contents><Key>uploads/op-bbm-231.mp4</Key><LastModified>2014-04-26T02:55:18.000Z</LastModified><ETag>&quot;418675bb82f51784942f4568112e90bf&quot;</ETag><Size>230924459</Size><Owner><ID>c87b8a5f1a41fde2437bbbcc99298543a93276bdd8bfd9cc0aa12cf78fbb5d9d</ID><DisplayName>lateshaburroughs</DisplayName></Owner><StorageClass>STANDARD</StorageClass></Contents><Contents><Key>uploads/op-bbm-251.mp4</Key><LastModified>2014-04-28T02:00:48.000Z</LastModified><ETag>&quot;d31bcf7ff545eb4fe1111beb2f0fb012&quot;</ETag><Size>230924457</Size><Owner><ID>c87b8a5f1a41fde2437bbbcc99298543a93276bdd8bfd9cc0aa12cf78fbb5d9d</ID><DisplayName>lateshaburroughs</DisplayName></Owner><StorageClass>STANDARD</StorageClass></Contents><Contents><Key>uploads/op-bbm-282.mp4</Key><LastModified>2014-04-29T07:49:41.000Z</LastModified><ETag>&quot;e5390f732374684e850e17f7a2a26bca&quot;</ETag><Size>230924457</Size><Owner><ID>c87b8a5f1a41fde2437bbbcc99298543a93276bdd8bfd9cc0aa12cf78fbb5d9d</ID><DisplayName>lateshaburroughs</DisplayName></Owner><StorageClass>STANDARD</StorageClass></Contents><Contents><Key>uploads/op-bbm-288.mp4</Key><LastModified>2014-04-26T03:56:36.000Z</LastModified><ETag>&quot;51866f8d1888831bc8f10ca1278f4443&quot;</ETag><Size>230924457</Size><Owner><ID>c87b8a5f1a41fde2437bbbcc99298543a93276bdd8bfd9cc0aa12cf78fbb5d9d</ID><DisplayName>lateshaburroughs</DisplayName></Owner><StorageClass>STANDARD</StorageClass></Contents><Contents><Key>uploads/op-bbm-338.mp4</Key><LastModified>2014-04-26T07:32:11.000Z</LastModified><ETag>&quot;083c1f6ea21ab0b8d873066a770197e1&quot;</ETag><Size>230924459</Size><Owner><ID>c87b8a5f1a41fde2437bbbcc99298543a93276bdd8bfd9cc0aa12cf78fbb5d9d</ID><DisplayName>lateshaburroughs</DisplayName></Owner><StorageClass>STANDARD</StorageClass></Contents><Contents><Key>uploads/op-bbm-349.mp4</Key><LastModified>2014-04-28T10:27:57.000Z</LastModified><ETag>&quot;7c2a0f612443db89fc41ee3d33f0e7df&quot;</ETag><Size>230924459</Size><Owner><ID>c87b8a5f1a41fde2437bbbcc99298543a93276bdd8bfd9cc0aa12cf78fbb5d9d</ID><DisplayName>lateshaburroughs</DisplayName></Owner><StorageClass>STANDARD</StorageClass></Contents><Contents><Key>uploads/op-bbm-388.mp4</Key><LastModified>2014-04-27T09:09:12.000Z</LastModified><ETag>&quot;04c95892bcce6a9eb37a689731a8160e&quot;</ETag><Size>230924459</Size><Owner><ID>c87b8a5f1a41fde2437bbbcc99298543a93276bdd8bfd9cc0aa12cf78fbb5d9d</ID><DisplayName>lateshaburroughs</DisplayName></Owner><StorageClass>STANDARD</StorageClass></Contents><Contents><Key>uploads/op-bbm-422.mp4</Key><LastModified>2014-04-28T06:51:40.000Z</LastModified><ETag>&quot;de74375f0b94116dccc80521bfdce592&quot;</ETag><Size>230924457</Size><Owner><ID>c87b8a5f1a41fde2437bbbcc99298543a93276bdd8bfd9cc0aa12cf78fbb5d9d</ID><DisplayName>lateshaburroughs</DisplayName></Owner><StorageClass>STANDARD</StorageClass></Contents><Contents><Key>uploads/op-bbm-494.mp4</Key><LastModified>2014-04-27T12:53:57.000Z</LastModified><ETag>&quot;3c2fcc2da044dc575d35e3efea9d7884&quot;</ETag><Size>230924457</Size><Owner><ID>c87b8a5f1a41fde2437bbbcc99298543a93276bdd8bfd9cc0aa12cf78fbb5d9d</ID><DisplayName>lateshaburroughs</DisplayName></Owner><StorageClass>STANDARD</StorageClass></Contents><Contents><Key>uploads/op-bbm-521.mp4</Key><LastModified>2014-04-26T02:45:34.000Z</LastModified><ETag>&quot;8934dacf73a74f400ce878abbc478357&quot;</ETag><Size>230924459</Size><Owner><ID>c87b8a5f1a41fde2437bbbcc99298543a93276bdd8bfd9cc0aa12cf78fbb5d9d</ID><DisplayName>lateshaburroughs</DisplayName></Owner><StorageClass>STANDARD</StorageClass></Contents><Contents><Key>uploads/op-bbm-562.mp4</Key><LastModified>2014-04-26T07:26:28.000Z</LastModified><ETag>&quot;085ed69867c7ad09b827a07786bf8a95&quot;</ETag><Size>230924457</Size><Owner><ID>c87b8a5f1a41fde2437bbbcc99298543a93276bdd8bfd9cc0aa12cf78fbb5d9d</ID><DisplayName>lateshaburroughs</DisplayName></Owner><StorageClass>STANDARD</StorageClass></Contents><Contents><Key>uploads/op-bbm-597.mp4</Key><LastModified>2014-04-28T01:31:40.000Z</LastModified><ETag>&quot;2956a10f255b20d34ab5836de1af518c&quot;</ETag><Size>230924457</Size><Owner><ID>c87b8a5f1a41fde2437bbbcc99298543a93276bdd8bfd9cc0aa12cf78fbb5d9d</ID><DisplayName>lateshaburroughs</DisplayName></Owner><StorageClass>STANDARD</StorageClass></Contents><Contents><Key>uploads/op-bbm-620.mp4</Key><LastModified>2014-04-28T02:12:41.000Z</LastModified><ETag>&quot;fca1ab05afa23ed34e8f6e034b480324&quot;</ETag><Size>230924459</Size><Owner><ID>c87b8a5f1a41fde2437bbbcc99298543a93276bdd8bfd9cc0aa12cf78fbb5d9d</ID><DisplayName>lateshaburroughs</DisplayName></Owner><StorageClass>STANDARD</StorageClass></Contents><Contents><Key>uploads/op-bbm-674.mp4</Key><LastModified>2014-04-28T01:42:04.000Z</LastModified><ETag>&quot;c6457b2210ff7fcc371d7c3629f94236&quot;</ETag><Size>230924457</Size><Owner><ID>c87b8a5f1a41fde2437bbbcc99298543a93276bdd8bfd9cc0aa12cf78fbb5d9d</ID><DisplayName>lateshaburroughs</DisplayName></Owner><StorageClass>STANDARD</StorageClass></Contents><Contents><Key>uploads/op-bbm-707.mp4</Key><LastModified>2014-04-28T02:25:50.000Z</LastModified><ETag>&quot;ff4b12b85bb2acf83ceeb9e7c72697b2&quot;</ETag><Size>230924459</Size><Owner><ID>c87b8a5f1a41fde2437bbbcc99298543a93276bdd8bfd9cc0aa12cf78fbb5d9d</ID><DisplayName>lateshaburroughs</DisplayName></Owner><StorageClass>STANDARD</StorageClass></Contents><Contents><Key>uploads/op-bbm-709.mp4</Key><LastModified>2014-04-28T07:02:36.000Z</LastModified><ETag>&quot;e6720cdb998f71bc6e409735a901f3f8&quot;</ETag><Size>230924459</Size><Owner><ID>c87b8a5f1a41fde2437bbbcc99298543a93276bdd8bfd9cc0aa12cf78fbb5d9d</ID><DisplayName>lateshaburroughs</DisplayName></Owner><StorageClass>STANDARD</StorageClass></Contents><Contents><Key>uploads/op-bbm-759.mp4</Key><LastModified>2014-04-26T06:54:03.000Z</LastModified><ETag>&quot;422aa8a75f1f395c6b5c88c8a4add4f0&quot;</ETag><Size>230924457</Size><Owner><ID>c87b8a5f1a41fde2437bbbcc99298543a93276bdd8bfd9cc0aa12cf78fbb5d9d</ID><DisplayName>lateshaburroughs</DisplayName></Owner><StorageClass>STANDARD</StorageClass></Contents><Contents><Key>uploads/op-bbm-808.mp4</Key><LastModified>2014-04-28T03:51:40.000Z</LastModified><ETag>&quot;95281dd5cc5d10b0325ab815f57f3122&quot;</ETag><Size>230924457</Size><Owner><ID>c87b8a5f1a41fde2437bbbcc99298543a93276bdd8bfd9cc0aa12cf78fbb5d9d</ID><DisplayName>lateshaburroughs</DisplayName></Owner><StorageClass>STANDARD</StorageClass></Contents><Contents><Key>uploads/op-bbm-860.mp4</Key><LastModified>2014-04-28T03:28:33.000Z</LastModified><ETag>&quot;27d5f98bccff67b3efa5232f4c9b86f8&quot;</ETag><Size>230924459</Size><Owner><ID>c87b8a5f1a41fde2437bbbcc99298543a93276bdd8bfd9cc0aa12cf78fbb5d9d</ID><DisplayName>lateshaburroughs</DisplayName></Owner><StorageClass>STANDARD</StorageClass></Contents><Contents><Key>uploads/op-bbm-888.mp4</Key><LastModified>2014-04-27T09:14:32.000Z</LastModified><ETag>&quot;1b9b34354e3e97ef1d7b9b0974237103&quot;</ETag><Size>230924459</Size><Owner><ID>c87b8a5f1a41fde2437bbbcc99298543a93276bdd8bfd9cc0aa12cf78fbb5d9d</ID><DisplayName>lateshaburroughs</DisplayName></Owner><StorageClass>STANDARD</StorageClass></Contents><Contents><Key>uploads/op-bbm-95.mp4</Key><LastModified>2014-04-28T07:18:56.000Z</LastModified><ETag>&quot;fb816eee8c16ef5165d237c87487d9de&quot;</ETag><Size>230924459</Size><Owner><ID>c87b8a5f1a41fde2437bbbcc99298543a93276bdd8bfd9cc0aa12cf78fbb5d9d</ID><DisplayName>lateshaburroughs</DisplayName></Owner><StorageClass>STANDARD</StorageClass></Contents><Contents><Key>uploads/op-bbm-993.mp4</Key><LastModified>2014-04-27T13:05:44.000Z</LastModified><ETag>&quot;e4c38f9728e96ee50cf1a12a91b8d858&quot;</ETag><Size>230924459</Size><Owner><ID>c87b8a5f1a41fde2437bbbcc99298543a93276bdd8bfd9cc0aa12cf78fbb5d9d</ID><DisplayName>lateshaburroughs</DisplayName></Owner><StorageClass>STANDARD</StorageClass></Contents><Contents><Key>uploads/op-campuscandy-225.mp4</Key><LastModified>2014-05-28T20:03:15.000Z</LastModified><ETag>&quot;9a033e846c27a5eb2860b7b9e695db93&quot;</ETag><Size>29741388</Size><Owner><ID>c87b8a5f1a41fde2437bbbcc99298543a93276bdd8bfd9cc0aa12cf78fbb5d9d</ID><DisplayName>lateshaburroughs</DisplayName></Owner><StorageClass>STANDARD</StorageClass></Contents><Contents><Key>uploads/op-campuscandy-420.mp4</Key><LastModified>2014-05-29T16:26:58.000Z</LastModified><ETag>&quot;9a033e846c27a5eb2860b7b9e695db93&quot;</ETag><Size>29741388</Size><Owner><ID>c87b8a5f1a41fde2437bbbcc99298543a93276bdd8bfd9cc0aa12cf78fbb5d9d</ID><DisplayName>lateshaburroughs</DisplayName></Owner><StorageClass>STANDARD</StorageClass></Contents><Contents><Key>uploads/op-campuscandy-500.mp4</Key><LastModified>2014-05-28T20:00:29.000Z</LastModified><ETag>&quot;9a033e846c27a5eb2860b7b9e695db93&quot;</ETag><Size>29741388</Size><Owner><ID>c87b8a5f1a41fde2437bbbcc99298543a93276bdd8bfd9cc0aa12cf78fbb5d9d</ID><DisplayName>lateshaburroughs</DisplayName></Owner><StorageClass>STANDARD</StorageClass></Contents><Contents><Key>uploads/op-campuscandy-610.mp4</Key><LastModified>2014-05-28T15:34:24.000Z</LastModified><ETag>&quot;9a033e846c27a5eb2860b7b9e695db93&quot;</ETag><Size>29741388</Size><Owner><ID>c87b8a5f1a41fde2437bbbcc99298543a93276bdd8bfd9cc0aa12cf78fbb5d9d</ID><DisplayName>lateshaburroughs</DisplayName></Owner><StorageClass>STANDARD</StorageClass></Contents><Contents><Key>uploads/op-campuscandy-77.mp4</Key><LastModified>2014-05-28T19:15:09.000Z</LastModified><ETag>&quot;9a033e846c27a5eb2860b7b9e695db93&quot;</ETag><Size>29741388</Size><Owner><ID>c87b8a5f1a41fde2437bbbcc99298543a93276bdd8bfd9cc0aa12cf78fbb5d9d</ID><DisplayName>lateshaburroughs</DisplayName></Owner><StorageClass>STANDARD</StorageClass></Contents><Contents><Key>uploads/op-mizudemo-753.mp4</Key><LastModified>2014-04-29T08:04:45.000Z</LastModified><ETag>&quot;0a8577606346e047d5e98aa9a117ccf6&quot;</ETag><Size>136567677</Size><Owner><ID>c87b8a5f1a41fde2437bbbcc99298543a93276bdd8bfd9cc0aa12cf78fbb5d9d</ID><DisplayName>lateshaburroughs</DisplayName></Owner><StorageClass>STANDARD</StorageClass></Contents><Contents><Key>uploads/op-therain-358.mp4</Key><LastModified>2014-06-05T20:31:45.000Z</LastModified><ETag>&quot;896d57b9abc58b8768f5115a6f15aace&quot;</ETag><Size>352981493</Size><Owner><ID>c87b8a5f1a41fde2437bbbcc99298543a93276bdd8bfd9cc0aa12cf78fbb5d9d</ID><DisplayName>lateshaburroughs</DisplayName></Owner><StorageClass>STANDARD</StorageClass></Contents><Contents><Key>uploads/op-zoosk-179.mp4</Key><LastModified>2014-06-06T19:49:39.000Z</LastModified><ETag>&quot;05b3664a319f8637a7142881eee6ba02&quot;</ETag><Size>22955973</Size><Owner><ID>c87b8a5f1a41fde2437bbbcc99298543a93276bdd8bfd9cc0aa12cf78fbb5d9d</ID><DisplayName>lateshaburroughs</DisplayName></Owner><StorageClass>STANDARD</StorageClass></Contents><Contents><Key>uploads/op-zoosk-182.mp4</Key><LastModified>2014-05-30T20:35:16.000Z</LastModified><ETag>&quot;05b3664a319f8637a7142881eee6ba02&quot;</ETag><Size>22955973</Size><Owner><ID>c87b8a5f1a41fde2437bbbcc99298543a93276bdd8bfd9cc0aa12cf78fbb5d9d</ID><DisplayName>lateshaburroughs</DisplayName></Owner><StorageClass>STANDARD</StorageClass></Contents><Contents><Key>uploads/op-zoosk-499.mp4</Key><LastModified>2014-05-28T19:36:00.000Z</LastModified><ETag>&quot;05b3664a319f8637a7142881eee6ba02&quot;</ETag><Size>22955973</Size><Owner><ID>c87b8a5f1a41fde2437bbbcc99298543a93276bdd8bfd9cc0aa12cf78fbb5d9d</ID><DisplayName>lateshaburroughs</DisplayName></Owner><StorageClass>STANDARD</StorageClass></Contents><Contents><Key>uploads/op-zoosk-517.mp4</Key><LastModified>2014-05-21T18:11:53.000Z</LastModified><ETag>&quot;05b3664a319f8637a7142881eee6ba02&quot;</ETag><Size>22955973</Size><Owner><ID>c87b8a5f1a41fde2437bbbcc99298543a93276bdd8bfd9cc0aa12cf78fbb5d9d</ID><DisplayName>lateshaburroughs</DisplayName></Owner><StorageClass>STANDARD</StorageClass></Contents><Contents><Key>uploads/op-zoosk-700.mp4</Key><LastModified>2014-06-07T03:12:14.000Z</LastModified><ETag>&quot;05b3664a319f8637a7142881eee6ba02&quot;</ETag><Size>22955973</Size><Owner><ID>c87b8a5f1a41fde2437bbbcc99298543a93276bdd8bfd9cc0aa12cf78fbb5d9d</ID><DisplayName>lateshaburroughs</DisplayName></Owner><StorageClass>STANDARD</StorageClass></Contents><Contents><Key>uploads/op-zoosk-871.mp4</Key><LastModified>2014-05-29T17:27:20.000Z</LastModified><ETag>&quot;05b3664a319f8637a7142881eee6ba02&quot;</ETag><Size>22955973</Size><Owner><ID>c87b8a5f1a41fde2437bbbcc99298543a93276bdd8bfd9cc0aa12cf78fbb5d9d</ID><DisplayName>lateshaburroughs</DisplayName></Owner><StorageClass>STANDARD</StorageClass></Contents><Contents><Key>uploads/op-zoosk-884.mp4</Key><LastModified>2014-05-29T16:35:15.000Z</LastModified><ETag>&quot;05b3664a319f8637a7142881eee6ba02&quot;</ETag><Size>22955973</Size><Owner><ID>c87b8a5f1a41fde2437bbbcc99298543a93276bdd8bfd9cc0aa12cf78fbb5d9d</ID><DisplayName>lateshaburroughs</DisplayName></Owner><StorageClass>STANDARD</StorageClass></Contents><Contents><Key>uploads/op-zoosk-89.mp4</Key><LastModified>2014-05-29T17:06:14.000Z</LastModified><ETag>&quot;05b3664a319f8637a7142881eee6ba02&quot;</ETag><Size>22955973</Size><Owner><ID>c87b8a5f1a41fde2437bbbcc99298543a93276bdd8bfd9cc0aa12cf78fbb5d9d</ID><DisplayName>lateshaburroughs</DisplayName></Owner><StorageClass>STANDARD</StorageClass></Contents><Contents><Key>uploads/op-zoosk-934.mp4</Key><LastModified>2014-06-05T13:32:13.000Z</LastModified><ETag>&quot;05b3664a319f8637a7142881eee6ba02&quot;</ETag><Size>22955973</Size><Owner><ID>c87b8a5f1a41fde2437bbbcc99298543a93276bdd8bfd9cc0aa12cf78fbb5d9d</ID><DisplayName>lateshaburroughs</DisplayName></Owner><StorageClass>STANDARD</StorageClass></Contents><Contents><Key>uploads/op-zoosk-974.mp4</Key><LastModified>2014-05-29T16:30:28.000Z</LastModified><ETag>&quot;05b3664a319f8637a7142881eee6ba02&quot;</ETag><Size>22955973</Size><Owner><ID>c87b8a5f1a41fde2437bbbcc99298543a93276bdd8bfd9cc0aa12cf78fbb5d9d</ID><DisplayName>lateshaburroughs</DisplayName></Owner><StorageClass>STANDARD</StorageClass></Contents><Contents><Key>uploads/op-zoosk-977.mp4</Key><LastModified>2014-06-05T20:26:20.000Z</LastModified><ETag>&quot;05b3664a319f8637a7142881eee6ba02&quot;</ETag><Size>22955973</Size><Owner><ID>c87b8a5f1a41fde2437bbbcc99298543a93276bdd8bfd9cc0aa12cf78fbb5d9d</ID><DisplayName>lateshaburroughs</DisplayName></Owner><StorageClass>STANDARD</StorageClass></Contents><Contents><Key>uploads/weirdedl.mp4</Key><LastModified>2014-04-28T15:01:21.000Z</LastModified><ETag>&quot;5dc265682fde5cc94099ea9d17888e27&quot;</ETag><Size>8388608</Size><Owner><ID>c87b8a5f1a41fde2437bbbcc99298543a93276bdd8bfd9cc0aa12cf78fbb5d9d</ID><DisplayName>lateshaburroughs</DisplayName></Owner><StorageClass>STANDARD</StorageClass></Contents></ListBucketResult>
+    http_version: 
+  recorded_at: Sat, 07 Jun 2014 07:47:59 GMT
+recorded_with: VCR 2.9.0

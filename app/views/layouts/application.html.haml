@@ -1,0 +1,30 @@
+!!!
+%html.no-js(ng-app="optimizePlayer")
+  %head
+    %meta(charset="utf-8")/
+    %meta(content="IE=edge,chrome=1" http-equiv="X-UA-Compatible")/
+    %title
+    %meta(content="" name="description")/
+    %meta(content="width=device-width" name="viewport")/
+    = stylesheet_link_tag "application", :media => "all"
+
+    %link(href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700" rel="stylesheet" type="text/css")
+    %link(href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css")
+
+    = csrf_meta_tags
+    = yield :head
+  %body
+    = render partial: 'shared/header'
+
+    #main-content
+      = yield
+
+    = javascript_include_tag "application"
+    = yield :javascript
+    = javascript_include_tag "app"
+
+    %script(src="https://js.stripe.com/v2/" type="text/javascript")
+    :javascript
+      Stripe.setPublishableKey('#{STRIPE_PUBLIC_KEY}');
+
+    %script{"data-apikey" => "b5c28c843e16c28417270008093e31ad", :src => "//d2wy8f7a9ursnm.cloudfront.net/bugsnag-2.min.js"}

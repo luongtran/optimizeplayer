@@ -1,0 +1,42 @@
+@import "compass/css3";
+
+.skin-orange {
+	.fp-controls {
+		background-image: none;
+		background-color: #242424;
+	}
+
+	.fp-time {
+		color: #747474;
+	}
+
+  .fp-mute {
+    display: none;
+  }
+
+	.fp-duration {
+		color: #747474;
+	}
+
+	.fp-timeline {
+		background-color: #191919;
+	}
+
+	.fp-buffer {
+		background-color: #2a2a2a;
+	}
+
+	.fp-progress {
+		background-image: none;
+		background-color: #dd5125;
+	}
+
+	.fp-volumeslider {
+		background-color: #ffffff;
+		border-color: #242424;
+	}
+
+	.fp-volumelevel {
+		background-color: #dd5125;
+	}
+}

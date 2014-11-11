@@ -1,0 +1,48 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://api.postmarkapp.com/email
+    body:
+      encoding: UTF-8
+      string: '{"From":"OptimizePlayer <contact@optimizeplayer.com>","To":"Johny Walker
+        <test@optimizeplayer.com>","Subject":"Welcome to Optimize player","Headers":[{"Name":"Message-Id","Value":"<53902147ddcef_83c53fd7d485e6e879981@silverstars-Mac.local.mail>"},{"Name":"Mime-Version","Value":"1.0"},{"Name":"Content-Transfer-Encoding","Value":"7bit"}],"HtmlBody":"<!DOCTYPE
+        html>\n<html>\n<head>\n<meta content=''text/html; charset=UTF-8'' http-equiv=''Content-Type''>\n</head>\n<body>\n<h1>\nWelcome
+        to Optimize player\n</h1>\n<p>\nYou have successfully signed up to http://localhost:3000/,\nyour
+        login is: test@optimizeplayer.com\nyour password is: NwB3gsH3\n<br>\n</p>\n<p>\nFor
+        login to the site, just follow this link:\n<a href=''http://5379d80f86.localhost:3000/''>Optimize
+        player</a>\n</p>\n<p>Thanks for joining and have a nice day!</p>\n</body>\n</html>\n"}'
+    headers:
+      Content-Type:
+      - application/json
+      Accept:
+      - application/json
+      X-Postmark-Server-Token:
+      - edeac359-cdb1-4ba4-95dd-9dc2fa5ce64b
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private
+      Content-Type:
+      - application/json; charset=utf-8
+      Server:
+      - unicorns-double-rainbow
+      X-Powered-By:
+      - ASP.NET
+      Date:
+      - Thu, 05 Jun 2014 07:50:33 GMT
+      Content-Length:
+      - '171'
+    body:
+      encoding: UTF-8
+      string: '{"To":"Johny Walker <test@optimizeplayer.com>","SubmittedAt":"2014-06-05T03:50:33.6797567-04:00","MessageID":"9e12dca6-50de-4655-9ed2-63fc7bc87bc4","ErrorCode":0,"Message":"OK"}'
+    http_version: 
+  recorded_at: Thu, 05 Jun 2014 07:50:33 GMT
+recorded_with: VCR 2.9.2

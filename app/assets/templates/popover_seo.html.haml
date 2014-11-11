@@ -1,0 +1,17 @@
+%div
+  %form(name="seoform" onsubmit="return false")
+    %label SEO Title
+    %input{:name => "seo_title", :placeholder => "SEO title", :type => "text"}(ng-model="data.title")
+      %label Keywords
+      %input#inputTag.tagManager{:name => "tags", :placeholder => "Ex: optimizeplayer, widget, keyword...", :type => "text"}( seo-keywords )
+        %p Please separate each word with comma.
+        .tags-library.tagLibrary
+          %ul.list-tags
+            %li.myTag{ :style => "margin: 0 3px" }( ng-repeat="word in data.keywords" )
+              %span {{ word }}
+              %a.myTagRemover{ :href => "#" }( ng-click="pull(word)" eat-click) x
+
+        %label Description
+        %textarea{:name => "paragraph", :placeholder => "Enter your description here...", :rows => "5"}(ng-model="data.description")
+        .clearfix.actions
+          %dialog-buttons

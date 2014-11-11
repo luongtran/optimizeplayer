@@ -1,0 +1,79 @@
+.optin.ui-resizable {
+  border: 1px white dashed;
+}
+
+.inside .cta, #logo-preview {
+  display: none;
+  background-image: none !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  height: auto !important;
+  margin: 0 !important;
+  pointer-events: none;
+  * {
+    pointer-events: auto;
+  }
+}
+
+.cta-preview {
+  display: block;
+  position: relative !important;
+}
+
+.cta.outside.cta-preview {
+  display: block !important;
+}
+
+.button-background {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: #000;
+  opacity: 0.5;
+  filter:alpha(opacity=50);
+}
+
+// .optin {
+//   position: absolute;
+// }
+
+// .fullscreen {
+//   position: absolute !important;
+//   top: 0 !important;
+//   right: 0 !important;
+//   bottom: 0 !important;
+//   left: 0 !important;
+//   .optin-form {
+//     position: absolute;
+//     width: 80%;
+//     top: 80px;
+//     left: 50%;
+//     margin-left: -40%;
+//   }
+// }
+
+// .optin-form {
+//   width: 80%;
+//   margin: 15px auto;
+//   z-index: 20;
+//   color: #fff;
+
+//   input[type=text] {
+//     width: 75%;
+//     height: 40px;
+//     border: none;
+//   }
+
+//   button {
+//     width: 25%;
+//     height: 40px;
+//     border: none;
+//     font-weight: bold;
+//     background: #ff753f;
+//   }
+// }
+
+

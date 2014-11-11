@@ -1,0 +1,102 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.aweber.com/1.0/accounts?oauth_consumer_key=AkVhUnNzqyrTG4F6SW3E2Tcp&oauth_nonce=Dlt3ApKFOiyjRGBlKc51Dw7DDgepXeespHU8NyfWKw&oauth_signature=QUmQ/fzmLygJMx4G%2BjTwMt13GQ0=&oauth_signature_method=HMAC-SHA1&oauth_timestamp=1401869934&oauth_token=AgyhDxNGjDNr7h4nM82gEjuZ&oauth_version=1.0
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - '*/*'
+      User-Agent:
+      - OAuth gem v0.4.7
+  response:
+    status:
+      code: 200
+      message: Ok
+    headers:
+      Date:
+      - Wed, 04 Jun 2014 08:18:56 GMT
+      Content-Type:
+      - application/json
+      Connection:
+      - keep-alive
+      X-Powered-By:
+      - Zope (www.zope.org), Python (www.python.org)
+      Content-Length:
+      - '511'
+      Set-Cookie:
+      - TSb282b8=aefbeaa2ac81230f0ac672e2888e85c9914d3570218e0a05538ed66f; Path=/
+    body:
+      encoding: UTF-8
+      string: '{"total_size": 1, "start": 0, "entries": [{"http_etag": "\"3970d100e43148ae89f5cbff2587c18bf223c95a-ca5feee2b7fbb6febfca8af5541541ea960aaedb\"",
+        "lists_collection_link": "https://api.aweber.com/1.0/accounts/487918/lists",
+        "self_link": "https://api.aweber.com/1.0/accounts/487918", "resource_type_link":
+        "https://api.aweber.com/1.0/#account", "id": 487918, "integrations_collection_link":
+        "https://api.aweber.com/1.0/accounts/487918/integrations"}], "resource_type_link"
+        : "https://api.aweber.com/1.0/#accounts"}'
+    http_version: 
+  recorded_at: Wed, 04 Jun 2014 08:18:57 GMT
+- request:
+    method: get
+    uri: https://api.aweber.com/1.0/accounts/487918/lists?oauth_consumer_key=AkVhUnNzqyrTG4F6SW3E2Tcp&oauth_nonce=rfyaHJ8BoRHeeBaGOE9SWjLtmgwfDywbNgxwjs65Y&oauth_signature=ZwP4fGWfTlX4WiuaqekxaZ5Bf5c=&oauth_signature_method=HMAC-SHA1&oauth_timestamp=1401869937&oauth_token=AgyhDxNGjDNr7h4nM82gEjuZ&oauth_version=1.0
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - '*/*'
+      User-Agent:
+      - OAuth gem v0.4.7
+  response:
+    status:
+      code: 200
+      message: Ok
+    headers:
+      Date:
+      - Wed, 04 Jun 2014 08:18:59 GMT
+      Content-Type:
+      - application/json
+      Connection:
+      - keep-alive
+      Vary:
+      - Accept-Encoding
+      X-Powered-By:
+      - Zope (www.zope.org), Python (www.python.org)
+      Set-Cookie:
+      - TSb282b8=45549989ae581f09c176b9795d4bc9dbe07c343966ea4cc4538ed672; Path=/
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: '{"total_size": 2, "start": 0, "entries": [{"total_unconfirmed_subscribers":
+        10, "name": "mmebuyers", "total_subscribers_subscribed_yesterday": 0, "http_etag":
+        "\"aa93e0e863a08ee0cea0aba2021d64ef3ff199c8-ca5feee2b7fbb6febfca8af5541541ea960aaedb\"",
+        "web_form_split_tests_collection_link": "https://api.aweber.com/1.0/accounts/487918/lists/3180587/web_form_split_tests",
+        "subscribers_collection_link": "https://api.aweber.com/1.0/accounts/487918/lists/3180587/subscribers",
+        "total_subscribers_subscribed_today": 0, "id": 3180587, "total_subscribed_subscribers":
+        1, "total_unsubscribed_subscribers": 2, "campaigns_collection_link": "https://api.aweber.com/1.0/accounts/487918/lists/3180587/campaigns",
+        "custom_fields_collection_link": "https://api.aweber.com/1.0/accounts/487918/lists/3180587/custom_fields",
+        "self_link": "https://api.aweber.com/1.0/accounts/487918/lists/3180587", "total_subscribers":
+        3, "resource_type_link": "https://api.aweber.com/1.0/#list", "web_forms_collection_link":
+        "https://api.aweber.com/1.0/accounts/487918/lists/3180587/web_forms"}, {"total_unconfirmed_subscribers":
+        0, "name": "website11022010", "total_subscribers_subscribed_yesterday": 0,
+        "http_etag": "\"57e2e5f3cef48efd90868e200508563cdc117c3f-ca5feee2b7fbb6febfca8af5541541ea960aaedb\"",
+        "web_form_split_tests_collection_link": "https://api.aweber.com/1.0/accounts/487918/lists/1529181/web_form_split_tests",
+        "subscribers_collection_link": "https://api.aweber.com/1.0/accounts/487918/lists/1529181/subscribers",
+        "total_subscribers_subscribed_today": 0, "id": 1529181, "total_subscribed_subscribers":
+        3016, "total_unsubscribed_subscribers": 1099, "campaigns_collection_link":
+        "https://api.aweber.com/1.0/accounts/487918/lists/1529181/campaigns", "custom_fields_collection_link":
+        "https://api.aweber.com/1.0/accounts/487918/lists/1529181/custom_fields",
+        "self_link": "https://api.aweber.com/1.0/accounts/487918/lists/1529181", "total_subscribers":
+        4115, "resource_type_link": "https://api.aweber.com/1.0/#list", "web_forms_collection_link":
+        "https://api.aweber.com/1.0/accounts/487918/lists/1529181/web_forms"}], "resource_type_link"
+        : "https://api.aweber.com/1.0/#list-page-resource"}'
+    http_version: 
+  recorded_at: Wed, 04 Jun 2014 08:19:00 GMT
+recorded_with: VCR 2.9.0

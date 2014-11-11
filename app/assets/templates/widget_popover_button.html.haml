@@ -1,0 +1,19 @@
+%div
+  %tabset.nav-tabs
+    %tab{:heading => "Select", :active => true, :id => "select_btns" }
+      #box-select.tab-pane.active
+        .tab-wrapper
+          %ul{"ng-controller"=>"buttonsWidgetCtrl"}
+            %li{"ng-repeat"=>"button in buttons_widget"}(ng-class="{active: current == button.name}")
+              %img{:class =>"{{button.name}}", "ng-src" => "{{button.button_url}}", "ng-click" => 'selectButton(button.name)'}
+    %tab{:heading => "Upload"}
+      .uploader-wrapper(ng-controller="ImageUploadCtrl")
+        %csn-widget-direct-upload(on-add="onFileAdd" on-progress-change="onProgressChange" on-done="onDone" csn="opts.csnForUpload" isbutton="1")
+
+        .after-upload.clearfix
+          .progressbar(ng-show="data.original_filename && ( (statusNotice.length > 0) || data.needs_encoding || (data.file_origin != 'connect') )")
+            .progress.large-6.round(ng-class="{success: statusNotice == 'Uploading'}")
+              %span.meter(ng-style="{ width: percentage }")
+            %span.percent {{ percentage }}
+  .clearfix
+  %dialog-buttons

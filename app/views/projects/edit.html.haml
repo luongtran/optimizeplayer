@@ -1,0 +1,229 @@
+%div(ng-controller="ProjectEditCtrl")
+  #processing-video.modal.fade
+    .modal-dialog
+      .modal-content
+        .modal-header
+        .modal-body
+          %h3 Processing Video
+          .progress-container
+            .percentage {{encodingAssetPercents}} completed
+            .progress.progress-striped.active
+              .progress-bar{"aria-valuemax" => "100", "aria-valuemin" => "100", "aria-valuenow" => "100", :role => "progressbar", :style => "width: {{encodingAssetPercents}}"}
+        .modal-footer
+          %p(ng-show="encodingAssetPercents == '100%'") Waiting for uploading back to CSN...
+
+  #modal-embed.modal.fade(tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true")
+    .modal-dialog
+      .modal-content
+        %button.btn.btn-default.modal-dismiss(type="button" data-dismiss="modal") Close
+        %ul.nav.nav-tabs
+          %li.active
+            %a(href="#classic" data-toggle="tab") Classic
+          %li
+            %a(href="#popout" data-toggle="tab") Popout
+        .tab-content
+          #classic.tab-pane.active
+            .copy-code
+              %h5 PLAY VIDEO IN WEBPAGE
+              %textarea#embed-for-clipboard.form-control(rows="4" focus-me=true)
+                {{project.embedCode()}}
+              .pull-right
+                %button.btn.btn-primary.clip_button{"data-clipboard-target" => "embed-for-clipboard"} Copy
+          #popout.tab-pane
+            .copy-code
+              %h5 PLAY VIDEO IN POPOUT
+              .input-group
+                %input.form-control(type="text" value="'no' src='https://pixelserv.stage.optimizeplayer.com/projects/371ad575be934a6450cf27a99")
+                %span.input-group-btn
+                  %button.btn.btn-primary(type="button") Copy
+            %ul.list-inline
+              %li.launch-with
+                %p Launch with
+                %input(type="radio" id="launch1" name="launch" checked value="thumbnail" )
+                %label(for="launch1") Thumbnail
+                %input(type="radio" id="launch2" name="launch" value="text")
+                %label(for="launch2") Text Link
+              %li.state-1
+                %p Video Size
+                %input.size(type="text" placeholder="640")
+                %span X
+                %input.size(type="text" placeholder="320")
+              %li.state-1
+                %p Thumbnail Size
+                %input.size(type="text" placeholder="150")
+                %span X
+                %input.size(type="text" placeholder="84")
+              %li.text-link.state-2
+                %p Link Text
+                %input(type="text" value="Hey, click on this and watch our new episode for free")
+            %ul.list-inline.state-1
+              %li
+                %p Preview
+                = image_tag("preview.png", width: "150")
+            %ul.list-inline.state-2.preview-text
+              %li
+                %p Preview
+                %a(href="#") Hey, click on this and watch our new episode for free
+
+
+  %section#edit-project(jquery-plugins role="projects" ng-init="getCurrentProject(#{@project.to_json})")
+    .header.clearfix
+      .pull-left
+        %ul.list-inline.clearfix
+          %li
+            %a.edit-files(href="#edit-files") Edit Files
+          %li
+            %a.customize(href="#customize") Customize
+          %li
+            %a.add-cta(href="#add-cta") Add CTAs
+          %li
+            %a.list(href="#list") List
+      .pull-right(ng-cloak)
+        %span 
+          %span(ng-hide="nameEditing") {{project.title}}
+          %form.name{style:"float:left;"}(ng-submit="updateProjectTitle(project)" ng-show="nameEditing")
+            %input(ng-model="newTitle" type="text" ng-blur="updateProjectName()" required focus-me="nameEditing")
+        %a(href="#" ng-click="editTitle()" title="Update project's title")
+          = image_tag("icons/icon-edit.png", width: "15")
+        %button.btn.btn-primary(data-toggle="modal" data-target="#modal-embed")
+          = image_tag("icons/icon-embed-white.png", width: "26")
+          Embed
+        {{isModified}}
+        %button.btn.btn-success(ng-click="saveProject()" ng-disabled="!isModified" type="submit") Save
+    .cta-options(role="sidebar")
+      %div(ng-controller="CtasCtrl" ng-init="initCta()")
+        .add-cta.sidebar
+          %ul.list-unstyled
+            %li
+              %a(href="#cta-manage" ng-click="addCta('survey')")
+                = image_tag("icons/icon-survey.png", width: "22")
+                Survey
+            %li
+              %a(href="#cta-manage" ng-click="addCta('payment')")
+                = image_tag("icons/icon-payment.png", width: "22")
+                Payment
+            %li
+              %a(href="#cta-manage" ng-click="addCta('tag')")
+                = image_tag("icons/icon-tagging.png", width: "22")
+                Tagging
+            %li
+              %a{style: "cursor: pointer;"}(ng-href="{{optin_link}}" ng-click="addCta('optin')")
+                = image_tag("icons/icon-optin.png", width: "22")
+                Optin
+            %li
+              %a(href="#cta-manage" ng-click="addCta('button')")
+                = image_tag("icons/icon-button.png", width: "22")
+                Button
+            %li
+              %a(href="#cta-manage" ng-click="addCta('html')")
+                = image_tag("icons/icon-html.png", width: "22")
+                HTML
+            %li
+              %a(href="#")
+                = image_tag("icons/icon-social.png", width: "22")
+                Social
+
+        .list.sidebar
+          %ul.list-unstyled
+            %li.clearfix(ng-repeat="cta in cta_store.all() track by $index")
+              %div(ng-switch="cta.type")
+                .pull-left(ng-switch-when="CtaSurvey")
+                  = image_tag("icons/icon-survey.png", width: "22")
+                .pull-left(ng-switch-when="CtaPurchase")
+                  = image_tag("icons/icon-payment.png", width: "22")
+                .pull-left(ng-switch-when="CtaTag")
+                  = image_tag("icons/icon-tagging.png", width: "22")
+                .pull-left(ng-switch-when="CtaOptin")
+                  = image_tag("icons/icon-optin.png", width: "22")
+                .pull-left(ng-switch-when="CtaButton")
+                  = image_tag("icons/icon-button.png", width: "22")
+                .pull-left(ng-switch-when="CtaHtml")
+                  = image_tag("icons/icon-html.png", width: "22")
+              %a(href="#cta-manage" ng-click="setCta(cta)") {{cta.type}} - {{$index + 1}}
+              .pull-left
+                %span.time(ng-show="cta.on_start == 'true'")
+                  = image_tag("icons/icon-time-green.png", width: "12")
+                  %span On start
+                %span.time(ng-show="cta.on_finish == 'true'")
+                  = image_tag("icons/icon-time-green.png", width: "12")
+                  %span On finish
+                %span.time(ng-show="cta.on_pause == 'true'")
+                  = image_tag("icons/icon-time-green.png", width: "12")
+                  %span On pause
+                %span.time(ng-show="cta.cuepoints" ng-repeat="c in cta.cuepoints")
+                  = image_tag("icons/icon-time-green.png", width: "12")
+                  %span {{millisecondsToTime(c[0])}} - {{millisecondsToTime(c[1])}}
+              %span
+                %a.delete(ng-show="!!cta.id" ng-click="deleteCta(cta)" title="Delete")
+                  = image_tag("icons/icon-delete.png", width: "11")
+
+
+        .cta-manage.scrollbar-inner.default-skin.sidebar(ng-switch="cta_store.currentCta.type")
+          %div(ng-switch-when="CtaSurvey")
+            = render 'projects/settings/cta/survey_form'
+          %div(ng-switch-when="CtaPurchase")
+            = render 'projects/settings/cta/purchase_form'
+          %div(ng-switch-when="CtaTag")
+            = render 'projects/settings/cta/tag_form'
+          %div(ng-switch-when="CtaOptin")
+            = render 'projects/settings/cta/optin_form'
+          %div(ng-switch-when="CtaButton")
+            = render 'projects/settings/cta/button_form'
+          %div(ng-switch-when="CtaHtml")
+            = render 'projects/settings/cta/html_form'
+          %ul.dsp-table.button-panel
+            %li.dsp-cell
+              %a.btn.btn-primary.done(ng-disabled="disableSave" ng-click="saveCta()" href="#list") Save
+            %li.dsp-cell
+              %a.btn.btn-info.remove(ng-click="cancel()" href="#list") Cancel
+      
+      .customize.sidebar
+        %ul.list-unstyled
+          %li
+            %a(href="#visual-tab")
+              = image_tag("icons/icon-visual.png", width: "22")
+              Visual
+          %li
+            %a(href="#branding")
+              = image_tag("icons/icon-branding.png", width: "22")
+              Branding
+          %li
+            %a(href="#controls")
+              = image_tag("icons/icon-control.png", width: "22")
+              Controls
+
+      .edit-files.sidebar
+        / %a.collapse-button.collapsed(data-toggle="collapse" data-target="#target-1") ADD FILES
+        / #target-1.collapse
+        /   .add-file.collapse-box.add-padding
+        /     %button.btn.btn-info Browse
+
+        %a.collapse-button.collapsed(data-toggle="collapse" data-target="#target-2") CURRENT FILES
+        #target-2.collapse
+          .current-file.collapse-box
+            %ul.list-unstyled
+              %li(ng-repeat="file in project.assets")
+                = image_tag("file-preview.png")
+                {{file.original_filename}}
+                %a.edit(href="#")
+                  = image_tag("icons/icon-edit.png", width: "14")
+                %a.delete(href="#")
+                  = image_tag("icons/icon-delete.png", width: "12")
+
+      .visual-tab.sidebar
+        = render 'projects/settings/dimensions'
+        = render 'projects/settings/media_controls'
+        %a.collapse-button.collapsed(data-toggle="collapse" data-target="#target-3c") LIMITED ACCESS TO URL`s
+        #target-3c.collapse
+          .collapse-box.add-padding
+            %input(ng-model="project.allowed_urls" placeholder="example: google.com, yahoo.com, microsoft.com..." type="text")
+
+      .branding.sidebar
+        = render 'projects/settings/branding'
+
+      .controls.sidebar
+        = render 'projects/settings/controls'
+
+    .wrap(style="width:{{widthPlayer - 100}}px;")
+      .video-content(style="width:{{widthPlayer}}px;")
+        = render 'projects/player/code', project: @project, embed: false unless @project.blank?

@@ -1,0 +1,39 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://us1.api.mailchimp.com/2.0/lists/list
+    body:
+      encoding: UTF-8
+      string: '{"apikey":"26c9f6969491f655ab910d829f5613f0-us1"}'
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '1924'
+      Vary:
+      - Accept-Encoding
+      Date:
+      - Wed, 04 Jun 2014 08:14:53 GMT
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - _AVESTA_ENVIRONMENT=prod; path=/
+    body:
+      encoding: UTF-8
+      string: '{"total":2,"data":[{"id":"1622f14bc0","web_id":1185781,"name":"OptimizePlayer
+        Partners","date_created":"2014-01-18 18:22:32","email_type_option":false,"use_awesomebar":true,"default_from_name":"OptimizePlayer","default_from_email":"optimizeplayer@gmail.com","default_subject":"Hello
+        From OptimizePlayer","default_language":"en","list_rating":0,"subscribe_url_short":"http:\/\/eepurl.com\/MFgHr","subscribe_url_long":"http:\/\/optimizeplayer.us1.list-manage.com\/subscribe?u=02ee0a5383d06c8016663277a&id=1622f14bc0","beamer_address":"us1-8d72bec767-e18e424007@inbound.mailchimp.com","visibility":"prv","stats":{"member_count":31,"unsubscribe_count":0,"cleaned_count":0,"member_count_since_send":29,"unsubscribe_count_since_send":0,"cleaned_count_since_send":0,"campaign_count":1,"grouping_count":0,"group_count":0,"merge_var_count":2,"avg_sub_rate":6,"avg_unsub_rate":0,"target_sub_rate":0,"open_rate":100,"click_rate":25,"date_last_campaign":"2014-05-07
+        17:03:20"},"modules":[]},{"id":"5f17197713","web_id":1185049,"name":"OptimizePlayer","date_created":"2013-12-16
+        19:51:19","email_type_option":false,"use_awesomebar":true,"default_from_name":"OptimizePlayer","default_from_email":"optimizeplayer@gmail.com","default_subject":"Hello
+        From OptimizePlayer","default_language":"en","list_rating":0,"subscribe_url_short":"http:\/\/eepurl.com\/LJOVT","subscribe_url_long":"http:\/\/optimizeplayer.us1.list-manage2.com\/subscribe?u=02ee0a5383d06c8016663277a&id=5f17197713","beamer_address":"us1-8d72bec767-a246cfdcdc@inbound.mailchimp.com","visibility":"prv","stats":{"member_count":18,"unsubscribe_count":0,"cleaned_count":0,"member_count_since_send":19,"unsubscribe_count_since_send":0,"cleaned_count_since_send":0,"campaign_count":2,"grouping_count":1,"group_count":3,"merge_var_count":2,"avg_sub_rate":3,"avg_unsub_rate":0,"target_sub_rate":0,"open_rate":0,"click_rate":0,"date_last_campaign":null},"modules":[]}],"errors":[]}'
+    http_version: 
+  recorded_at: Wed, 04 Jun 2014 08:14:54 GMT
+recorded_with: VCR 2.9.0

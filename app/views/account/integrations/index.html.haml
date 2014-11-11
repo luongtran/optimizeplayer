@@ -1,0 +1,21 @@
+- content_for :title, "Settings"
+%section(role="account")
+  .page-body
+    .row
+      .twelve.columns
+        #account
+          .box-menu
+            = render "account/shared/sidenav", {active: "integrations"}
+            .right-content
+              .header.clearfix
+                .pull-left
+                  %h3 Integrations
+              .body.integrations(ng-controller="IntegrationCtrl" ng-cloak ng-init="init('index')")
+                .user-info
+                  %ul
+                  - current_account.integrations.each do |i|
+                    %li
+                      = link_to "[#{i.provider}] #{i.title}", edit_account_integration_path(i)
+                      %a(href="#" ng-click="deleteIntegration(#{i.id})" ng-confirm="") [x]
+                  %br
+                  = link_to "Add new integration", new_account_integration_url, class: "button flat blue"

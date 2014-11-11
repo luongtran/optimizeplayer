@@ -1,0 +1,29 @@
+%section(role="sign-up")
+  .centralize
+    %h1 Start your free 14 day trial of OptimizePlayer
+    %h4 You'll be up and running in less than a minute  
+  .sign-up-box.clearfix
+    - plan_remote_id = "free2free2free"
+    - unless params[:p].blank?
+      - plan_remote_id = params[:p]
+    = render "devise/registrations/form", plan_remote_id: plan_remote_id
+    .testimonials
+      %h5 What do our Customers think of Optimize Player?
+      %ul.list-unstyled
+        %li
+          %p “Sed tellus justo, fringilla eu neque vel, suscipit luctus nisi. Integer tristique est sit amet lectus euismod aliquet. Aliquam sit amet ornare ligula, ut eleifend nulla.”
+          %ul.dsp-table
+            %li.dsp-cell
+              = image_tag("user.png", width: "25")
+            %li.dsp-cell.name
+              %span Christopher Rowe 
+              Onvo Media
+        %li
+          %p “Sed tellus justo, fringilla eu neque vel, suscipit luctus nisi. Integer tristique est sit amet lectus euismod aliquet. Aliquam sit amet ornare ligula, ut eleifend nulla.”
+          %ul.dsp-table
+            %li.dsp-cell
+              = image_tag("user.png", width: "25")
+            %li.dsp-cell.name
+              %span Christopher Rowe 
+              Onvo Media
+

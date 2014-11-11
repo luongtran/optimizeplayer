@@ -1,0 +1,138 @@
+- fonts_array = default_google_fonts
+- fonts_array.each do |font|
+  = google_font_link_tag font
+- unless @project.blank?
+  - content_for :title, "Video page for \"#{@project.title}\""
+  #fb-root
+  :javascript
+    (function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=416744705050137";
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+
+  %section(ng-controller="VideoPageCtrl"){:role => "video-page"}
+    %div.veil(ng-show="isLoading" )
+    %div.feedLoading(ng-show="isLoading")
+    #video-page.outside(ng-init="init(#{@project.to_json})" ng-class="{'toggle-widgets': edit == true}"){:"ng-controller" => "dialogCtrl"}
+      .page-content
+        .body(ng-class="template.class")
+          .widgets-layout-bg(style="height: {{ template.bgheight }}px")
+          .row
+            .twelve.columns
+              %form{:action => "", :method => "post"}
+                %gridster(ng-cloak)
+                  %ul
+                    / - unless @project.blank?
+                    /   %li{"data-col" => "1",  "data-row" => "1", "data-sizex" => "12", "data-sizey" => "#{get_ysize @project.flowplayer['dimensions']}", "class" => "gs_w video not-draggable not-resizable"}(update-video)
+                    /     #video-preview
+                    /     %script{type: 'application/javascript', src: "/projects/#{@project.cid}.js?load_to_element=video-preview"}
+
+                    %li{"data-type" =>"{{widget.type}}", id: "id_{{widget.id}}", "data-col" => "{{widget.dataCol}}", "data-row" => "{{widget.dataRow}}", "data-sizex" => "{{widget.dataSizex}}", "data-sizey" => "{{widget.dataSizey}}", "data-minx" => 2, "data-miny" => 2, "ng-repeat" => "widget in widgets",  "repeat-done" =>"layoutDone()", "class" => "gs_w {{widget.class}}"  "ng-cloak"}
+                      %div{proxy: "widget", "proxy-value" => "{{widget}}", 'sizey' => "#{get_ysize @project.flowplayer['dimensions']}"}
+      .widgets-content(ng-init="edit = false")
+        .navigation
+          .row
+            .twelve.columns
+              %ul.nav.nav-tabs.clearfix
+                %li
+                  %a.video-preview(ng-click="goToPreview()") Page Preview
+                %li(ng-class="{'active': edit == true}")
+                  %a(href="#" ng-click="edit = !edit" eat-click) Edit Page
+        .tabs-content
+          .tab-panel
+            .page-name
+              .row
+                .twelve.columns
+                  %form.form-page-name{ :name => 'video_page_slug' }(ng-controller="VideoPageCtrl" novalidate)
+                    %ul.clearfix
+                      %li
+                        %span.link #{root_url}
+                      %li
+                        %input{:placeholder => "enter page name here...", "type" => "text"}(ng-cloak ng-model="slug.slug" required ng-class="{error: video_page_slug.$invalid}" )
+                      %li
+                        %button.button(ng-class="checkClass" ng-click="saveSlug()")
+            .row
+              .four.columns
+                %h5
+                  %img{:src => "/assets/icon-widgets.png"} Widgets
+                %ul.inline-list.clearfix.widgets
+                  %li
+                    .tooltip{:style => "margin-left:-8px;"} Add Title
+                    %a.open-modal.widget-title{:href => "#widgets-title"}(ng-click="editWidget('title')" prevent-default pos-xy)
+                  %li
+                    .tooltip{:style => "margin-left:-27px;"} Add Paragraph
+                    %a.open-modal.widget-paragraph{:href => "#widgets-paragraph"}(ng-click="editWidget('paragraph')" prevent-default pos-xy)
+                  %li
+                    .tooltip{:style => "margin-left:-15px;"} Add Image
+                    %a.open-modal.widget-image{:href => "#widgets-image"}(ng-click="editWidget('image')" prevent-default pos-xy)
+                  %li
+                    .tooltip{:style => "margin-left:-13px;"} Add HTML
+                    %a.open-modal.widget-html{:href => "#widgets-html"}(ng-click="editWidget('html')" prevent-default pos-xy)
+                  %li
+                    .tooltip{:style => "margin-left:-16px;"} Add Button
+                    %a.open-modal.widget-button{:href => "#widgets-button"}(ng-click="editWidget('button')" prevent-default pos-xy)
+                  %li
+                    .tooltip{:style => "margin-left:-17px;"} Add Twitter
+                    %a.open-modal.widget-twitter{:href => "#"}(ng-click="addWidget('twitter')" eat-click pos-xy)
+                  %li
+                    .tooltip{:style => "margin-left:-38px;"} Add Facebook Like
+                    %a.add-directly.widget-fb-like{"data-type" => "face-like", "data-url" => request.original_url, :href => "#"}(ng-click="addWidget('fblike')" eat-click pos-xy)
+                  %li
+                    .tooltip{:style => "margin-left:-57px;"} Add Facebook Comments
+                    %a.add-directly.widget-fb-comments{"data-type" => "face-comment", "data-url" => request.original_url, :href => "#"}(ng-click="addWidget('fbcomments')" eat-click pos-xy)
+                  %li
+                    .tooltip{:style => "margin-left:-16px;"} Add Disqus
+                    %a.open-modal.widget-disqus{:href => "#widgets-disqus"}(ng-click="editWidget('disqus')" prevent-default pos-xy)
+                %ul.display-header.clearfix
+                  %li
+                    %a.on(href="#" eat-click)
+                  %li
+                    Show Header
+              .four.columns
+                %h5
+                  %img{:src => "/assets/icon-layout.png"} Layout
+                %ul.inline-list.clearfix.layouts
+                  %li
+                    %a{"data-factor" => "0", "data-layout" => "layout-1", :href => "#"}(ng-click="changeLayout('layout-1')" ng-class="{selected: template.class == 'layout-1'}" eat-click)
+                      %img{:alt => "layout-1", :src => "/assets/layout-type-1.png"}
+                  %li
+                    %a{"data-factor" => "1", "data-layout" => "layout-2", :href => "#"}(ng-click="changeLayout('layout-2')" ng-class="{selected: template.class == 'layout-2'}" eat-click)
+                      %img{:alt => "layout-2", :src => "/assets/layout-type-2.png"}
+                  %li
+                    %a{"data-factor" => "2", "data-layout" => "layout-3", :href => "#"}(ng-click="changeLayout('layout-3')" ng-class="{selected: template.class == 'layout-3'}" eat-click)
+                      %img{:alt => "layout-3", :src => "/assets/layout-type-3.png"}
+                  %li
+                    %a{"data-factor" => "0", "data-layout" => "layout-4", :href => "#"}(ng-click="changeLayout('layout-4')" ng-class="{selected: template.class == 'layout-4'}" eat-click)
+                      %img{:alt => "layout-4", :src => "/assets/layout-type-4.png"}
+                  %li
+                    %a{"data-factor" => "0", "data-layout" => "layout-5", :href => "#"}(ng-click="changeLayout('layout-5')" ng-class="{selected: template.class == 'layout-5'}" eat-click)
+                      %img{:alt => "layout-5", :src => "/assets/layout-type-5.png"}
+                  %li
+                    %a{"data-factor" => "1", "data-layout" => "layout-6", :href => "#"}(ng-click="changeLayout('layout-6')" ng-class="{selected: template.class == 'layout-6'}" eat-click)
+                      %img{:alt => "layout-6", :src => "/assets/layout-type-6.png"}
+                %ul.background-color.clearfix
+                  %li
+                    %img{:alt => "layout-6", :src => "/assets/icon-background-color.png"}
+                  %li
+                    Background Color
+                  %li
+                    %label.color-picker-label
+
+                      %input.color-picker{:name => "style_color", :type => "text", :value => "{{settings.backgroundColor}}"}(ng-controller="VideoPageCtrl" colorpicker-widgets ng-model="settings.backgroundColor")
+              .four.columns
+                %h5
+                  %img{:src => "/assets/icon-seo-tools.png"} SEO Tools
+                %ul.tools
+                  %li
+                    %a.open-modal{:href => "#widgets-seo"}(ng-click="seoForm()" pos-xy)
+                      %img{:src => "/assets/icon-seo-tools-blue.png"} Search Engine Optimization
+                  %li
+                    %a.open-modal{:href => "#widgets-seo"}(ng-click="seoForm()" pos-xy)
+                      %img{:src => "/assets/icon-keywords.png"} Keywords
+                  %li
+                    %a.open-modal{:href => "#widgets-seo"}(ng-click="seoForm()" pos-xy)
+                      %img{:src => "/assets/icon-description.png"} Description
+                %button.video-submit.button.radius.green(ng-class="checkSaveClass" ng-click="savePage()") {{saveText}}

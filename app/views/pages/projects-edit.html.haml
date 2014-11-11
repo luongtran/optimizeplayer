@@ -1,0 +1,384 @@
+#modal-embed.modal.fade(tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true")
+  .modal-dialog
+    .modal-content
+      %button.btn.btn-default.modal-dismiss(type="button" data-dismiss="modal") Close
+      %ul.nav.nav-tabs
+        %li.active
+          %a(href="#classic" data-toggle="tab") Classic
+        %li
+          %a(href="#popout" data-toggle="tab") Popout
+        %li
+          %a(href="#other" data-toggle="tab") Other
+      .tab-content
+        #classic.tab-pane.active
+          .copy-code
+            %h5 PLAY VIDEO IN WEBPAGE
+            %textarea.form-control(rows="4")
+              'no' src='https://pixelserv.stage.optimizeplayer.com/projects/371ad575be934a6450cf27a99
+            .pull-right
+              %button.btn.btn-primary(type="button") Copy
+        #popout.tab-pane
+          .copy-code
+            %h5 PLAY VIDEO IN POPOUT
+            .input-group
+              %input.form-control(type="text" value="'no' src='https://pixelserv.stage.optimizeplayer.com/projects/371ad575be934a6450cf27a99")
+              %span.input-group-btn
+                %button.btn.btn-primary(type="button") Copy
+          %ul.list-inline
+            %li.launch-with
+              %p Launch with
+              %input(type="radio" id="launch1" name="launch" checked value="thumbnail" )
+              %label(for="launch1") Thumbnail
+              %input(type="radio" id="launch2" name="launch" value="text")
+              %label(for="launch2") Text Link
+            %li.state-1
+              %p Video Size
+              %input.size(type="text" placeholder="640")
+              %span X
+              %input.size(type="text" placeholder="320")
+            %li.state-1
+              %p Thumbnail Size
+              %input.size(type="text" placeholder="150")
+              %span X
+              %input.size(type="text" placeholder="84")
+            %li.text-link.state-2
+              %p Link Text
+              %input(type="text" value="Hey, click on this and watch our new episode for free")
+          %ul.list-inline.state-1
+            %li
+              %p Preview
+              = image_tag("preview.png", width: "150")
+          %ul.list-inline.state-2.preview-text
+            %li
+              %p Preview
+              %a(href="#") Hey, click on this and watch our new episode for free
+        #other.tab-pane ...3
+
+%section#edit-project(role="projects")
+  .header.clearfix
+    .pull-left
+      %ul.list-inline.clearfix
+        %li.selected
+          %a.edit-files(href="#edit-files") Edit Files
+        %li
+          %a.customize(href="#customize") Customize
+        %li
+          %a.add-cta(href="#add-cta") Add CTAs
+        %li
+          %a.list(href="#list") List
+    .pull-right
+      %span SMS Marketing Video
+      %a(href="#")
+        = image_tag("icons/icon-edit.png", width: "15")
+      %button.btn.btn-primary(data-toggle="modal" data-target="#modal-embed")
+        = image_tag("icons/icon-embed-white.png", width: "26")
+        Embed
+      %button.btn.btn-success Save
+  .cta-options(role="sidebar")
+    .add-cta.sidebar
+      %ul.list-unstyled
+        %li
+          %a(href="#survey")
+            = image_tag("icons/icon-survey.png", width: "22")
+            Survey
+        %li
+          %a(href="#")
+            = image_tag("icons/icon-payment.png", width: "22")
+            Payment
+        %li
+          %a(href="#")
+            = image_tag("icons/icon-tagging.png", width: "22")
+            Tagging
+        %li
+          %a(href="#")
+            = image_tag("icons/icon-optin.png", width: "22")
+            Optin
+        %li
+          %a(href="#")
+            = image_tag("icons/icon-button.png", width: "22")
+            Button
+        %li
+          %a(href="#")
+            = image_tag("icons/icon-html.png", width: "22")
+            HTML
+        %li
+          %a(href="#")
+            = image_tag("icons/icon-social.png", width: "22")
+            Social
+    
+    .customize.sidebar
+      %ul.list-unstyled
+        %li
+          %a(href="#elements")
+            = image_tag("icons/icon-visual.png", width: "22")
+            Visual
+        %li
+          %a(href="#branding")
+            = image_tag("icons/icon-branding.png", width: "22")
+            Branding
+        %li
+          %a(href="#")
+            = image_tag("icons/icon-control.png", width: "22")
+            Controls
+
+    .list.sidebar
+      %ul.list-unstyled
+        %li.clearfix
+          .pull-left
+            = image_tag("icons/icon-survey.png", width: "22")
+          .pull-left
+            Survey 1
+            %span.time
+              = image_tag("icons/icon-time-green.png", width: "12")
+              6:00
+          %a.delete(href="#")
+            = image_tag("icons/icon-delete.png", width: "11")
+        %li.clearfix
+          .pull-left
+            = image_tag("icons/icon-survey.png", width: "22")
+          .pull-left
+            Survey 2
+            %span.time
+              = image_tag("icons/icon-time-green.png", width: "12")
+              12:40
+          %a.delete(href="#")
+            = image_tag("icons/icon-delete.png", width: "11")
+        %li.clearfix
+          .pull-left
+            = image_tag("icons/icon-tagging.png", width: "22")
+          .pull-left
+            Tag 1
+            %span.time
+              = image_tag("icons/icon-time-green.png", width: "12")
+              0:24
+          %a.delete(href="#")
+            = image_tag("icons/icon-delete.png", width: "11")
+        %li.clearfix
+          .pull-left
+            = image_tag("icons/icon-tagging.png", width: "22")
+          .pull-left
+            Tag 2
+            %span.time
+              = image_tag("icons/icon-time-green.png", width: "12")
+              6:00
+          %a.delete(href="#")
+            = image_tag("icons/icon-delete.png", width: "11")
+        %li.clearfix
+          .pull-left
+            = image_tag("icons/icon-html.png", width: "22")
+          .pull-left
+            HTML
+            %span.time
+              = image_tag("icons/icon-time-green.png", width: "12")
+              on start
+          %a.delete(href="#")
+            = image_tag("icons/icon-delete.png", width: "11")
+
+    .edit-files.sidebar
+      %a.collapse-button.collapsed(data-toggle="collapse" data-target="#target-1") ADD FILES
+      #target-1.collapse
+        .add-file.collapse-box.add-padding
+          %button.btn.btn-info Browse
+      %a.collapse-button.collapsed(data-toggle="collapse" data-target="#target-2") CURRENT FILES
+      #target-2.collapse
+        .current-file.collapse-box
+          %ul.list-unstyled
+            %li
+              = image_tag("file-preview.png")
+              File
+              %a.edit(href="#")
+                = image_tag("icons/icon-edit.png", width: "14")
+              %a.delete(href="#")
+                = image_tag("icons/icon-delete.png", width: "12")
+            %li
+              = image_tag("file-preview.png")
+              File
+              %a.edit(href="#")
+                = image_tag("icons/icon-edit.png", width: "14")
+              %a.delete(href="#")
+                = image_tag("icons/icon-delete.png", width: "12")
+            %li
+              = image_tag("file-preview.png")
+              File
+              %a.edit(href="#")
+                = image_tag("icons/icon-edit.png", width: "14")
+              %a.delete(href="#")
+                = image_tag("icons/icon-delete.png", width: "12")
+            %li
+              = image_tag("file-preview.png")
+              File
+              %a.edit(href="#")
+                = image_tag("icons/icon-edit.png", width: "14")
+              %a.delete(href="#")
+                = image_tag("icons/icon-delete.png", width: "12")
+            %li
+              = image_tag("file-preview.png")
+              File
+              %a.edit(href="#")
+                = image_tag("icons/icon-edit.png", width: "14")
+              %a.delete(href="#")
+                = image_tag("icons/icon-delete.png", width: "12")
+
+    .branding.sidebar
+      %a.collapse-button.collapsed(data-toggle="collapse" data-target="#target-3") LOGO
+      #target-3.collapse
+        .upload-logo.collapse-box.add-padding
+          %button.btn.btn-info Upload Logo
+      %a.collapse-button.collapsed(data-toggle="collapse" data-target="#target-4") START IMAGE
+      #target-4.collapse
+        .start-image.collapse-box
+          %a.delete(href="#")
+            = image_tag("icons/icon-delete-whiter.png", width: "12")
+          = image_tag("start-image.png", width: "170")
+          %button.btn.btn-info Replace
+      %a.collapse-button.collapsed(data-toggle="collapse" data-target="#target-5") SKINS
+      #target-5.collapse
+        .skins.collapse-box
+          %ul.list-unstyled
+            %li
+              Skin Name
+              = image_tag("skin-1.png")
+              %button.btn.btn-primary.minimize Use this skin
+            %li
+              Skin Name
+              = image_tag("skin-1.png")
+              %button.btn.btn-primary.minimize Use this skin
+            %li
+              Skin Name
+              = image_tag("skin-1.png")
+              %button.btn.btn-primary.minimize Use this skin
+
+    .survey.sidebar
+      %a.collapse-button.collapsed(data-toggle="collapse" data-target="#target-6") DISPLAY OPTIONS
+      #target-6.collapse
+        .display-options.collapse-box.add-padding
+          %input#on-the-video(type="radio" name="survey-position" checked)
+          %label(for="on-the-video") On the video
+          %input#outside-video(type="radio" name="survey-position")
+          %label(for="outside-video") Outside the video
+      %a.collapse-button.collapsed(data-toggle="collapse" data-target="#target-7") ANSWER OPTIONS
+      #target-7.collapse
+        .answer-options.collapse-box
+          .questions.add-padding
+            %input(type="text" placeholder="Question")
+            %ul
+              %li
+                %input(type="text" placeholder="Answer 1")
+              %li
+                %button.btn.btn-primary.minimize Add Answer
+          .add-padding
+            %button.btn.btn-info Add Question
+      %a.collapse-button.collapsed(data-toggle="collapse" data-target="#target-8") SHOW OPTIONS
+      #target-8.collapse
+        %div.show-options.collapse-box.add-padding
+          %input#on-start(type="checkbox")
+          %label(for="on-start") On Start
+          %input#on-pause(type="checkbox")
+          %label(for="on-pause") On Pause
+          %input#on-end(type="checkbox")
+          %label(for="on-end") On End
+          %input#specific-time(type="checkbox")
+          %label(for="specific-time") At a Specific Time
+      %a.collapse-button.collapsed(data-toggle="collapse" data-target="#target-9") VISUAL CONTROLS
+      #target-9.collapse
+        .visual-controls.collapse-box
+          .skip-button.add-padding
+            %input#skip-button(type="checkbox")
+            %label(for="skip-button") Skip Button
+          .text-color.add-padding.color-input
+            Text Color
+            .input-group
+              %i(style="background: #18D67F;")
+              %input(type="text" value="#18D67F")
+            .range-opacity.clearfix
+              .pull-left
+                %input.slider-range(type="text" value="" data-slider-min="0" data-slider-max="100" data-slider-step="1" data-slider-value="60" data-slider-tooltip="hide" style="width: 90px;")
+              .pull-right
+                %input.percent(type="text" value="60%")
+          .header-color.add-padding.color-input
+            Header Color
+            .input-group
+              %i(style="background: #EE409E;")
+              %input(type="text" value="#EE409E")
+            .range-opacity.clearfix
+              .pull-left
+                %input.slider-range(type="text" value="" data-slider-min="0" data-slider-max="100" data-slider-step="1" data-slider-value="60" data-slider-tooltip="hide" style="width: 90px;")
+              .pull-right
+                %input.percent(type="text" value="60%")
+      %ul.dsp-table
+        %li.dsp-cell
+          %button.btn.btn-primary.done Done
+        %li.dsp-cell
+          %button.btn.btn-info.remove Remove
+
+    .elements.sidebar
+      %a.collapse-button.collapsed(data-toggle="collapse" data-target="#target-10") CHECKBOX AND RADIO
+      #target-10.collapse
+        .collapse-box.add-padding
+          %input(type="radio" id="option-1" name="radio-name" checked)
+          %label(for="option-1") Option 1
+          %input(type="radio" id="option-2" name="radio-name")
+          %label(for="option-2") Option 2
+
+          %input(type="checkbox" id="option-3" checked)
+          %label(for="option-3") Option 3
+          %input(type="checkbox" id="option-4")
+          %label(for="option-4") Option 4
+      %a.collapse-button.collapsed(data-toggle="collapse" data-target="#target-11") DEFAULT BUTTON
+      #target-11.collapse
+        .collapse-box.add-padding.centralize
+          %button.btn.btn-info Action
+      %a.collapse-button.collapsed(data-toggle="collapse" data-target="#target-12") COLOR INPUT
+      #target-12.collapse
+        .collapse-box
+          .add-padding.color-input
+            Element Color
+            .input-group
+              %i(style="background: #18D67F;")
+              %input(type="text" value="#18D67F")
+            .range-opacity.clearfix
+              .pull-left
+                %input.slider-range(type="text" value="" data-slider-min="0" data-slider-max="100" data-slider-step="1" data-slider-value="60" data-slider-tooltip="hide" style="width: 90px;")
+              .pull-right
+                %input(type="text" value="60%" class="percent")
+      %a.collapse-button.collapsed(data-toggle="collapse" data-target="#target-13") FORM
+      #target-13.collapse
+        .form.collapse-box.add-padding
+          %select.selectpicker(data-width="100%")
+            %option Select an option
+            %option Option 01
+            %option Option 02
+            %option Option 03
+          %input(type="text" placeholder="Text here")
+          %textarea(rows="6" placeholder="Text here")
+      %a.collapse-button.collapsed(data-toggle="collapse" data-target="#target-14") FONT SETTINGS
+      #target-14.collapse
+        .font.collapse-box.add-padding
+          %select.selectpicker(data-width="100%")
+            %option Arial
+            %option Helvetica
+            %option Sans Serif
+          %select.selectpicker(data-width="100%")
+            %option Light
+            %option Normal
+            %option Bold
+          %input.font-size(type="text" value="18px")
+      %a.collapse-button.collapsed(data-toggle="collapse" data-target="#target-15") TIME
+      #target-15.collapse
+        .collapse-box.add-padding
+          %ul.time.dsp-table
+            %li.dsp-cell
+              .input-group
+                = image_tag("icons/icon-time.png", width: "11", class: "icon")
+                %input(type="text" value="0:0")
+            %li.dsp-cell
+              .input-group
+                = image_tag("icons/icon-time.png", width: "11", class: "icon")
+                %input(type="text" value="0:0")
+            %li.dsp-cell
+              %a.delete(href="#")
+                = image_tag("icons/icon-delete.png", width: "11")
+          %button.btn.btn-primary.minimize + Add more
+  .wrap
+    .video-content
+      = image_tag("video-placeholder.png")

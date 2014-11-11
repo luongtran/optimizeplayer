@@ -1,0 +1,6 @@
+.custom-modal{:id => "widgets-{{type}}", "data-type" => "{{type}}"}
+  .head
+    {{title}}
+  .body
+    %form{:action => "", :method => "post"}
+      %div(ng-transclude)

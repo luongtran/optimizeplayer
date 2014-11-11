@@ -1,0 +1,36 @@
+- width, height = project.dimensions == "responsive" ? ['auto', 'auto'] : project.dimensions.split("x").map {|d| "#{d}px" }
+- max_width = ''
+- max_height = ''
+- short_cid = project.short_cid
+/display shocials buttons only for default skin
+- show_social_buttons = project.skin == 'skin0'
+%div{id: "player-container#{short_cid}", 
+     class: "align-#{project.align}", 
+     "ng-init" => "init(#{@project.to_json}, '#{@referer}')",
+     "ng-app" => embed ? "optimizePlayerWidget" : nil,
+     "ng-controller" => embed ? "WidgetCtrl" : nil,
+     "ng-cloak" => true}
+  %div{id: "optimizeplayer", data: {embed: "#{embed}"}, class: "align-#{project.align}"}
+    .inside
+      %div{id: "optimizeplayer_container", style:"position: relative;", class: "embed-#{embed}"}
+        - if embed
+          %a{id:"video#{project.cid}", style: "display:block; width:#{width}; height:#{height};"}
+          / = render partial: 'projects/player/ctas', locals: { project: project, embed: embed, position: 'inside', location: nil }
+        - else
+          .cta-overlay(ng-show="cta_store.currentCta")
+          %a{id:"video#{project.cid}", href: "#{project.url}", style: "display:block; height: {{heightPlayer}}px;",
+            :'final-preview' => '',
+            data: { short_cid: short_cid }}
+          #logo-preview(style="display: none;")
+            %img(logo-draggable ng-src="{{logo.orig}}" ng-model="logo" style="position: absolute;")
+        = render partial: 'projects/player/ctas', locals: { project: project, embed: embed, position: 'inside', location: nil }
+        .clear
+
+  .outside-bottom
+    = render partial: 'projects/player/ctas', locals: { project: project, embed: embed, position: 'outside', location: 'bottom' }
+
+    - if !embed || (embed && show_social_buttons)
+      = render partial: 'projects/player/share_buttons', locals: { project: project, embed: embed , show_social_buttons: show_social_buttons , position: 'outside', location: 'bottom' }
+      / %share-buttons(ng-hide="showShareButtons()" ng-show="#{show_social_buttons}")
+
+.clear

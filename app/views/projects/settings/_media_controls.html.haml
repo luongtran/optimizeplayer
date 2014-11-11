@@ -1,0 +1,63 @@
+%a.collapse-button.collapsed(data-toggle="collapse" data-target="#target-2c") MEDIA CONTROLS
+#target-2c.collapse
+  .form.collapse-box.add-padding
+    %input(type="checkbox" id="display-time" ng-disabled="project.control_bar_hide_method == 'hide'" ng-model="project.display_time" ng-checked="$eval(project.display_time)")
+    %label(for="display-time") Display Time
+
+    %input(type="checkbox" id="display-volume" ng-disabled="project.control_bar_hide_method == 'hide'" ng-model="project.display_volume" ng-checked="$eval(project.display_volume)")
+    %label(for="display-volume") Display Volume
+
+    %input(type="checkbox" id="small-play-button" ng-disabled="project.control_bar_hide_method == 'hide'" ng-model="project.play_button" ng-checked="$eval(project.play_button)")
+    %label(for="small-play-button") Small Play Button
+
+    %input(type="checkbox" id="big-play-button" ng-model="project.big_play_button" ng-checked="$eval(project.big_play_button)")
+    %label(for="big-play-button") Big Play Button
+
+    %input(type="checkbox" id="allow-mute" ng-disabled="project.control_bar_hide_method == 'hide'" ng-model="project.mute" ng-checked="$eval(project.mute)")
+    %label(for="allow-mute") Allow mute
+
+    %input(type="checkbox" id="auto-mute" ng-model="project.auto_mute" ng-checked="$eval(project.auto_mute)")
+    %label(for="auto-mute") Auto mute
+
+    %input(type="checkbox" id="embed-code" ng-model="project.allow_embed" ng-checked="$eval(project.allow_embed)")
+    %label(for="embed-code") Embed Code
+
+    %input(type="checkbox" id="full-screen" ng-disabled="project.control_bar_hide_method == 'hide'" ng-model="project.full_screen" ng-checked="$eval(project.full_screen)")
+    %label(for="full-screen") Full Screen
+
+    %input(type="checkbox" id="facebook-share" ng-model="project.facebook_share" ng-checked="$eval(project.facebook_share)")
+    %label(for="facebook-share") Facebook Share
+
+    %input(type="checkbox" id="twitter-share" ng-model="project.twitter_share" ng-checked="$eval(project.twitter_share)")
+    %label(for="twitter-share") Twitter Share
+
+    %input(type="checkbox" id="google-share" ng-model="project.google_share" ng-checked="$eval(project.google_share)")
+    %label(for="google-share") Google+ Share
+
+    %input(type="checkbox" id="email-share" ng-model="project.email_share" ng-checked="$eval(project.email_share)")
+    %label(for="email-share") Email Share
+
+    %input(type="checkbox" id="allow-pause" ng-model="project.allow_pause" ng-checked="$eval(project.allow_pause)")
+    %label(for="allow-pause") Allow Pause
+
+    %input(type="checkbox" id="loop-project" ng-model="project.loop" ng-change="initPlayer()" ng-checked="$eval(project.loop)")
+    %label(for="loop-project") Loop
+    %div
+      %label{style:"float:left"}(for="gap") Gap
+      %input{style:"margin-left:10px"}(id="gap" ng-model="project.cb_gap" min="0" max="20" type="number" value="{{project.cb_gap}}")
+
+    .media-controls
+      %label Auto Start
+      %select(selectpicker data-width="100%" ng-disabled="project.start_image" ng-model="project.auto_start")
+        %option(ng-repeat="o in auto_start_options"
+                ng-selected="project.auto_start == o.id"
+                value="{{o.id}}")
+          {{o.name}}
+
+    .media-controls
+      %label Control Bar
+      %select(selectpicker data-width="100%" ng-disabled="project.start_image" ng-model="project.control_bar_hide_method")
+        %option(ng-repeat="o in control_bar_hide_method_options"
+                ng-selected="project.control_bar_hide_method == o.id"
+                value="{{o.id}}")
+          {{o.name}}

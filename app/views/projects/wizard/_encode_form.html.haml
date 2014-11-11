@@ -1,0 +1,6 @@
+#encode-new-video.reveal-modal(ng-controller="AssetEncodeCtrl")
+  %a.close-reveal-modal &#215;
+  %h3 Encoding your Video
+  .percentage {{statusNotice}} {{percentage}} 
+  %a.button.green(ng-click="startEncode()") Start encode
+  %a.button.green.radius.upload(ng-show="project.url" ng-click="createProject()") Proceed to the Next Step

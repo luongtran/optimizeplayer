@@ -1,0 +1,28 @@
+%li
+  .dsp-table
+    .dsp-cell.icon-folder
+      %i
+    %span.dsp-cell.name(ng-click="view(folder)") {{folder.name}}
+    .dsp-cell.info
+      %a.remove(eat-click ng-click="remove(folder)")
+        = image_tag("icons/icon-delete.png", width: "11")
+      %span.count {{folder.projects_count}}
+  %ul(ng-show="folder.id == expandedId()")
+    %li.add-folder(ng-show="current.showDialogId == folder.id")
+      %form.dsp-table(name="newSubfolder" ng-submit="saveSubfolder()")
+        .dsp-cell.icon-folder
+          %i
+        .dsp-cell.name
+        %input(name="name" ng-model="newSubfolderName" required type="text" placeholder="Subfolder Name")
+        .dsp-cell.info
+          %a.remove(ng-click="current.showDialogId = null")
+            = image_tag("icons/icon-delete.png", width: "11")
+    %li(ng-click="view(subfolder)" ng-repeat="subfolder in folder.subfolders")
+      .dsp-table
+        .dsp-cell.icon-folder
+          %i
+        %span.dsp-cell.name(refresh-switch="folder.id == expandedId()") {{subfolder.name}}
+        .dsp-cell.info
+          %a.remove(ng-click="remove(subfolder)")
+            = image_tag("icons/icon-delete.png", width: "11")
+          %span.count {{subfolder.projects_count}}

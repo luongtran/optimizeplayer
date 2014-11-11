@@ -1,0 +1,16 @@
+#forgot-password
+  .centralize
+    %img.logo(alt="OptimizePlayer" src="/assets/logo.png" width="184")/
+  = simple_form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post }) do |f|
+    - if devise_error_messages!.present?
+      .alert-box.alert
+        = devise_error_messages!
+    %h5 Forgot your password? Please enter your email below to reset your password
+    .input-group
+      %span.input-group-addon
+        = image_tag("icons/icon-email.png", width: "15")
+      = f.input :email, :required => true, :autofocus => true, :placeholder => "Email", label: false, input_html: {class: 'form-control'}
+    = f.button :submit, "Reset Password", class: "btn btn-primary"
+    %ul.dsp-table
+      %li.dsp-cell
+        = link_to "Sign in", new_user_session_path

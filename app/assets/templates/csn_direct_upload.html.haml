@@ -1,0 +1,3 @@
+%form.csn-upload-form(action="{{action}}" method="post" enctype="multipart/form-data")
+  %input(ng-repeat="(name, value) in hidden_inputs" name="{{name}}" type="hidden" value="{{value}}")
+  %input.csn-upload-file(name="file" style="display:none;" type="file")
